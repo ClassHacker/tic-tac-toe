@@ -1,2 +1,2 @@
 # tic-tac-toe
- A react app for learning purpose
+ A tic-tac-toe game created using react, node.js, express.js and mongoose for learning purpose.
