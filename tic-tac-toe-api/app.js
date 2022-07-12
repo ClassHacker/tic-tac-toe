@@ -1,20 +1,11 @@
-const express = require('express')
-const mongoose = require('mongoose')
-const cors = require("cors");
-const Router = require('./routes')
+const express = require('express');
+const mongoose = require('mongoose');
+const cors = require('cors');
+const Router = require('./routes');
 
-const corsOptions = {
-   origin:'*', 
-   optionSuccessStatus:200,
-   methods: "GET,PUT,POST,DELETE"
-}
+const app = express();
 
-const app = express()
-
-app.use(function(req, res, next) {
-  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-  next();
-});
+app.use(cors());
 
 app.use(express.json())
 
@@ -32,7 +23,6 @@ db.once("open", function () {
 });
 
 app.use(Router);
-app.use(cors(corsOptions)) 
 
 app.listen(8080, () => {
   console.log("Server is running at port 8080");
