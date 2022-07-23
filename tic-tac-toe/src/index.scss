@@ -1,36 +1,55 @@
+@import "../node_modules/bootstrap/dist/css/bootstrap.css";
+
+html,
 body {
   font: 14px "Century Gothic", Futura, sans-serif;
   margin: 20px;
   background-color: aqua;
+  overflow-x: hidden;
+  overflow-y: hidden;
 }
-
 h1 {
-  font-size: 72px;
-  font-family:'Courier New', Courier, monospace;
+font-size: 72px;
+text-align: center;
+font-family:'Courier New', Courier, monospace;
 }
-
 ol, ul {
-  padding-left: 30px;
+padding-left: 30px;
 }
-
+label {
+  margin-left: 10%;
+  margin-bottom: 5%;
+  font-size: 20px;
+  font-family:'Times New Roman', Times, serif;
+}
 input {
-  margin-left: 20px;
+  margin-left: 10%;
+  margin-bottom: 5%;
   align-items: center;
   background: #000;
   color: antiquewhite;
   font-family: 'Courier New', Courier, monospace;
 }
-
+.save-button{
+  size-adjust: 50px;
+  color: greenyellow;
+  background: black;
+  border-radius: 10px;
+  border: 2px solid darkblue;
+  margin: 1% 10%;
+  cursor: pointer;
+  text-align: center;
+  font-size: 14px;
+  border-radius: 10px;
+}
 .board-row:after {
   clear: both;
   content: "";
   display: table;
 }
-
 .status {
-  margin-bottom: 10px;
+margin-bottom: 10px;
 }
-
 .square {
   background: rgb(163, 33, 33);
   border: 1px solid #999;
@@ -45,33 +64,26 @@ input {
   height: 56px;
   width: 56px;
 }
-
 .square:focus {
-  outline: none;
+outline:auto;
 }
-
 .kbd-navigation .square:focus {
-  background: #ddd;
+background: #ddd;
 }
-
 .game {
-  display: flex;
-  flex-direction: row;
+display: flex;
+flex-direction: row;
 }
-
 .game-info {
-  margin-left: 20px;
+margin-left: 20px;
 }
-
 .game-over {
-  margin-top: 120px;
-  margin-left:-25%;
+margin-top: 120px;
+margin-left:-25%;
 }
-
 .button {
   background-color: #afa54cc9;
   border: 1px solid darkblue;
-  /* color: greenyellow; */
   text-align: center;
   text-decoration: none;
   display: inline-block;
@@ -85,60 +97,35 @@ input {
   margin-left: 33.33%;
 }
 .start-button{
-  align-self: center;
-  background: #000;
+  background:black;
   border-radius: 10px;
   border: 5px solid darkblue;
   color: gold;
-  padding: 15px 32px;
+  padding: 4%;
   text-align: center;
-  text-decoration: none;
-  display: inline-block;
+  display: block;
   font-size: 16px;
   font-family: 'Courier New', Courier, monospace;
-  margin: 4px 2px;
+  margin: 5% auto;
   cursor: pointer;
-}
-.save-button{
-  size-adjust: 50px;
-  color: greenyellow;
-  background: black;
-  border-radius: 10px;
-  margin: 4px 2px;
-  cursor: pointer;
-  text-align: center;
-  font-size: 14px;
-  border-radius: 10px;
-}
-.column {
- float: left;
- width: 33.33%;
+  width:150px;
 }
 .row:after{
- content: "";
- display: table;
- clear: both;
-}
-.header{
-font-size: 72px;
-margin-left: 33.33%;
-font-family:'Courier New', Courier, monospace;
+  content: "";
+  display: table;
+  clear: both;
 }
 .games-won{
- background: gold;
- font-size: 20px;
- font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
- border: 5px solid darkblue;
- margin: auto;
- padding: 5%;
+  width: 80%;
+  height: auto;
+  background: gold;
+  font-size: 120%;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  border: 5px solid darkblue;
+  border-radius: 25px;
+  margin: auto 10px;
+  padding: 5%;
 }
-.username {
- font-size: 24px;
- font-family:'Times New Roman', Times, serif;
-}
-
-@media screen and (max-width: 600px) {
-.column {
-  width: 100%;
-}
+.bg{
+  background-color:#000;
 }
