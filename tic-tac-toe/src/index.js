@@ -2,10 +2,16 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import 'bootstrap/dist/css/bootstrap.css'
 import './index.scss'
+import backGround from "./static/bg.mp3";
 
+var music = require('./sound');
 const computer = require('./computer');
 var player2 = new computer.Computer();
 var player2Copy = new computer.Computer();
+
+let audio = new Audio(backGround);
+audio.play();
+audio.addEventListener('ended',() => audio.play())
 
 class Home extends React.Component{
   constructor(props) {
@@ -28,6 +34,7 @@ class Home extends React.Component{
   }
 
   handleSubmit(event) {
+    music.playSound("s1");
     let userName = this.state.userName;
     let regex = new RegExp(/^[A-Za-z]+[0-9]*$/)
     console.log(regex.test(userName))
@@ -44,6 +51,7 @@ class Home extends React.Component{
   }
 
   startGame(isMultiPlayer) {
+    music.playSound("s1");
     if (this.state.isUserNameSet){
       startGame(this.props.root, this.state.userName, isMultiPlayer);
     } else {
@@ -52,6 +60,7 @@ class Home extends React.Component{
   }
 
   renderForm() {
+    music.playSound("s1");
     this.setState({
       showForm: !this.state.showForm
     });
@@ -252,6 +261,7 @@ class Game extends React.Component {
 
   makeMove(i){
     if(player2.X.indexOf(i) === -1 && player2.O.indexOf(i) === -1) {
+      music.playSound("s1"); 
       this.handleClick(i);
       let index = null;
       if (this.props.isMultiPlayer === true) {
@@ -283,6 +293,7 @@ class Game extends React.Component {
   }
 
   jumpTo(step){
+    music.playSound("s1");
     if(this.props.isMultiPlayer && step < 9) {
       if(step%2){
         step += 1;
@@ -297,6 +308,7 @@ class Game extends React.Component {
   }
 
   newGame(winner){
+    music.playSound("s1");
     player2 = new computer.Computer()
     this.setState(
       this.getInitialState()
@@ -308,6 +320,7 @@ class Game extends React.Component {
   }
 
   exitGame(){
+    music.playSound("s1");
     window.location.reload();
   }
 
