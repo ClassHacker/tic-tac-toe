@@ -9,9 +9,9 @@ const computer = require('./computer');
 var player2 = new computer.Computer();
 var player2Copy = new computer.Computer();
 
-let audio = new Audio(backGround);
-audio.play();
-audio.addEventListener('ended',() => audio.play())
+// let audio = new Audio(backGround);
+// audio.play();
+// audio.addEventListener('ended',() => audio.play())
 
 class Home extends React.Component{
   constructor(props) {
@@ -34,7 +34,7 @@ class Home extends React.Component{
   }
 
   handleSubmit(event) {
-    music.playSound("s1");
+    // music.playSound("s1");
     let userName = this.state.userName;
     let regex = new RegExp(/^[A-Za-z]+[0-9]*$/)
     console.log(regex.test(userName))
@@ -50,17 +50,17 @@ class Home extends React.Component{
     event.preventDefault();
   }
 
-  startGame(isMultiPlayer) {
-    music.playSound("s1");
+  initialGame(isMultiPlayer) {
+    // music.playSound("s1");
     if (this.state.isUserNameSet){
-      startGame(this.props.root, this.state.userName, isMultiPlayer);
+      startGame2(this.props.root, this.state.userName, isMultiPlayer);
     } else {
       alert('Please set username first!')
     }
   }
 
   renderForm() {
-    music.playSound("s1");
+    // music.playSound("s1");
     this.setState({
       showForm: !this.state.showForm
     });
@@ -76,10 +76,10 @@ class Home extends React.Component{
               onClick={this.renderForm}
             >Set Username</button>
             <button className='start-button' 
-              onClick={()=>this.startGame(false)}
+              onClick={()=>this.initialGame(false)}
             >Single Player</button>
             <button className='start-button' 
-              onClick={()=>this.startGame(true)}
+              onClick={()=>this.initialGame(true)}
             >Multi Player</button>
           {this.state.showForm &&
             <form className='form-inline' onSubmit={this.handleSubmit}>
@@ -146,6 +146,15 @@ async function startGame(root, userName, isMultiPlayer) {
   .catch((err) => {
     console.log(err)
   });
+}
+
+async function startGame2(root, Username, isMultiPlayer) {
+  const userName = isMultiPlayer? 'Computer' : "XYZ";
+  let players = [
+    {name: Username, gamesWon: 0},
+    {name: userName, gamesWon: 0}
+  ]
+  root.render( <Game players = {players} isMultiPlayer = {isMultiPlayer}/>);
 }
 
 function Square(props) {
@@ -261,7 +270,7 @@ class Game extends React.Component {
 
   makeMove(i){
     if(player2.X.indexOf(i) === -1 && player2.O.indexOf(i) === -1) {
-      music.playSound("s1"); 
+      // music.playSound("s1"); 
       this.handleClick(i);
       let index = null;
       if (this.props.isMultiPlayer === true) {
@@ -293,7 +302,7 @@ class Game extends React.Component {
   }
 
   jumpTo(step){
-    music.playSound("s1");
+    // music.playSound("s1");
     if(this.props.isMultiPlayer && step < 9) {
       if(step%2){
         step += 1;
@@ -308,19 +317,20 @@ class Game extends React.Component {
   }
 
   newGame(winner){
-    music.playSound("s1");
+    // music.playSound("s1");
     player2 = new computer.Computer()
     this.setState(
       this.getInitialState()
     );
     this.state.players.map((player) => {
       if (winner === player.name) 
-        this.updatePlayer(player);
+        // this.updatePlayer(player);
+        player.gamesWon += 1
     });
   }
 
   exitGame(){
-    music.playSound("s1");
+    // music.playSound("s1");
     window.location.reload();
   }
 

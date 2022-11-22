@@ -4,7 +4,7 @@ const PlayerSchema = new mongoose.Schema({
     _id: Number,
     name: {
         type: String,
-        required: true,
+        required: "Player name can't be null or empty."
     },
     gamesWon : {
         type: Number,

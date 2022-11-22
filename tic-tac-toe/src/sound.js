@@ -10,6 +10,7 @@ export function playSound(sound) {
             break;
         case "s2":
             audioName = button2;
+            break;
         default:
             audioName = backGround;
     }
