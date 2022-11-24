@@ -68,10 +68,12 @@ class Home extends React.Component{
 
   render() {
     return (
-      <div className='row'>
-      <h1>Tic-Tac-Toe</h1>
-        <div className='col-sm-4'></div>
-        <div className='col-sm-4'>
+      <div>
+      <h1 className='margin-top-6'>Tic-Tac-Toe</h1>
+      <div className='row margin-top-6'>
+        <div className='col-md-4 d1'></div>
+        <div className='col-md-4 d2'>
+          <div className="homepage">
             <button className='start-button' 
               onClick={this.renderForm}
             >Set Username</button>
@@ -95,8 +97,10 @@ class Home extends React.Component{
                 </div>
             </form>
           }
+          </div>
         </div>
-        <div className='col-sm-4'></div>
+        <div className='col-md-4 d3'></div>
+      </div>
       </div>
     )
   }
@@ -379,7 +383,7 @@ class Game extends React.Component {
           <div className='games-won'>
             <span>
               {this.state.players[0].name} : {this.state.players[0].gamesWon}
-            </span> <br/>
+            </span>
             <span>
                {this.state.players[1].name} : {this.state.players[1].gamesWon}
             </span>

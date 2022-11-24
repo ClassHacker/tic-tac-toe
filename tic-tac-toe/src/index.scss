@@ -3,15 +3,39 @@
 html,
 body {
   font: 14px "Century Gothic", Futura, sans-serif;
-  margin: 20px;
+  margin: 5px;
+  height: 100%;
   background-color: aqua;
   overflow-x: hidden;
   overflow-y: hidden;
 }
 h1 {
-font-size: 72px;
+font-size: 10vw;
 text-align: center;
 font-family:'Courier New', Courier, monospace;
+}
+@media only screen and (max-width: 600px)
+{
+  .d1,.d3{
+    display: none;
+  };
+  
+.start-button{
+  background:red;
+  // border-radius: 2%;
+  border: 2px solid darkblue;
+  color: gold;
+  // padding: 2%;
+  // text-align: center;
+  display: block;
+  // font-size: 16px;
+  // font-family: 'Courier New', Courier, monospace;
+  margin-left: 25%; 
+  margin-top: 5%;
+  margin-bottom: 5%;
+  width: 50%;
+  // height: 25%;
+}
 }
 ol, ul {
 padding-left: 30px;
@@ -29,6 +53,10 @@ input {
   background: #000;
   color: antiquewhite;
   font-family: 'Courier New', Courier, monospace;
+}
+.d1, .d2, .d3{
+  display: flexbox;
+  height: 200%;
 }
 .save-button{
   size-adjust: 50px;
@@ -92,23 +120,25 @@ margin-left:-25%;
   cursor: pointer;
   border-radius: 25;
 }
-.home-page{
-  width: 100%;
-  margin-left: 33.33%;
+.homepage{
+  margin: 1%;
+  padding: 1%;
 }
 .start-button{
-  background:black;
+  background:blueviolet;
   border-radius: 10px;
-  border: 5px solid darkblue;
-  color: gold;
-  padding: 4%;
+  border: 2px solid black;
+  color: white;
+  // padding: 2%;
   text-align: center;
   display: block;
   font-size: 16px;
   font-family: 'Courier New', Courier, monospace;
-  margin: 5% auto;
-  cursor: pointer;
-  width:150px;
+  margin-left: 25%; 
+  margin-top: 10%;
+  margin-bottom: 10%;
+  width: 50%;
+  height: 30px;
 }
 .row:after{
   content: "";
@@ -116,16 +146,19 @@ margin-left:-25%;
   clear: both;
 }
 .games-won{
-  width: 80%;
-  height: auto;
+  width: 40%;
+  height: 15%;
   background: gold;
-  font-size: 120%;
+  font-size: 16px;
   font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-  border: 5px solid darkblue;
-  border-radius: 25px;
-  margin: auto 10px;
-  padding: 5%;
+  border: 2px solid darkblue;
+  border-radius: 15px;
+  margin: auto;
+  padding: 10%;
 }
 .bg{
   background-color:#000;
+}
+.margin-top-6{
+  margin-top: 6%;
 }
