@@ -1,10 +1,13 @@
-@import "../node_modules/bootstrap/dist/css/bootstrap.css";
+// @import "../node_modules/bootstrap/dist/css/bootstrap.css";
+@import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
+@import "~bootstrap/scss/bootstrap";
 
 html,
 body {
   font: 14px "Century Gothic", Futura, sans-serif;
-  margin: 5px;
-  height: 100%;
+  margin: 10px;
+  padding: 10px;
+  height: 98%;
   background-color: aqua;
   overflow-x: hidden;
   overflow-y: hidden;
@@ -14,28 +17,13 @@ font-size: 10vw;
 text-align: center;
 font-family:'Courier New', Courier, monospace;
 }
-@media only screen and (max-width: 600px)
-{
-  .d1,.d3{
-    display: none;
-  };
-  
-.start-button{
-  background:red;
-  // border-radius: 2%;
-  border: 2px solid darkblue;
-  color: gold;
-  // padding: 2%;
-  // text-align: center;
-  display: block;
-  // font-size: 16px;
-  // font-family: 'Courier New', Courier, monospace;
-  margin-left: 25%; 
-  margin-top: 5%;
-  margin-bottom: 5%;
-  width: 50%;
-  // height: 25%;
-}
+@media only screen and (max-width: 600px) {
+  h1 {
+    color: red;
+  }
+  .d2 {
+    margin-top: 20vw;
+  }
 }
 ol, ul {
 padding-left: 30px;
@@ -54,10 +42,9 @@ input {
   color: antiquewhite;
   font-family: 'Courier New', Courier, monospace;
 }
-.d1, .d2, .d3{
-  display: flexbox;
-  height: 200%;
-}
+.d1,.d3{
+  display: flex;
+};
 .save-button{
   size-adjust: 50px;
   color: greenyellow;
@@ -161,4 +148,18 @@ margin-left:-25%;
 }
 .margin-top-6{
   margin-top: 6%;
+}
+.custom-modal{
+  border: 2px solid red;
+  border-radius: 5px;
+  // margin-top: 40%;
+  // margin-left: 20%;
+  width: 75%; 
+}
+form, .modal-body{
+  background-color: chartreuse;
+}
+.custom-input{
+  width: 90%;
+  border: 2px dashed darkblue;
 }

@@ -1,8 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 import ReactDOM from 'react-dom/client';
-import 'bootstrap/dist/css/bootstrap.css'
+// import 'bootstrap/dist/css/bootstrap.css'
+import 'bootstrap/dist/css/bootstrap.min.css';
 import './index.scss'
 import backGround from "./static/bg.mp3";
+import { Button, Form, Modal} from 'react-bootstrap';
 
 var music = require('./sound');
 const computer = require('./computer');
@@ -47,6 +49,7 @@ class Home extends React.Component{
     } else {
       alert("Invalid username")
     }
+    console.log('userName:', userName)
     event.preventDefault();
   }
 
@@ -65,24 +68,58 @@ class Home extends React.Component{
       showForm: !this.state.showForm
     });
   }
-
+  
   render() {
+    // const [show, setShow] = useState(false);
+    const handleClose = () => {
+      this.setState({
+        showForm: false
+      })
+    }
+    // const handleShow = () => setShow(true);
     return (
-      <div>
+      <>
       <h1 className='margin-top-6'>Tic-Tac-Toe</h1>
       <div className='row margin-top-6'>
         <div className='col-md-4 d1'></div>
         <div className='col-md-4 d2'>
-          <div className="homepage">
+          <div className="homepage mr-t-10">
             <button className='start-button' 
               onClick={this.renderForm}
             >Set Username</button>
-            <button className='start-button' 
+            <button className='start-button'  
               onClick={()=>this.initialGame(false)}
             >Single Player</button>
             <button className='start-button' 
               onClick={()=>this.initialGame(true)}
             >Multi Player</button>
+            {/* <Button variant="dark" className='start-button'>Test</Button> */}
+            <Modal 
+              show={this.state.showForm} 
+              onHide={handleClose} 
+              size="sm"
+              dialogClassName="custom-modal"
+            >
+              <Modal.Body>
+                <Form onSubmit={this.handleSubmit}>
+                  <Form.Group controlId={this.state.value} >
+                    <Form.Label>Enter your user name</Form.Label>
+                    <Form.Control className="custom-input" type="text" onChange={this.handleChange} autoFocus/>
+                  </Form.Group>
+                  <Button variant="primary" type="submit" >
+                    Submit
+                  </Button>
+                </Form>
+              </Modal.Body>
+              {/*<Modal.Footer>
+                <Button variant="secondary" onClick={handleClose}>
+                  Close
+                </Button>
+                <Button variant="primary" onClick={handleClose}>
+                  Save Changes
+                </Button>
+    </Modal.Footer>
+            </Modal>
           {this.state.showForm &&
             <form className='form-inline' onSubmit={this.handleSubmit}>
                 <div className='form-group mb-2'>
@@ -96,12 +133,13 @@ class Home extends React.Component{
                   <input type="submit" value="Save" className='save-button'/>
                 </div>
             </form>
-          }
+          }*/}
+            </Modal>
           </div>
         </div>
         <div className='col-md-4 d3'></div>
       </div>
-      </div>
+      </>
     )
   }
 }
