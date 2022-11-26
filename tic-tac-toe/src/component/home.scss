@@ -1,0 +1,46 @@
+
+form, .modal-body{
+  background-color: chartreuse;
+}
+.custom-modal{
+  border: 2px solid red;
+  border-radius: 5px;
+  margin-top: 40%;
+  margin-left: 13%;
+  width: 75%;
+}
+.custom-input{
+  width: 90%;
+  border: 2px dashed darkblue;
+}
+.d1,.d3{
+  display: flex;
+}
+.homepage{
+  margin: 1%;
+  padding: 1%;
+}
+.start-button{
+  background:blueviolet;
+  border-radius: 10px;
+  border: 2px solid black;
+  color: white;
+  // padding: 2%;
+  text-align: center;
+  display: block;
+  font-size: 16px;
+  font-family: 'Courier New', Courier, monospace;
+  margin-left: 25%; 
+  margin-top: 10%;
+  margin-bottom: 10%;
+  width: 50%;
+  height: 30px;
+}
+@media only screen and (max-width: 600px) {
+  h1 {
+    color: red;
+  }
+  .d2 {
+    margin-top: 20vw;
+  }
+}

@@ -202,7 +202,6 @@ export class Computer {
         return this.O[2];
     }
     
-    
     makeFourthMove(squares, i) {
         this.X[3] = i;
         let indexes = [];

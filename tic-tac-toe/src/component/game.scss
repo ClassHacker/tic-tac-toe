@@ -1,0 +1,25 @@
+
+.game-board {
+    display: block;
+}   
+.games-won{
+    width: 40%;
+    height: 15%;
+    background: gold;
+    font-size: 16px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    border: 2px solid darkblue;
+    border-radius: 15px;
+    margin: auto;
+    padding: 10%;
+}
+.row:after{
+    content: "";
+    display: table;
+    clear: both;
+}
+.status{
+    font-size: 20px;
+    display: table;
+    margin: 0 auto;
+}
