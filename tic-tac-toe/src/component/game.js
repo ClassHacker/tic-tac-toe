@@ -1,6 +1,8 @@
 import React from 'react';
 import Board from './board';
 import calculateWinner from '../util/winner';
+import './game.scss';
+import { Badge } from 'react-bootstrap';
 
 const computer = require('../util/computer');
 
@@ -18,7 +20,6 @@ class Game extends React.Component {
         xIsNext : true, 
         players : props.players,    
       }
-      console.log(this.state.players)
     }
   
     getInitialState(){
@@ -157,7 +158,9 @@ class Game extends React.Component {
       })
   
       let status;
+      let bg = "dark";
       if (winner) {
+        bg = "success";
         status = 'Winner: ' + winner;
       } else {
         status = 'Current Player: ' + (this.state.xIsNext ? this.state.players[0].name : this.state.players[1].name);
@@ -169,20 +172,20 @@ class Game extends React.Component {
       return (
         <div className='row'>
           <h1>Tic-Tac-Toe</h1>
-          <div className='col-sm-4'>
+          <div className='col-lg-3 col-sm-12'>
             <button className='start-button' onClick={() => this.newGame(winner)}>Play Again</button>
             <button className='start-button' onClick={() => this.exitGame()}>Exit Game</button>
           </div>
-          <div className="col-sm-4">
-            <p>{status}</p>
+          <div className="col-lg-6 col-sm-12">
             <div className="game-board">
+            <span className="status"><Badge bg={bg} pill>{status}</Badge></span>
               <Board 
                 squares={current.squares}
                 onClick={(i)=>{this.makeMove(i)}}
               />
             </div>
           </div>
-          <div className="col-sm-4">
+          {/* <div className="col-sm-3">
             <div className='games-won'>
               <span>
                 {this.state.players[0].name} : {this.state.players[0].gamesWon}
@@ -192,7 +195,7 @@ class Game extends React.Component {
               </span>
             </div>
             <ol>{moves}</ol>
-          </div>
+          </div> */}
         </div>
       );  
     }

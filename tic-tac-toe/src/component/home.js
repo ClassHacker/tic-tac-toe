@@ -1,7 +1,7 @@
 import React from 'react';
-import { Button, Form, Modal} from 'react-bootstrap';
-import './home.scss'
-import Game from './game'
+import { Button, Form, Modal } from 'react-bootstrap';
+import './home.scss';
+import Game from './game';
 
 class Home extends React.Component{
     constructor(props) {
@@ -62,7 +62,6 @@ class Home extends React.Component{
 
     startGame2(Username, isMultiPlayer) {
       const userName = isMultiPlayer? 'Computer' : "XYZ";
-      console.log("Players: ", this.state.players)
       this.setState({
         players: [
           {name: Username, gamesWon: 0},
@@ -71,7 +70,6 @@ class Home extends React.Component{
         isMultiPlayer: isMultiPlayer,
         isGameOn: true
       })
-      console.log("Players: ", this.state.players)
     }
     
     render() {

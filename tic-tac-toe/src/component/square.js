@@ -1,3 +1,5 @@
+import './square.scss';
+
 function Square(props) {
     return (
         <button 
