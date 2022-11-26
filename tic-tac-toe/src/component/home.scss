@@ -24,8 +24,7 @@ form, .modal-body{
   background:blueviolet;
   border-radius: 10px;
   border: 2px solid black;
-  color: white;
-  // padding: 2%;
+  color: wheat;
   text-align: center;
   display: block;
   font-size: 16px;
@@ -34,11 +33,12 @@ form, .modal-body{
   margin-top: 10%;
   margin-bottom: 10%;
   width: 50%;
-  height: 30px;
+  height: 50px;
 }
 @media only screen and (max-width: 600px) {
   h1 {
     color: red;
+    margin-top: 12vw;
   }
   .d2 {
     margin-top: 20vw;

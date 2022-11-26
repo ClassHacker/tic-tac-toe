@@ -161,9 +161,9 @@ class Game extends React.Component {
       let bg = "dark";
       if (winner) {
         bg = "success";
-        status = 'Winner: ' + winner;
+        status = 'Winner : ' + winner;
       } else {
-        status = 'Current Player: ' + (this.state.xIsNext ? this.state.players[0].name : this.state.players[1].name);
+        status = 'Current Player : ' + (this.state.xIsNext ? this.state.players[0].name : this.state.players[1].name);
         if(this.state.stepNumber === 9) {
           status = "Draw";
         }
@@ -185,17 +185,16 @@ class Game extends React.Component {
               />
             </div>
           </div>
-          {/* <div className="col-sm-3">
-            <div className='games-won'>
-              <span>
-                {this.state.players[0].name} : {this.state.players[0].gamesWon}
+          <div className='col-lg-3 col-sm-12'>
+            <div className="games-won">
+              <span className="player0">
+                <Badge bg="secondary">{this.state.players[0].name} : {this.state.players[0].gamesWon}</Badge>
               </span>
-              <span>
-                 {this.state.players[1].name} : {this.state.players[1].gamesWon}
+              <span className="player1">
+                <Badge bg="secondary">{this.state.players[1].name} : {this.state.players[1].gamesWon}</Badge>
               </span>
             </div>
-            <ol>{moves}</ol>
-          </div> */}
+            </div>
         </div>
       );  
     }
