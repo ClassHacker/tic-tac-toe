@@ -81,7 +81,7 @@ class Game extends React.Component {
         // music.playSound("s1"); 
         this.handleClick(i);
         let index = null;
-        if (this.props.isMultiPlayer === true) {
+        if (this.props.isSinglePlayer === true) {
           switch(this.state.stepNumber){
             case 0:
               index = player2.makeFirstMove([],i);
@@ -111,7 +111,7 @@ class Game extends React.Component {
   
     jumpTo(step){
       // music.playSound("s1");
-      if(this.props.isMultiPlayer && step < 9) {
+      if(this.props.isSinglePlayer && step < 9) {
         if(step%2){
           step += 1;
         }

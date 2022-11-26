@@ -11,7 +11,7 @@ class Home extends React.Component{
         isUserNameSet: false,
         showForm: false,
         players: [],
-        isMultiPlayer: undefined,
+        isSinglePlayer: undefined,
         isGameOn: false
       };
       this.handleChange = this.handleChange.bind(this);
@@ -44,10 +44,13 @@ class Home extends React.Component{
       event.preventDefault();
     }
   
-    initialGame(isMultiPlayer) {
+    initialGame(isSinglePlayer) {
       // music.playSound("s1");
-      if (this.state.isUserNameSet){
-        this.startGame2(this.state.userName, isMultiPlayer);
+      if (!isSinglePlayer) {
+        alert(`Multi Player mode isn't available yet 🙂`)
+      }
+      else if (this.state.isUserNameSet){
+        this.startGame2(this.state.userName, isSinglePlayer);
       } else {
         alert('Please set username first!')
       }
@@ -60,14 +63,14 @@ class Home extends React.Component{
       });
     }
 
-    startGame2(Username, isMultiPlayer) {
-      const userName = isMultiPlayer? 'Computer' : "XYZ";
+    startGame2(Username, isSinglePlayer) {
+      const userName = isSinglePlayer? 'Computer' : "XYZ";
       this.setState({
         players: [
           {name: Username, gamesWon: 0},
           {name: userName, gamesWon: 0}
         ],
-        isMultiPlayer: isMultiPlayer,
+        isSinglePlayer: isSinglePlayer,
         isGameOn: true
       })
     }
@@ -90,11 +93,11 @@ class Home extends React.Component{
                 <button className='start-button' 
                   onClick={this.renderForm}
                 >Set Username</button>
-                <button className='start-button'  
-                  onClick={()=>this.initialGame(false)}
-                >Single Player</button>
                 <button className='start-button' 
                   onClick={()=>this.initialGame(true)}
+                >Start Game</button>
+                <button className='start-button'
+                  onClick={()=>this.initialGame(false)}
                 >Multi Player</button>
                 <Modal 
                   show={this.state.showForm} 
@@ -119,7 +122,7 @@ class Home extends React.Component{
             <div className='col-md-4 d3'></div>
           </div>
           </> }
-          { this.state.isGameOn && <Game players = {this.state.players} isMultiPlayer = {this.state.isMultiPlayer}/> }
+          { this.state.isGameOn && <Game players = {this.state.players} isSinglePlayer = {this.state.isSinglePlayer}/> }
         </>
       )
     }

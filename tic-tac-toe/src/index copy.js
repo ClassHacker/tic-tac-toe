@@ -16,7 +16,7 @@ var player2Copy = new computer.Computer();
 // audio.addEventListener('ended',() => audio.play())
 
 
-async function startGame(root, userName, isMultiPlayer) {
+async function startGame(root, userName, isSinglePlayer) {
   Promise.all([
     // removing the existing players
     await fetch('http://localhost:8080/players/',{
@@ -55,20 +55,20 @@ async function startGame(root, userName, isMultiPlayer) {
   .then(responses => {
     let players = responses[3].players;
     console.log(players);
-    root.render( <Game players = {players} isMultiPlayer = {isMultiPlayer}/>);
+    root.render( <Game players = {players} isSinglePlayer = {isSinglePlayer}/>);
   })
   .catch((err) => {
     console.log(err)
   });
 }
 
-async function startGame2(root, Username, isMultiPlayer) {
-  const userName = isMultiPlayer? 'Computer' : "XYZ";
+async function startGame2(root, Username, isSinglePlayer) {
+  const userName = isSinglePlayer? 'Computer' : "XYZ";
   let players = [
     {name: Username, gamesWon: 0},
     {name: userName, gamesWon: 0}
   ]
-  root.render( <Game players = {players} isMultiPlayer = {isMultiPlayer}/>);
+  root.render( <Game players = {players} isSinglePlayer = {isSinglePlayer}/>);
 }
 
 function Square(props) {
@@ -187,7 +187,7 @@ class Game extends React.Component {
       // music.playSound("s1"); 
       this.handleClick(i);
       let index = null;
-      if (this.props.isMultiPlayer === true) {
+      if (this.props.isSinglePlayer === true) {
         switch(this.state.stepNumber){
           case 0:
             index = player2.makeFirstMove([],i);
@@ -217,7 +217,7 @@ class Game extends React.Component {
 
   jumpTo(step){
     // music.playSound("s1");
-    if(this.props.isMultiPlayer && step < 9) {
+    if(this.props.isSinglePlayer && step < 9) {
       if(step%2){
         step += 1;
       }
