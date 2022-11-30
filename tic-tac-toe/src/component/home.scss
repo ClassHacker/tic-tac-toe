@@ -1,6 +1,6 @@
 
 form, .modal-body{
-  background-color: chartreuse;
+  background-color: lightslategray;
 }
 .custom-modal{
   border: 2px solid red;
@@ -10,8 +10,7 @@ form, .modal-body{
   width: 75%;
 }
 .custom-input{
-  width: 90%;
-  border: 2px dashed darkblue;
+  margin-bottom: 10px;
 }
 .d1,.d3{
   display: flex;
@@ -41,7 +40,7 @@ form, .modal-body{
 @media only screen and (max-width: 600px) {
   h1 {
     color: red;
-    margin-top: 12vw;
+    margin-top: 12vw !important;
   }
   .d2 {
     margin-top: 20vw;

@@ -85,8 +85,8 @@ class Home extends React.Component{
         <>
           { !this.state.isGameOn && 
           <>
-          <h1 className='margin-top-6'>Tic-Tac-Toe</h1>
-          <div className='row margin-top-6'>
+          <h1>Tic-Tac-Toe</h1>
+          <div className='row'>
             <div className='col-md-4 d1'></div>
             <div className='col-md-4 d2'>
               <div className="homepage mr-t-10">
@@ -108,7 +108,7 @@ class Home extends React.Component{
                   <Modal.Body>
                     <Form onSubmit={this.handleSubmit}>
                       <Form.Group controlId={this.state.value} >
-                        <Form.Label>Enter your user name</Form.Label>
+                        <Form.Label className="custom-label">Enter your user name</Form.Label>
                         <Form.Control className="custom-input" type="text" onChange={this.handleChange} autoFocus/>
                       </Form.Group>
                       <Button variant="primary" type="submit" >
