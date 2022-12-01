@@ -1,6 +1,6 @@
 
 form, .modal-body{
-  background-color: chartreuse;
+  background-color: lightslategray;
 }
 .custom-modal{
   border: 2px solid red;
@@ -10,8 +10,7 @@ form, .modal-body{
   width: 75%;
 }
 .custom-input{
-  width: 90%;
-  border: 2px dashed darkblue;
+  margin-bottom: 10px;
 }
 .d1,.d3{
   display: flex;
@@ -24,8 +23,7 @@ form, .modal-body{
   background:blueviolet;
   border-radius: 10px;
   border: 2px solid black;
-  color: white;
-  // padding: 2%;
+  color: wheat;
   text-align: center;
   display: block;
   font-size: 16px;
@@ -34,11 +32,15 @@ form, .modal-body{
   margin-top: 10%;
   margin-bottom: 10%;
   width: 50%;
-  height: 30px;
+  height: 50px;
 }
+// .start-button:disabled{
+//   background-color: gray;
+// }
 @media only screen and (max-width: 600px) {
   h1 {
     color: red;
+    margin-top: 12vw !important;
   }
   .d2 {
     margin-top: 20vw;

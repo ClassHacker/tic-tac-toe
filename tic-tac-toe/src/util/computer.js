@@ -125,6 +125,13 @@ export class Computer {
     }
 
     getLastMoveIndex(z, index) {
+        // Check for win
+        for(let i = 0; i < z.length; i += 2) {
+            if (this.O.indexOf(z[i]) !== -1 && this.O.indexOf(z[i+1]) !== -1) {
+                return index;
+            }
+        }
+        // Check for draw
         for(let i = 0; i < z.length; i += 2) {
             if (this.X.indexOf(z[i]) !== -1 && this.X.indexOf(z[i+1]) !== -1) {
                 return index;
@@ -252,6 +259,11 @@ export class Computer {
                 default:
                     z = [];
             }
+            console.log('indexes:',indexes)
+            console.log('O:',this.O)
+            console.log('X:',this.X)
+            console.log('index:',index)
+            console.log('z:',z)
             this.O[3] = this.getLastMoveIndex(z, index);
             if (this.O[3] !==  null) {
                 return this.O[3];
@@ -260,4 +272,3 @@ export class Computer {
         return indexes[0];
     }
 }
-
