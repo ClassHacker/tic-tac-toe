@@ -30,5 +30,6 @@ Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 ## Future Roadmap
 
 - Sound and Animation
+- Test Automation
 - Game Level (easy/medium/hard)
 - Multiplayer Mode
