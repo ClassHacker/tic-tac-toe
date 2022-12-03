@@ -131,9 +131,11 @@ class Game extends React.Component {
         this.getInitialState()
       );
       this.state.players.map((player) => {
-        if (winner === player.name) 
+        if (winner === player.name) {
           // this.updatePlayer(player);
           player.gamesWon += 1
+        }
+        return player;
       });
     }
   
