@@ -2,7 +2,7 @@ import React from 'react';
 import Board from './board';
 import calculateWinner from '../util/winner';
 import './game.scss';
-import { Badge, Button, Modal, ModalBody, ModalFooter, ModalHeader } from 'react-bootstrap';
+import { Badge, Button, Modal, ModalBody, ModalFooter } from 'react-bootstrap';
 
 const computer = require('../util/computer');
 
@@ -175,22 +175,31 @@ class Game extends React.Component {
         <>
           <Modal 
           show={bg==="success"}
-          onHide={() => this.newGame(winner)}
-          dialogClassName="custom-modal"
+          // onHide={() => this.newGame(winner)}
+          dialogClassName="custom-game-modal"
           >
-            <ModalHeader>
-              <h3>Match completed</h3>
-            </ModalHeader>
+            {/* <ModalHeader>
+              <span className="status"><Badge bg={bg} pill>You lost the match</Badge></span>
+            </ModalHeader> */}
             <ModalBody>
-              <h4 hidden={!(winner==="Computer")}>You lost the match</h4>
-              <h4 hidden={!(winner===this.state.players[0].name)}>You won the match</h4>
-              <h4 hidden={winner}>Match Draw</h4>
+            <span className="status2">
+              {/* <Badge bg={bg} > */}
+                { (winner==="Computer") && <>You have lost the match</> }
+                { (winner===this.state.players[0].name) && <>You have won the match</> }
+                { (winner===null) && <>Match Tied</> }
+              {/* </Badge> */}
+              </span>
+            
+              {/* <h4 hidden={!(winner==="Computer")}>You lost the match</h4> */}
+              {/* <h4 hidden={!(winner===this.state.players[0].name)}>You won the match</h4> */}
+              {/* <h4 hidden={winner}>Match Draw</h4> */}
             </ModalBody>
-            <ModalFooter>
+            <ModalFooter className="custom-modal-footer">
               <Button variant="primary" onClick={() => this.newGame(winner)}>
                 Play Again
+
               </Button>
-              <Button variant="primary" onClick={this.exitGame}>
+              <Button variant="primary" className="min-w" onClick={this.exitGame}>
                 Exit
               </Button>
             </ModalFooter>
