@@ -207,7 +207,7 @@ class Game extends React.Component {
           <div className='row'>
             <h1>Tic-Tac-Toe</h1>
             <div className='col-lg-3 col-sm-12'>
-              <button className='start-button' onClick={() => this.newGame(winner)}>Play Again</button>
+              <button className='start-button' onClick={() => this.newGame(winner)}>Restart Game</button>
               <button className='start-button' onClick={() => this.exitGame()}>Exit Game</button>
             </div>
             <div className="col-lg-6 col-sm-12">
