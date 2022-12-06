@@ -1,4 +1,4 @@
-# [Tic-Tac-Toe](https://main.d1iyu8h5f8sblu.amplifyapp.com/)
+# [Tic-Tac-Toe](https://main.d3fsldz5t6hpbd.amplifyapp.com/)
 
 ***A simple Tic-Tac-Toe game.***
 
