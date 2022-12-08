@@ -1,6 +1,20 @@
+form, .modal-body {
+    background-color: white;
+}
+.custom-game-modal{
+    border: 5px solid red;
+    border-radius: 5px;
+    margin: 15.5rem auto;
+    width: 75%;
+}
+.custom-modal-footer{
+    justify-content: space-evenly;
+    padding: 0px;
+    padding-bottom: 1.5rem;
+}
 .game-board {
     display: block;
-    margin-top: 10%;
+    margin-top: 1rem;
 }   
 .games-won{
     font-size: 28px;
@@ -9,6 +23,9 @@
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     margin-top: 8%;
     text-align: center;
+}
+.min-w{
+    min-width: 100px;
 }
 .player0{
     display: flex;
@@ -27,4 +44,11 @@
     font-size: 24px;
     display: table;
     margin: 0 auto;
+}
+.status2{
+    font-size: 20px;
+    font-weight: 800;
+    display: table;
+    margin: 0 auto;
+    color: darkred;
 }

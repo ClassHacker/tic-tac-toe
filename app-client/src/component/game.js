@@ -2,7 +2,7 @@ import React from 'react';
 import Board from './board';
 import calculateWinner from '../util/winner';
 import './game.scss';
-import { Badge } from 'react-bootstrap';
+import { Badge, Button, Modal, ModalBody, ModalFooter } from 'react-bootstrap';
 
 const computer = require('../util/computer');
 
@@ -18,7 +18,7 @@ class Game extends React.Component {
         }], 
         stepNumber : 0,
         xIsNext : true, 
-        players : props.players,    
+        players : props.players,
       }
     }
   
@@ -131,9 +131,11 @@ class Game extends React.Component {
         this.getInitialState()
       );
       this.state.players.map((player) => {
-        if (winner === player.name) 
+        if (winner === player.name) {
           // this.updatePlayer(player);
           player.gamesWon += 1
+        }
+        return player;
       });
     }
   
@@ -146,56 +148,89 @@ class Game extends React.Component {
       const history = this.state.history;
       const current = history[this.state.stepNumber];
       const winner = calculateWinner(current.squares, this.state.players);
-      const moves = history.map((step,move) => {
-        const desc = move ?
-          'Go to move #' + (move) :
-          'Go to game start';
-        return (
-          <li key={move}>
-            <button className='button' onClick={() => this.jumpTo(move)}>{desc}</button>
-          </li>
-        )
-      })
+      // const moves = history.map((step,move) => {
+      //   const desc = move ?
+      //     'Go to move #' + (move) :
+      //     'Go to game start';
+      //   return (
+      //     <li key={move}>
+      //       <button className='button' onClick={() => this.jumpTo(move)}>{desc}</button>
+      //     </li>
+      //   )
+      // })
   
       let status;
       let bg = "dark";
       if (winner) {
         bg = "success";
         status = 'Winner : ' + winner;
+      } else if(this.state.stepNumber === 9) {
+        bg = "success";
+        status = "Draw";
       } else {
         status = 'Current Player : ' + (this.state.xIsNext ? this.state.players[0].name : this.state.players[1].name);
-        if(this.state.stepNumber === 9) {
-          status = "Draw";
-        }
       }
   
       return (
-        <div className='row'>
-          <h1>Tic-Tac-Toe</h1>
-          <div className='col-lg-3 col-sm-12'>
-            <button className='start-button' onClick={() => this.newGame(winner)}>Play Again</button>
-            <button className='start-button' onClick={() => this.exitGame()}>Exit Game</button>
-          </div>
-          <div className="col-lg-6 col-sm-12">
-            <div className="game-board">
-            <span className="status"><Badge bg={bg} pill>{status}</Badge></span>
-              <Board 
-                squares={current.squares}
-                onClick={(i)=>{this.makeMove(i)}}
-              />
-            </div>
-          </div>
-          <div className='col-lg-3 col-sm-12'>
-            <div className="games-won">
-              <span className="player0">
-                <Badge bg="secondary">{this.state.players[0].name} : {this.state.players[0].gamesWon}</Badge>
+        <>
+          <Modal 
+          show={bg==="success"}
+          // onHide={() => this.newGame(winner)}
+          dialogClassName="custom-game-modal"
+          >
+            {/* <ModalHeader>
+              <span className="status"><Badge bg={bg} pill>You lost the match</Badge></span>
+            </ModalHeader> */}
+            <ModalBody>
+            <span className="status2">
+              {/* <Badge bg={bg} > */}
+                { (winner==="Computer") && <>You have lost the match</> }
+                { (winner===this.state.players[0].name) && <>You have won the match</> }
+                { (winner===null) && <>Match Tied</> }
+              {/* </Badge> */}
               </span>
-              <span className="player1">
-                <Badge bg="secondary">{this.state.players[1].name} : {this.state.players[1].gamesWon}</Badge>
-              </span>
+            
+              {/* <h4 hidden={!(winner==="Computer")}>You lost the match</h4> */}
+              {/* <h4 hidden={!(winner===this.state.players[0].name)}>You won the match</h4> */}
+              {/* <h4 hidden={winner}>Match Draw</h4> */}
+            </ModalBody>
+            <ModalFooter className="custom-modal-footer">
+              <Button variant="primary" onClick={() => this.newGame(winner)}>
+                Play Again
+
+              </Button>
+              <Button variant="primary" className="min-w" onClick={this.exitGame}>
+                Exit
+              </Button>
+            </ModalFooter>
+          </Modal>
+          <div className='row'>
+            <h1>Tic-Tac-Toe</h1>
+            <div className='col-lg-3 col-sm-12'>
+              <button className='start-button' onClick={() => this.newGame(winner)}>Restart Game</button>
+              <button className='start-button' onClick={() => this.exitGame()}>Exit Game</button>
             </div>
+            <div className="col-lg-6 col-sm-12">
+              <div className="game-board">
+              <span className="status"><Badge bg={bg} pill>{status}</Badge></span>
+                <Board 
+                  squares={current.squares}
+                  onClick={(i)=>{this.makeMove(i)}}
+                />
+              </div>
             </div>
-        </div>
+            <div className='col-lg-3 col-sm-12'>
+              <div className="games-won">
+                <span className="player0">
+                  <Badge bg="secondary">{this.state.players[0].name} : {this.state.players[0].gamesWon}</Badge>
+                </span>
+                <span className="player1">
+                  <Badge bg="secondary">{this.state.players[1].name} : {this.state.players[1].gamesWon}</Badge>
+                </span>
+              </div>
+              </div>
+          </div>
+        </>
       );  
     }
   }

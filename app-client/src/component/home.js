@@ -31,7 +31,7 @@ class Home extends React.Component{
       let userName = this.state.userName;
       let regex = new RegExp(/^[A-Za-z]+[0-9]*$/)
       console.log(regex.test(userName))
-      if(regex.test(userName)) {
+      if(regex.test(userName) && userName !=="Computer") {
         this.setState({
           userName: userName,
           isUserNameSet: true,
