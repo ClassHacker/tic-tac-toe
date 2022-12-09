@@ -3,6 +3,8 @@ import Board from './board';
 import calculateWinner from '../util/winner';
 import './game.scss';
 import { Badge, Button, Modal, ModalBody, ModalFooter } from 'react-bootstrap';
+import { connect } from 'react-redux'
+import { rsAction, exAction } from '../redux/actions';
 
 const computer = require('../util/computer');
 
@@ -125,7 +127,9 @@ class Game extends React.Component {
     }
   
     newGame(winner){
-      // music.playSound("s1");
+      const { rs, ex, dispatchRestart, dispatchExit} = this.props;
+      dispatchRestart();
+      console.log('State: ', rs, ex);
       player2 = new computer.Computer()
       this.setState(
         this.getInitialState()
@@ -148,19 +152,10 @@ class Game extends React.Component {
       const history = this.state.history;
       const current = history[this.state.stepNumber];
       const winner = calculateWinner(current.squares, this.state.players);
-      // const moves = history.map((step,move) => {
-      //   const desc = move ?
-      //     'Go to move #' + (move) :
-      //     'Go to game start';
-      //   return (
-      //     <li key={move}>
-      //       <button className='button' onClick={() => this.jumpTo(move)}>{desc}</button>
-      //     </li>
-      //   )
-      // })
   
       let status;
       let bg = "dark";
+
       if (winner) {
         bg = "success";
         status = 'Winner : ' + winner;
@@ -178,9 +173,6 @@ class Game extends React.Component {
           // onHide={() => this.newGame(winner)}
           dialogClassName="custom-game-modal"
           >
-            {/* <ModalHeader>
-              <span className="status"><Badge bg={bg} pill>You lost the match</Badge></span>
-            </ModalHeader> */}
             <ModalBody>
             <span className="status2">
               {/* <Badge bg={bg} > */}
@@ -189,10 +181,6 @@ class Game extends React.Component {
                 { (winner===null) && <>Match Tied</> }
               {/* </Badge> */}
               </span>
-            
-              {/* <h4 hidden={!(winner==="Computer")}>You lost the match</h4> */}
-              {/* <h4 hidden={!(winner===this.state.players[0].name)}>You won the match</h4> */}
-              {/* <h4 hidden={winner}>Match Draw</h4> */}
             </ModalBody>
             <ModalFooter className="custom-modal-footer">
               <Button variant="primary" onClick={() => this.newGame(winner)}>
@@ -235,4 +223,14 @@ class Game extends React.Component {
     }
   }
 
-  export default Game;
+  const mapStateToProps = (state) => ({
+    rs: state.rsR,
+    ex: state.exR
+  });
+  
+  const mapDispatchToProps = (dispatch) => ({
+    dispatchRestart: () => dispatch(rsAction()),
+    dispatchExit: () => dispatch(exAction())
+  })
+
+  export default connect(mapStateToProps, mapDispatchToProps) (Game);
