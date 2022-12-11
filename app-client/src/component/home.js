@@ -30,7 +30,7 @@ class Home extends React.Component{
       // music.playSound("s1");
       let userName = this.state.userName;
       let regex = new RegExp(/^[A-Za-z]+[0-9]*$/)
-      console.log(regex.test(userName))
+      console.log('Is it a valid username? ', regex.test(userName))
       if(regex.test(userName) && userName !=="Computer") {
         this.setState({
           userName: userName,
@@ -38,6 +38,9 @@ class Home extends React.Component{
           showForm: false
         })
       } else {
+        this.setState({
+          isUserNameSet: false,
+        })
         alert("Invalid username")
       }
       console.log('userName:', userName)
