@@ -22,6 +22,7 @@ class Game extends React.Component {
         xIsNext : true, 
         players : props.players,
       }
+      this.exitGame = this.exitGame.bind(this);
     }
   
     getInitialState(){
@@ -127,9 +128,9 @@ class Game extends React.Component {
     }
   
     newGame(winner){
-      const { rs, ex, dispatchRestart, dispatchExit} = this.props;
+      const { rs, dispatchRestart} = this.props;
       dispatchRestart();
-      console.log('State: ', rs, ex);
+      console.log(`rs: ${rs}`);
       player2 = new computer.Computer()
       this.setState(
         this.getInitialState()
@@ -144,6 +145,9 @@ class Game extends React.Component {
     }
   
     exitGame(){
+      const { ex, dispatchExit} = this.props;
+      dispatchExit();
+      console.log(`ex: ${ex}`);
       // music.playSound("s1");
       window.location.reload();
     }
