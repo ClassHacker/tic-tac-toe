@@ -1,6 +1,7 @@
 import React from 'react';
 import Board from './board';
 import { GameStatus, ResultModal } from './result';
+import { Restart } from './modals/restart';
 import calculateWinner from '../util/winner';
 import './game.scss';
 import { Badge } from 'react-bootstrap';
@@ -130,9 +131,9 @@ class Game extends React.Component {
     }
   
     newGame(winner){
-      const { rs, dispatchRestart} = this.props;
+      console.log('Restarting...')
+      const { dispatchRestart} = this.props;
       dispatchRestart();
-      console.log(`rs: ${rs}`);
       player2 = new computer.Computer()
       this.setState(
         this.getInitialState()
@@ -144,6 +145,18 @@ class Game extends React.Component {
         }
         return player;
       });
+      console.log('Finished.')
+
+    }
+
+    restart() {
+      const { dispatchRestart } = this.props;
+      dispatchRestart();
+    }
+
+    exit() {
+      const { dispatchExit } = this.props;
+      dispatchExit();
     }
   
     exitGame(){
@@ -174,12 +187,13 @@ class Game extends React.Component {
   
       return (
         <>
+          <Restart newGame={this.newGame} bg={bg} winner={winner} />
           <ResultModal newGame={this.newGame} exitGame={this.exitGame} bg={bg} winner={winner} players={this.state.players}/>
           <div className='row'>
             <h1>Tic-Tac-Toe</h1>
             <div className='col-lg-3 col-sm-12'>
-              <button className='start-button' onClick={() => this.newGame(winner)}>Restart Game</button>
-              <button className='start-button' onClick={() => this.exitGame()}>Exit Game</button>
+              <button className='start-button' onClick={() => this.restart()}>Restart Game</button>
+              <button className='start-button' onClick={() => this.exit()}>Exit Game</button>
             </div>
             <div className="col-lg-6 col-sm-12">
               <div className="game-board">
