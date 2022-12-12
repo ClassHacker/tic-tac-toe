@@ -16,7 +16,7 @@ export function GameStatus(props) {
 }
 
 export function ResultModal(props) {
-  const { bg, winner, players, newGame, exitGame } = props;
+  const { bg, winner, players, restartGame, exitGame } = props;
   return (
     <Modal
       show={bg === "success"}
@@ -30,7 +30,7 @@ export function ResultModal(props) {
         </span>
       </ModalBody>
       <ModalFooter className="custom-modal-footer">
-        <Button variant="primary" onClick={() => newGame(winner)}>
+        <Button variant="primary" onClick={() => restartGame(winner)}>
           Play Again
         </Button>
         <Button variant="primary" className="min-w" onClick={exitGame}>

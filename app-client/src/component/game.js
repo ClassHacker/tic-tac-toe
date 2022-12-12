@@ -1,7 +1,8 @@
 import React from 'react';
 import Board from './board';
 import { GameStatus, ResultModal } from './result';
-import { Restart } from './modals/restart';
+import { RestartModal } from './modals/restart';
+import { ExitModal } from './modals/exit';
 import calculateWinner from '../util/winner';
 import './game.scss';
 import { Badge } from 'react-bootstrap';
@@ -25,7 +26,7 @@ class Game extends React.Component {
         players : props.players,
       }
       this.exitGame = this.exitGame.bind(this);
-      this.newGame = this.newGame.bind(this);
+      this.restartGame = this.restartGame.bind(this);
     }
   
     getInitialState(){
@@ -130,10 +131,8 @@ class Game extends React.Component {
       })
     }
   
-    newGame(winner){
+    restartGame(winner) {
       console.log('Restarting...')
-      const { dispatchRestart} = this.props;
-      dispatchRestart();
       player2 = new computer.Computer()
       this.setState(
         this.getInitialState()
@@ -146,25 +145,21 @@ class Game extends React.Component {
         return player;
       });
       console.log('Finished.')
-
     }
 
     restart() {
       const { dispatchRestart } = this.props;
       dispatchRestart();
     }
+  
+    exitGame() {
+      // music.playSound("s1");
+      window.location.reload();
+    }
 
     exit() {
       const { dispatchExit } = this.props;
       dispatchExit();
-    }
-  
-    exitGame(){
-      const { ex, dispatchExit} = this.props;
-      dispatchExit();
-      console.log(`ex: ${ex}`);
-      // music.playSound("s1");
-      window.location.reload();
     }
   
     render() {
@@ -187,8 +182,9 @@ class Game extends React.Component {
   
       return (
         <>
-          <Restart newGame={this.newGame} bg={bg} winner={winner} />
-          <ResultModal newGame={this.newGame} exitGame={this.exitGame} bg={bg} winner={winner} players={this.state.players}/>
+          <RestartModal restartGame={this.restartGame} winner={winner} />
+          <ExitModal exitGame={this.exitGame} />
+          <ResultModal restartGame={this.restartGame} exitGame={this.exitGame} bg={bg} winner={winner} players={this.state.players}/>
           <div className='row'>
             <h1>Tic-Tac-Toe</h1>
             <div className='col-lg-3 col-sm-12'>

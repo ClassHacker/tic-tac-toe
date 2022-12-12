@@ -1,9 +1,11 @@
-import { Badge, Button, Modal, ModalBody, ModalFooter } from 'react-bootstrap';
-import { useSelector } from 'react-redux';
+import { Button, Modal, ModalBody, ModalFooter } from 'react-bootstrap';
+import { useSelector, useDispatch } from 'react-redux';
+import { rsAction } from '../../redux/actions';
 
-export function Restart(props) {
-  const { bg, winner, newGame } = props;
+export function RestartModal(props) {
+  const { winner, restartGame } = props;
   const rsR = useSelector(state => state.rsR)
+  const dispatch = useDispatch()
   return (
     <Modal
       show={rsR}
@@ -13,10 +15,10 @@ export function Restart(props) {
         <span className="status2">Do you really want to restart the game?</span>
       </ModalBody>
       <ModalFooter className="custom-modal-footer">
-        <Button variant="primary" onClick={() => newGame(winner)}>
+        <Button variant="primary" onClick={() => {dispatch(rsAction());restartGame(winner)}}>
           Yes
         </Button>
-        <Button variant="primary" className="min-w" onClick={() => {}}>
+        <Button variant="primary" className="min-w" onClick={() => dispatch(rsAction())}>
           No
         </Button>
       </ModalFooter>
