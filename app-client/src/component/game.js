@@ -1,6 +1,6 @@
 import React from 'react';
 import Board from './board';
-import Result from './result';
+import { GameStatus, ResultModal } from './result';
 import calculateWinner from '../util/winner';
 import './game.scss';
 import { Badge, Button, Modal, ModalBody, ModalFooter } from 'react-bootstrap';
@@ -24,6 +24,7 @@ class Game extends React.Component {
         players : props.players,
       }
       this.exitGame = this.exitGame.bind(this);
+      this.newGame = this.newGame.bind(this);
     }
   
     getInitialState(){
@@ -173,30 +174,7 @@ class Game extends React.Component {
   
       return (
         <>
-          <Modal 
-          show={bg==="success"}
-          // onHide={() => this.newGame(winner)}
-          dialogClassName="custom-game-modal"
-          >
-            <ModalBody>
-            <span className="status2">
-              {/* <Badge bg={bg} > */}
-                { (winner==="Computer") && <>You have lost the match</> }
-                { (winner===this.state.players[0].name) && <>You have won the match</> }
-                { (winner===null) && <>Match Tied</> }
-              {/* </Badge> */}
-              </span>
-            </ModalBody>
-            <ModalFooter className="custom-modal-footer">
-              <Button variant="primary" onClick={() => this.newGame(winner)}>
-                Play Again
-
-              </Button>
-              <Button variant="primary" className="min-w" onClick={this.exitGame}>
-                Exit
-              </Button>
-            </ModalFooter>
-          </Modal>
+          <ResultModal newGame={this.newGame} exitGame={this.exitGame} bg={bg} winner={winner} players={this.state.players}/>
           <div className='row'>
             <h1>Tic-Tac-Toe</h1>
             <div className='col-lg-3 col-sm-12'>
@@ -212,21 +190,21 @@ class Game extends React.Component {
                 />
               </div>
             </div>
-            <Result players={this.state.players} />
+            <GameStatus players={this.state.players} />
           </div>
         </>
       );  
-    }
   }
+}
 
-  const mapStateToProps = (state) => ({
-    rs: state.rsR,
-    ex: state.exR
-  });
-  
-  const mapDispatchToProps = (dispatch) => ({
-    dispatchRestart: () => dispatch(rsAction()),
-    dispatchExit: () => dispatch(exAction())
-  })
+const mapStateToProps = (state) => ({
+  rs: state.rsR,
+  ex: state.exR
+});
 
-  export default connect(mapStateToProps, mapDispatchToProps) (Game);
+const mapDispatchToProps = (dispatch) => ({
+  dispatchRestart: () => dispatch(rsAction()),
+  dispatchExit: () => dispatch(exAction())
+})
+
+export default connect(mapStateToProps, mapDispatchToProps) (Game);

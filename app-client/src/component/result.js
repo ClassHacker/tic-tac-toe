@@ -1,6 +1,6 @@
-import { Badge } from 'react-bootstrap';
+import { Badge, Button, Modal, ModalBody, ModalFooter } from 'react-bootstrap';
 
-function Result(props) {
+export function GameStatus(props) {
     return (
         <div className='col-lg-3 col-sm-12'>
             <div className="games-won">
@@ -15,4 +15,28 @@ function Result(props) {
     )
 }
 
-export default Result;
+export function ResultModal(props) {
+    const { bg, winner, players, newGame, exitGame } = props;
+    return (
+        <Modal 
+        show={bg==="success"}
+        dialogClassName="custom-game-modal"
+        >
+          <ModalBody>
+          <span className="status2">
+              { (winner==="Computer") && <>You have lost the match</> }
+              { (winner===players[0].name) && <>You have won the match</> }
+              { (winner===null) && <>Match Tied</> }
+            </span>
+          </ModalBody>
+          <ModalFooter className="custom-modal-footer">
+            <Button variant="primary" onClick={() => newGame(winner)}>
+              Play Again
+            </Button>
+            <Button variant="primary" className="min-w" onClick={exitGame}>
+              Exit
+            </Button>
+          </ModalFooter>
+        </Modal>
+    )
+}
