@@ -3,7 +3,7 @@ import Board from './board';
 import { GameStatus, ResultModal } from './result';
 import calculateWinner from '../util/winner';
 import './game.scss';
-import { Badge, Button, Modal, ModalBody, ModalFooter } from 'react-bootstrap';
+import { Badge } from 'react-bootstrap';
 import { connect } from 'react-redux'
 import { rsAction, exAction } from '../redux/actions';
 
