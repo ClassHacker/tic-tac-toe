@@ -1,5 +1,6 @@
 import React from 'react';
 import Board from './board';
+import Result from './result';
 import calculateWinner from '../util/winner';
 import './game.scss';
 import { Badge, Button, Modal, ModalBody, ModalFooter } from 'react-bootstrap';
@@ -211,16 +212,7 @@ class Game extends React.Component {
                 />
               </div>
             </div>
-            <div className='col-lg-3 col-sm-12'>
-              <div className="games-won">
-                <span className="player0">
-                  <Badge bg="secondary">{this.state.players[0].name} : {this.state.players[0].gamesWon}</Badge>
-                </span>
-                <span className="player1">
-                  <Badge bg="secondary">{this.state.players[1].name} : {this.state.players[1].gamesWon}</Badge>
-                </span>
-              </div>
-              </div>
+            <Result players={this.state.players} />
           </div>
         </>
       );  
