@@ -30,7 +30,7 @@ export function ResultModal(props) {
         </span>
       </ModalBody>
       <ModalFooter className="custom-modal-footer">
-        <Button variant="primary" onClick={() => restartGame(winner)}>
+        <Button variant="primary" className="min-w" onClick={() => restartGame(winner)}>
           Play Again
         </Button>
         <Button variant="primary" className="min-w" onClick={exitGame}>

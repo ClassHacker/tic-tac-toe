@@ -1,6 +1,6 @@
 import React from 'react';
 import Board from './board';
-import { GameStatus, ResultModal } from './result';
+import { GameStatus, ResultModal } from './modals/result';
 import { RestartModal } from './modals/restart';
 import { ExitModal } from './modals/exit';
 import calculateWinner from '../util/winner';

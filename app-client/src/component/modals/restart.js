@@ -15,7 +15,7 @@ export function RestartModal(props) {
         <span className="status2">Do you really want to restart the game?</span>
       </ModalBody>
       <ModalFooter className="custom-modal-footer">
-        <Button variant="primary" onClick={() => {dispatch(rsAction());restartGame(winner)}}>
+        <Button variant="primary" className="min-w" onClick={() => {dispatch(rsAction());restartGame(winner)}}>
           Yes
         </Button>
         <Button variant="primary" className="min-w" onClick={() => dispatch(rsAction())}>
