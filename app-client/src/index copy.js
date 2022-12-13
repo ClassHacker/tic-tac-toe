@@ -230,7 +230,7 @@ class Game extends React.Component {
     })
   }
 
-  newGame(winner){
+  restartGame(winner){
     // music.playSound("s1");
     player2 = new computer.Computer()
     this.setState(
@@ -277,7 +277,7 @@ class Game extends React.Component {
       <div className='row'>
         <h1>Tic-Tac-Toe</h1>
         <div className='col-sm-4'>
-          <button className='start-button' onClick={() => this.newGame(winner)}>Play Again</button>
+          <button className='start-button' onClick={() => this.restartGame(winner)}>Play Again</button>
           <button className='start-button' onClick={() => this.exitGame()}>Exit Game</button>
         </div>
         <div className="col-sm-4">

@@ -1,8 +1,13 @@
 import React from 'react';
 import Board from './board';
+import { GameStatus, ResultModal } from './modals/result';
+import { RestartModal } from './modals/restart';
+import { ExitModal } from './modals/exit';
 import calculateWinner from '../util/winner';
 import './game.scss';
-import { Badge, Button, Modal, ModalBody, ModalFooter } from 'react-bootstrap';
+import { Badge } from 'react-bootstrap';
+import { connect } from 'react-redux'
+import { rsAction, exAction } from '../redux/actions';
 
 const computer = require('../util/computer');
 
@@ -20,6 +25,8 @@ class Game extends React.Component {
         xIsNext : true, 
         players : props.players,
       }
+      this.exitGame = this.exitGame.bind(this);
+      this.restartGame = this.restartGame.bind(this);
     }
   
     getInitialState(){
@@ -124,8 +131,8 @@ class Game extends React.Component {
       })
     }
   
-    newGame(winner){
-      // music.playSound("s1");
+    restartGame(winner) {
+      console.log('Restarting...')
       player2 = new computer.Computer()
       this.setState(
         this.getInitialState()
@@ -137,30 +144,32 @@ class Game extends React.Component {
         }
         return player;
       });
+      console.log('Finished.')
+    }
+
+    restart() {
+      const { dispatchRestart } = this.props;
+      dispatchRestart();
     }
   
-    exitGame(){
+    exitGame() {
       // music.playSound("s1");
       window.location.reload();
+    }
+
+    exit() {
+      const { dispatchExit } = this.props;
+      dispatchExit();
     }
   
     render() {
       const history = this.state.history;
       const current = history[this.state.stepNumber];
       const winner = calculateWinner(current.squares, this.state.players);
-      // const moves = history.map((step,move) => {
-      //   const desc = move ?
-      //     'Go to move #' + (move) :
-      //     'Go to game start';
-      //   return (
-      //     <li key={move}>
-      //       <button className='button' onClick={() => this.jumpTo(move)}>{desc}</button>
-      //     </li>
-      //   )
-      // })
   
       let status;
       let bg = "dark";
+
       if (winner) {
         bg = "success";
         status = 'Winner : ' + winner;
@@ -173,42 +182,14 @@ class Game extends React.Component {
   
       return (
         <>
-          <Modal 
-          show={bg==="success"}
-          // onHide={() => this.newGame(winner)}
-          dialogClassName="custom-game-modal"
-          >
-            {/* <ModalHeader>
-              <span className="status"><Badge bg={bg} pill>You lost the match</Badge></span>
-            </ModalHeader> */}
-            <ModalBody>
-            <span className="status2">
-              {/* <Badge bg={bg} > */}
-                { (winner==="Computer") && <>You have lost the match</> }
-                { (winner===this.state.players[0].name) && <>You have won the match</> }
-                { (winner===null) && <>Match Tied</> }
-              {/* </Badge> */}
-              </span>
-            
-              {/* <h4 hidden={!(winner==="Computer")}>You lost the match</h4> */}
-              {/* <h4 hidden={!(winner===this.state.players[0].name)}>You won the match</h4> */}
-              {/* <h4 hidden={winner}>Match Draw</h4> */}
-            </ModalBody>
-            <ModalFooter className="custom-modal-footer">
-              <Button variant="primary" onClick={() => this.newGame(winner)}>
-                Play Again
-
-              </Button>
-              <Button variant="primary" className="min-w" onClick={this.exitGame}>
-                Exit
-              </Button>
-            </ModalFooter>
-          </Modal>
+          <RestartModal restartGame={this.restartGame} winner={winner} />
+          <ExitModal exitGame={this.exitGame} />
+          <ResultModal restartGame={this.restartGame} exitGame={this.exitGame} bg={bg} winner={winner} players={this.state.players}/>
           <div className='row'>
             <h1>Tic-Tac-Toe</h1>
             <div className='col-lg-3 col-sm-12'>
-              <button className='start-button' onClick={() => this.newGame(winner)}>Restart Game</button>
-              <button className='start-button' onClick={() => this.exitGame()}>Exit Game</button>
+              <button className='start-button' onClick={() => this.restart()}>Restart Game</button>
+              <button className='start-button' onClick={() => this.exit()}>Exit Game</button>
             </div>
             <div className="col-lg-6 col-sm-12">
               <div className="game-board">
@@ -219,20 +200,21 @@ class Game extends React.Component {
                 />
               </div>
             </div>
-            <div className='col-lg-3 col-sm-12'>
-              <div className="games-won">
-                <span className="player0">
-                  <Badge bg="secondary">{this.state.players[0].name} : {this.state.players[0].gamesWon}</Badge>
-                </span>
-                <span className="player1">
-                  <Badge bg="secondary">{this.state.players[1].name} : {this.state.players[1].gamesWon}</Badge>
-                </span>
-              </div>
-              </div>
+            <GameStatus players={this.state.players} />
           </div>
         </>
       );  
-    }
   }
+}
 
-  export default Game;
+const mapStateToProps = (state) => ({
+  rs: state.rsR,
+  ex: state.exR
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  dispatchRestart: () => dispatch(rsAction()),
+  dispatchExit: () => dispatch(exAction())
+})
+
+export default connect(mapStateToProps, mapDispatchToProps) (Game);
