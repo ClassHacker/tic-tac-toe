@@ -1,0 +1,13 @@
+.board{
+  border: 2px solid red;
+  display: table;
+  margin: 0 auto;
+  margin-top: 5%;
+  padding: 0.5%;
+}
+.board-row:after {
+  clear: both;
+  content: "";
+  display: table;
+}
+  
