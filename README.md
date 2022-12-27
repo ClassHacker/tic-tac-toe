@@ -27,9 +27,8 @@ Run: `npm start`
 This will run the app in development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
-## Future Roadmap
+## Roadmap
 
-- Sound and Animation
-- Test Automation
-- Game Level (easy/medium/hard)
-- Multiplayer Mode
+- [ ] Game Level (easy/medium/hard)
+- [ ] Sound and Animation
+- [ ] 5x5 Board
