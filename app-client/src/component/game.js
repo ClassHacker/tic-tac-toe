@@ -168,7 +168,7 @@ class Game extends React.Component {
       const winner = calculateWinner(current.squares, this.state.players);
   
       let status;
-      let bg = "dark";
+      let bg = "primary";
 
       if (winner) {
         bg = "success";
