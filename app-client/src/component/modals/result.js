@@ -2,7 +2,7 @@ import { Badge, Button, Modal, ModalBody, ModalFooter } from 'react-bootstrap';
 
 export function GameStatus(props) {
   return (
-    <div className='col-lg-3 col-sm-12'>
+    <>
       <div className="games-won">
         <span className="player0">
           <Badge bg="info">{props.players[0].name} : {props.players[0].gamesWon}</Badge>
@@ -11,7 +11,7 @@ export function GameStatus(props) {
           <Badge bg="info">{props.players[1].name} : {props.players[1].gamesWon}</Badge>
         </span>
       </div>
-    </div>
+    </>
   )
 }
 

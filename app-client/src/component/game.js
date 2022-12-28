@@ -187,9 +187,11 @@ class Game extends React.Component {
           <ResultModal restartGame={this.restartGame} exitGame={this.exitGame} bg={bg} winner={winner} players={this.state.players}/>
           <div className='row'>
             <h1>Tic-Tac-Toe</h1>
-            <div className='col-lg-3 col-sm-12'>
-              <button className='start-button' onClick={() => this.restart()}>Restart Game</button>
-              <button className='start-button' onClick={() => this.exit()}>Exit Game</button>
+            <div className='col-lg-3 col-sm-12 neumorphism-div'>
+              <div className='buttons'>
+                <button className='home-button' onClick={() => this.restart()}>Restart Game</button>
+                <button className='home-button' onClick={() => this.exit()}>Exit Game</button>
+              </div>
             </div>
             <div className="col-lg-6 col-sm-12">
               <div className="game-board">
@@ -200,7 +202,9 @@ class Game extends React.Component {
                 />
               </div>
             </div>
-            <GameStatus players={this.state.players} />
+            <div className='col-lg-3 col-sm-12 neumorphism-div'>
+              <GameStatus players={this.state.players} />
+            </div>
           </div>
         </>
       );  
