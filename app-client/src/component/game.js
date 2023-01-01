@@ -168,7 +168,7 @@ class Game extends React.Component {
       const winner = calculateWinner(current.squares, this.state.players);
   
       let status;
-      let bg = "dark";
+      let bg = "primary";
 
       if (winner) {
         bg = "success";
@@ -188,8 +188,10 @@ class Game extends React.Component {
           <div className='row'>
             <h1>Tic-Tac-Toe</h1>
             <div className='col-lg-3 col-sm-12'>
-              <button className='start-button' onClick={() => this.restart()}>Restart Game</button>
-              <button className='start-button' onClick={() => this.exit()}>Exit Game</button>
+              <div className='buttons'>
+                <button className='home-button' onClick={() => this.restart()}>Restart Game</button>
+                <button className='home-button' onClick={() => this.exit()}>Exit Game</button>
+              </div>
             </div>
             <div className="col-lg-6 col-sm-12">
               <div className="game-board">
@@ -200,7 +202,9 @@ class Game extends React.Component {
                 />
               </div>
             </div>
-            <GameStatus players={this.state.players} />
+            <div className='col-lg-3 col-sm-12'>
+              <GameStatus players={this.state.players} />
+            </div>
           </div>
         </>
       );  
