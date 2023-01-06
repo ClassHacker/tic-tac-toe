@@ -55,18 +55,19 @@ form, .modal-body {
 .min-w{
     min-width: 100px;
 }
-.neumorphism-div{
-    display: block;
-    align-content: center;
-    margin-top: 1rem;
-    background: linear-gradient(
-        145deg,
-        rgba(100, 100, 105, 0.15) 15%,
-        rgba(33, 33, 33, 0.4) 80%
-      );
-      box-shadow: -4px -3px 2px 0 rgba(250, 250, 250, 0.13),
-        4px 4px 2px 0 rgba(0, 0, 0, 0.4);
-}
+// .neumorphism-div{
+//     display: block;
+//     align-content: center;
+//     margin-top: 0.5rem;
+//     margin-bottom: 0.5rem;
+//     background: linear-gradient(
+//         145deg,
+//         rgba(100, 100, 105, 0.15) 15%,
+//         rgba(33, 33, 33, 0.4) 80%
+//       );
+//       box-shadow: -4px -3px 2px 0 rgba(250, 250, 250, 0.13),
+//         4px 4px 2px 0 rgba(0, 0, 0, 0.4);
+// }
 .player0{
     display: flex;
     float: left;
@@ -91,4 +92,30 @@ form, .modal-body {
     display: table;
     margin: 0 auto;
     color: darkred;
+}
+
+@media only screen and (max-width: 600px) {
+    .neumorphism-div{
+        display: block;
+        align-content: center;
+        margin-top: 0.5rem;
+        margin-bottom: 0.5rem;
+        background: linear-gradient(
+            145deg,
+            rgba(100, 100, 105, 0.15) 15%,
+            rgba(33, 33, 33, 0.4) 80%
+        );
+        box-shadow: -4px -3px 2px 0 rgba(250, 250, 250, 0.13),
+            4px 4px 2px 0 rgba(0, 0, 0, 0.4);
+    }
+    .game-button{
+        margin-left: 30%;
+        margin-top: 5%;
+        margin-bottom: 5%;
+        width: 10rem;
+        height: 2.5rem;
+        background: linear-gradient(145deg, #7b4a4a, #683e3e);
+        box-shadow:  3px 3px 0px #2e1c1c,
+                     -3px -3px 0px #b86e6e;
+    }
 }
