@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/tic-tac-toe/static/css/main.b795b071.css",
-    "main.js": "/tic-tac-toe/static/js/main.a281e2b3.js",
+    "main.css": "/tic-tac-toe/static/css/main.04a90f4b.css",
+    "main.js": "/tic-tac-toe/static/js/main.f6d55c6a.js",
     "index.html": "/tic-tac-toe/index.html",
-    "main.b795b071.css.map": "/tic-tac-toe/static/css/main.b795b071.css.map",
-    "main.a281e2b3.js.map": "/tic-tac-toe/static/js/main.a281e2b3.js.map"
+    "main.04a90f4b.css.map": "/tic-tac-toe/static/css/main.04a90f4b.css.map",
+    "main.f6d55c6a.js.map": "/tic-tac-toe/static/js/main.f6d55c6a.js.map"
   },
   "entrypoints": [
-    "static/css/main.b795b071.css",
-    "static/js/main.a281e2b3.js"
+    "static/css/main.04a90f4b.css",
+    "static/js/main.f6d55c6a.js"
   ]
 }
