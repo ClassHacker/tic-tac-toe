@@ -14,9 +14,9 @@ h1 {
   font-size: 13vw;
   font-weight: bolder;
   text-align: center;
+  margin-top: 1vw !important;
   text-shadow: 5px 5px 0px #2e1c1c, -5px -5px 0px #b86e6e;
   font-family:'Courier New', Courier, monospace;
-  background: linear-gradient(145deg, #7b4a4a, #683e3e);
-  box-shadow:  5px 5px 0px #2e1c1c,
-               -5px -5px 0px #b86e6e;
+  // background: linear-gradient(145deg, #7b4a4a, #683e3e);
+    box-shadow: 5px 5px 0px #2e1c1c, -5px -5px 0px #2e1c1c;
 }
