@@ -1,13 +1,6 @@
 form, .modal-body {
     background-color: white;
 }
-.buttons{
-    display: flex;
-    flex-direction: column;
-    align-content: center;
-    justify-content: space-around;
-    flex-wrap: nowrap;
-}
 .custom-game-modal{
     border: 5px solid red;
     border-radius: 5px;
@@ -31,14 +24,22 @@ form, .modal-body {
     display: block;
     font-size: 16px;
     font-family: 'Courier New', Courier, monospace;
-    margin-left: 25%; 
-    margin-top: 10%;
-    margin-bottom: 10%;
-    width: 50%;
-    height: 50px;
+    // margin-left: 25%; 
+    // margin-top: 10%;
+    // margin-bottom: 10%;
+    // width: 50%;
+    // height: 50px;
+    // background: linear-gradient(145deg, #7b4a4a, #683e3e);
+    // box-shadow:  5px 5px 0px #2e1c1c,
+    //              -5px -5px 0px #b86e6e;
+    margin-left: 30%;
+    margin-top: 5%;
+    margin-bottom: 5%;
+    width: 10rem;
+    height: 2.5rem;
     background: linear-gradient(145deg, #7b4a4a, #683e3e);
-    box-shadow:  5px 5px 0px #2e1c1c,
-                 -5px -5px 0px #b86e6e;
+    box-shadow:  3px 3px 0px #2e1c1c,
+                -3px -3px 0px #b86e6e;
   } 
 .games-won{
     font-size: 28px;
@@ -98,9 +99,9 @@ form, .modal-body {
     .neumorphism-div{
         display: block;
         align-content: center;
-        margin-top: 0.5rem;
-        margin-bottom: 0.5rem;
-        padding: 0.5rem;
+        margin-top: -0.25rem;
+        margin-bottom: -0.25rem;
+        padding: 1.75rem;
         // background: linear-gradient(
         //     145deg,
         //     rgba(100, 100, 105, 0.15) 15%,
@@ -110,13 +111,18 @@ form, .modal-body {
             4px 4px 2px 0 rgba(0, 0, 0, 0.4);
     }
     .game-button{
-        margin-left: 30%;
-        margin-top: 5%;
-        margin-bottom: 5%;
+        margin-left: 0;
+        margin-top: 0;
+        margin-bottom: 0;
         width: 10rem;
         height: 2.5rem;
         background: linear-gradient(145deg, #7b4a4a, #683e3e);
         box-shadow:  3px 3px 0px #2e1c1c,
                      -3px -3px 0px #b86e6e;
+    }
+    .buttons {
+        display: flex;
+        padding: 1rem;
+        justify-content: space-around;
     }
 }

@@ -188,10 +188,10 @@ class Game extends React.Component {
           <div className='row'>
             <h1>Tic-Tac-Toe</h1>
             <div className='col-lg-3 col-sm-12 neumorphism-div'>
-              {/* <div className='buttons neumorphism-div'> */}
+              <div className='buttons'>
                 <button className='game-button' onClick={() => this.restart()}>Restart Game</button>
                 <button className='game-button' onClick={() => this.exit()}>Exit Game</button>
-              {/* </div> */}
+              </div>
             </div>
             <div className="col-lg-6 col-sm-12 neumorphism-div">
               <div className="game-board">
