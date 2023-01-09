@@ -1,4 +1,4 @@
-# [Tic-Tac-Toe](https://release.d3fsldz5t6hpbd.amplifyapp.com/)
+# [Tic-Tac-Toe](https://classhacker.github.io/tic-tac-toe/)
 
 ***A simple Tic-Tac-Toe game.***
 
