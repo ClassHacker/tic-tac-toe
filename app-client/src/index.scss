@@ -7,7 +7,7 @@ body {
   height: 99%;
   background-color: #2b2d2f;
   overflow-x: hidden;
-  overflow-y: scroll;
+  overflow-y: hidden;
 }
 h1 {
   color: #ff073a;
@@ -19,4 +19,10 @@ h1 {
   font-family:'Courier New', Courier, monospace;
   // background: linear-gradient(145deg, #7b4a4a, #683e3e);
     box-shadow: 5px 5px 0px #2e1c1c, -5px -5px 0px #2e1c1c;
+}
+
+@media only screen and (max-width: 600px) {
+  html.body{
+    overflow-y: scroll;
+  }
 }
