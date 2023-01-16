@@ -215,6 +215,18 @@ export class Computer {
     
     makeFourthMove(squares, i) {
         this.X[3] = i;
-        return getRandInt(0,9);
+        this.O[3] = getRandomMove(); 
+        return this.o[3];
+    }
+
+    getRandomMove() {
+        let remainingSquare = []
+        let n = 0;
+        while(n < 8) {
+            if (this.X.contains(n) || this.O.contains(n))
+                continue;
+            remainingSquare.push(n);
+        }
+        return remainingSquare[(Math.random() * remainingSquare.length) | 0]
     }
 }
