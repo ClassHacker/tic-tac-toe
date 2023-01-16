@@ -1,4 +1,4 @@
-export class Computer {
+export class SuperComputer {
     constructor() {
         this.X = [null, null, null, null];
         this.O = [null, null, null, null];
@@ -9,6 +9,21 @@ export class Computer {
     getCopyOf(computer){
         this.X = computer.X;
         this.O = computer.O;
+    }
+
+    getRandomMove() {
+        let remainingSquare = []
+        let n = 0;
+        while(n < 8) {
+            if (this.X.includes(n) || this.O.includes(n))
+            {
+                n += 1;
+                continue;
+            }
+            remainingSquare.push(n);
+            n += 1;
+        }
+        return remainingSquare[(Math.random() * remainingSquare.length) | 0]
     }
 
     getMoveIndex(steps) {
