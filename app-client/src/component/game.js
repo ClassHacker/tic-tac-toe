@@ -9,7 +9,7 @@ import { Badge } from 'react-bootstrap';
 import { connect } from 'react-redux'
 import { rsAction, exAction } from '../redux/actions';
 
-const computer = require('../util/computer');
+const computer = require('../util/computer/easy');
 
 var player2 = new computer.Computer();
 var player2Copy = new computer.Computer();
