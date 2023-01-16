@@ -1,7 +1,3 @@
-function getRandInt(min, max) {
-    return Math.floor(Math.random() * (max - min) ) + min;
-}
-
 export class Computer {
     constructor() {
         this.X = [null, null, null, null];
@@ -146,86 +142,40 @@ export class Computer {
 
     // This will return either 0 or 4
     makeFirstMove(squares, i) {
-        this.X[0] = i; // for future use
-        if(this.X[0] === 4){
-            this.O[0] = 0;
-            return 0;
-        }
-        this.O[0] = 4; // for future use
-        return 4;
+        this.X[0] = i;
+        this.O[0] = this.getRandomMove();
+        return this.O[0];
     }
     
     makeSecondMove(squares, i) {
         this.X[1] = i;
-
-        // if X is winning
-        let steps = String(Math.min(this.X[0], this.X[1])) + String(Math.max(this.X[0], this.X[1]));
-        let index = this.getMoveIndex(steps);
-
-        // if can't get right index from above method
-        if (index == null || index === this.O[0]) {
-            this.updateRowAndCol(this.X[0]);
-            this.updateRowAndCol(this.X[1]);
-            index = this.getMoveIndexV2(index === this.O[0]);
-        }
-
-        this.O[1] = index;
-        this.row = [0, 0, 0];
-        this.col = [0, 0, 0];
+        this.O[1] = this.getRandomMove();;
         return this.O[1];
     }
     
     makeThirdMove(squares, i) {
         this.X[2] = i;
-
-        // if O is winning
-        let steps = String(Math.min(this.O[0], this.O[1])) + String(Math.max(this.O[0], this.O[1]));
-        let index = this.getMoveIndex(steps);
-        if (index != null && this.X.indexOf(index) === -1) {
-            this.O[2] = index;
-            return this.O[2];
-        }
-
-        // if X is winning
-        steps = String(Math.min(this.X[0], this.X[2])) + String(Math.max(this.X[0], this.X[2]));
-        index = this.getMoveIndex(steps);
-        if (index != null && this.O.indexOf(index) === -1 && this.X.indexOf(index) === -1) {
-            this.O[2] = index;
-            return this.O[2];
-        }
-
-        // if x is winning
-        steps = String(Math.min(this.X[1], this.X[2])) + String(Math.max(this.X[1], this.X[2]));
-        index = this.getMoveIndex(steps);
-        if (index != null && this.O.indexOf(index) === -1 && this.X.indexOf(index) === -1) {
-            this.O[2] = index;
-            return this.O[2];
-        }
-
-        // if nobody is winning
-        let indexes = [1, 3, 5, 7];
-        for(let i = 0; i < indexes.length; i++){
-            if (this.X.indexOf(indexes[i]) === -1 && this.O.indexOf(indexes[i]) === -1) {
-                this.O[2] = indexes[i];
-                return this.O[2];
-            }
-        }
+        this.O[2] = this.getRandomMove();
         return this.O[2];
     }
     
     makeFourthMove(squares, i) {
         this.X[3] = i;
-        this.O[3] = getRandomMove(); 
-        return this.o[3];
+        this.O[3] = this.getRandomMove(); 
+        return this.O[3];
     }
 
     getRandomMove() {
         let remainingSquare = []
         let n = 0;
         while(n < 8) {
-            if (this.X.contains(n) || this.O.contains(n))
+            if (this.X.includes(n) || this.O.includes(n))
+            {
+                n += 1;
                 continue;
+            }
             remainingSquare.push(n);
+            n += 1;
         }
         return remainingSquare[(Math.random() * remainingSquare.length) | 0]
     }
