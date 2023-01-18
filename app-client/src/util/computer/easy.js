@@ -1,10 +1,6 @@
 import { SuperComputer } from "./superComputer";
 
 export class Computer extends SuperComputer {
-    constructor() {
-        super();
-    }
-
     makeFirstMove(squares, i) {
         this.X[0] = i;
         this.O[0] = this.getRandomMove();
