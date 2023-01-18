@@ -162,7 +162,7 @@ export class SuperComputer {
             this.O[0] = 0;
             return 0;
         }
-        this.O[0] = 4; // for future use
+        this.O[0] = 4; // best move
         return 4;
     }
     

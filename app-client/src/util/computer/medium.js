@@ -9,7 +9,13 @@ export class Computer extends SuperComputer {
     
     makeSecondMove(squares, i) {
         this.X[1] = i;
-        this.O[1] = this.getRandomMove();;
+
+        // if X is winning
+        let steps = String(Math.min(this.X[0], this.X[1])) + String(Math.max(this.X[0], this.X[1]));
+        this.O[1] = this.getMoveIndex(steps);
+        // if X is not winning
+        if(!this.O[1] || this.O[1] == this.O[0])
+            this.O[1] = this.getRandomMove();
         return this.O[1];
     }
     
