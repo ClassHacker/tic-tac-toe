@@ -1,9 +1,9 @@
-# [Tic-Tac-Toe](https://release.d3fsldz5t6hpbd.amplifyapp.com/)
+# [Tic-Tac-Toe](https://classhacker.github.io/tic-tac-toe/)
 
 ***A simple Tic-Tac-Toe game.***
 
 ## How to play
-
+Go to [Tic-Tac-Toe (AWS Amplify)](https://release.d3fsldz5t6hpbd.amplifyapp.com/) or [Tic-Tac-Toe (GitHub Pages)](https://classhacker.github.io/tic-tac-toe/)\
 ...
 
 ## Local setup (Only React App)

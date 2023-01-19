@@ -9,7 +9,7 @@ import { Badge } from 'react-bootstrap';
 import { connect } from 'react-redux'
 import { rsAction, exAction } from '../redux/actions';
 
-const computer = require('../util/computer');
+const computer = require('../util/computer/medium');
 
 var player2 = new computer.Computer();
 var player2Copy = new computer.Computer();
@@ -187,23 +187,25 @@ class Game extends React.Component {
           <ResultModal restartGame={this.restartGame} exitGame={this.exitGame} bg={bg} winner={winner} players={this.state.players}/>
           <div className='row'>
             <h1>Tic-Tac-Toe</h1>
-            <div className='col-lg-3 col-sm-12'>
+            <div className='col-lg-3 col-sm-12 neumorphism-div'>
               <div className='buttons'>
-                <button className='home-button' onClick={() => this.restart()}>Restart Game</button>
-                <button className='home-button' onClick={() => this.exit()}>Exit Game</button>
+                <button className='game-button' onClick={() => this.restart()}>Restart Game</button>
+                <button className='game-button' onClick={() => this.exit()}>Exit Game</button>
               </div>
             </div>
-            <div className="col-lg-6 col-sm-12">
+            <div className="col-lg-6 col-sm-12 neumorphism-div">
               <div className="game-board">
-              <span className="status"><Badge bg={bg} pill>{status}</Badge></span>
+                <span className="status"><Badge bg={bg} pill>{status}</Badge></span>
                 <Board 
                   squares={current.squares}
                   onClick={(i)=>{this.makeMove(i)}}
                 />
               </div>
             </div>
-            <div className='col-lg-3 col-sm-12'>
-              <GameStatus players={this.state.players} />
+            <div className='col-lg-3 col-sm-12 neumorphism-div'>
+              {/* <div className="neumorphism-div"> */}
+                <GameStatus players={this.state.players} />
+              {/* </div> */}
             </div>
           </div>
         </>

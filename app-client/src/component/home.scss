@@ -36,10 +36,25 @@ form, .modal-body{
                -5px -5px 0px #b86e6e;
 }
 
+@media only screen and (max-width: 991px) {
+  h1 {
+    color: #ff073a;
+    text-shadow: 2px 2px 0px #2e1c1c, -2px -2px 0px #b86e6e;
+  }
+  .d2 {
+    margin-top: 5vw;
+  }
+}
 @media only screen and (max-width: 600px) {
   h1 {
     color: #ff073a;
     margin-top: 12vw !important;
+    margin-bottom: 12vw;
+    text-shadow: 2px 2px 0px #2e1c1c, -2px -2px 0px #b86e6e;
+  }
+  .home-button{
+    box-shadow:  3px 3px 0px #2e1c1c,
+                 -3px -3px 0px #b86e6e;
   }
   .d2 {
     margin-top: 20vw;
