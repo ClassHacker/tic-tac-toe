@@ -2,7 +2,7 @@
   "name": "app-client",
   "version": "0.1.0",
   "private": true,
-  "homepage": "http://classhacker.github.io/tic-tac-toe",
+  "homepage": "",
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
