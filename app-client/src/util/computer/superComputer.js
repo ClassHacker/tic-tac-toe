@@ -11,10 +11,26 @@ export class SuperComputer {
         this.O = computer.O;
     }
 
-    getRandomMove() {
+    getRandomCornerMove() {
         let remainingSquare = []
         let n = 0;
         while(n < 8) {
+            if (this.X.includes(n) || this.O.includes(n))
+            {
+                n += 2;
+                continue;
+            }
+            remainingSquare.push(n);
+            n += 2;
+        }
+        return remainingSquare[(Math.random() * remainingSquare.length) | 0]
+    }
+
+    getRandomMove() {
+        console.log('Getting randome move...')
+        let remainingSquare = []
+        let n = 0;
+        while(n < 9) {
             if (this.X.includes(n) || this.O.includes(n))
             {
                 n += 1;
@@ -23,10 +39,14 @@ export class SuperComputer {
             remainingSquare.push(n);
             n += 1;
         }
+        if (remainingSquare.includes(4)) {
+            return 4;
+        }
         return remainingSquare[(Math.random() * remainingSquare.length) | 0]
     }
 
     getMoveIndex(steps) {
+        console.log('x steps', steps)
         switch (steps) {
             // for horizontal steps
             case '12': return 0;
