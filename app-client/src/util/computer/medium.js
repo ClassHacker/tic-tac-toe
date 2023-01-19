@@ -4,7 +4,7 @@ export class Computer extends SuperComputer {
     
     makeFirstMove(squares, i) {
         this.X[0] = i;
-        this.O[0] = this.getRandomMove();
+        this.O[0] = this.getRandomCornerMove();
         return this.O[0];
     }
     
@@ -14,9 +14,11 @@ export class Computer extends SuperComputer {
         // if X is winning
         let steps = String(Math.min(this.X[0], this.X[1])) + String(Math.max(this.X[0], this.X[1]));
         this.O[1] = this.getMoveIndex(steps);
+        console.log('Intermediate move', this.O[1])
         // if X is not winning
-        if(!this.O[1] || this.O[1] === this.O[0])
+        if(this.O[1] === null || this.O[1] === this.O[0]) {
             this.O[1] = this.getRandomMove();
+        }
         return this.O[1];
     }
     
