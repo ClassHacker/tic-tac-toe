@@ -1,6 +1,6 @@
 import { SuperComputer } from "./superComputer";
 
-export class Computer extends SuperComputer {
+export class Easy extends SuperComputer {
     
     makeFirstMove(squares, i) {
         this.X[0] = i;

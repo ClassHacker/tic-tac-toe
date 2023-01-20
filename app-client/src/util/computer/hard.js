@@ -1,6 +1,6 @@
 import { SuperComputer } from "./superComputer";
 
-export class Computer extends SuperComputer {
+export class Hard extends SuperComputer {
     makeSecondMove(squares, i) {
         this.X[1] = i;
 
@@ -20,7 +20,7 @@ export class Computer extends SuperComputer {
         this.col = [0, 0, 0];
         return this.O[1];
     }
-    
+
     makeFourthMove(squares, i) {
         this.X[3] = i;
         this.O[3] = this.getRandomMove(); 
