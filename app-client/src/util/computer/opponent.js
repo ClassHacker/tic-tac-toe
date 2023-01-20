@@ -1,7 +1,7 @@
-import { SuperComputer as GodLevelOpponent} from "./superComputer";
-import { Computer as EasyLevelOpponent} from "./easy";
-import { Computer as HardLevelOpponent} from "./hard";
-import { Computer as MediumLevelOpponent} from "./easy";
+const EasyLevelOpponent = require('./easy');
+const HardLevelOpponent = require('./hard');
+const MediumLevelOpponent = require('./medium');
+const GodLevelOpponent = require('./superComputer');
 
 export function getOpponent(level) {
     switch (level) {
@@ -11,4 +11,4 @@ export function getOpponent(level) {
       case 'god': return new GodLevelOpponent.Computer();
       default: return new MediumLevelOpponent.Computer();
     }
-  }
+}
