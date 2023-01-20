@@ -244,8 +244,8 @@ export class SuperComputer {
         return this.O[2];
     }
     
-    makeFourthMove(squares, i) {
-        this.X[3] = i;
+    makeFourthMove(squares, ind) {
+        this.X[3] = ind;
         let indexes = [];
         for(let i = 0; i < 9; i++) {
             if (this.X.indexOf(i) === -1 && this.O.indexOf(i) === -1) {
@@ -300,6 +300,7 @@ export class SuperComputer {
             console.log('index:',index)
             console.log('z:',z)
             this.O[3] = this.getLastMoveIndex(z, index);
+            console.log('last move index', this.O[3])
             if (this.O[3] !==  null) {
                 return this.O[3];
             }
