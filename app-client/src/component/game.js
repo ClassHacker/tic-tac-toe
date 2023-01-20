@@ -14,15 +14,15 @@ const HardLevelOpponent = require('../util/computer/hard');
 const MediumLevelOpponent = require('../util/computer/medium');
 const GodLevelOpponent = require('../util/computer/superComputer');
 
-var player2 = new EasyLevelOpponent.Computer();
-var player2Copy = new EasyLevelOpponent.Computer();
+var player2 = new MediumLevelOpponent.Computer();
+var player2Copy = new MediumLevelOpponent.Computer();
 
 function getOpponent(level) {
   switch (level) {
     case 'easy': return new EasyLevelOpponent.Computer();
     case 'medium': return new MediumLevelOpponent.Computer();
     case 'hard': return new HardLevelOpponent.Computer();
-    case 'god': return new GodLevelOpponent.Computer();
+    default: return new GodLevelOpponent.Computer();
   }
 }
 
@@ -145,7 +145,7 @@ class Game extends React.Component {
   
     restartGame(winner) {
       console.log('Restarting...')
-      player2 = new EasyLevelOpponent.Computer()
+      player2 = new MediumLevelOpponent.Computer()
       this.setState(
         this.getInitialState()
       );
