@@ -10,9 +10,7 @@ import { connect } from 'react-redux'
 import { rsAction, exAction } from '../redux/actions';
 import { getOpponent } from '../util/computer/opponent';
 
-const MediumLevelOpponent = require('../util/computer/medium');
-
-var player2 = new MediumLevelOpponent.Computer();
+var player2 = getOpponent();
 var player2Copy = getOpponent();
 
 class Game extends React.Component {
@@ -134,7 +132,7 @@ class Game extends React.Component {
   
     restartGame(winner) {
       console.log('Restarting...')
-      player2 = new MediumLevelOpponent.Computer()
+      player2 = getOpponent();
       this.setState(
         this.getInitialState()
       );
