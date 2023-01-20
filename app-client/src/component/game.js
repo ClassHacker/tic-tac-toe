@@ -9,10 +9,8 @@ import { Badge } from 'react-bootstrap';
 import { connect } from 'react-redux'
 import { rsAction, exAction } from '../redux/actions';
 
-const EasyLevelOpponent = require('../util/computer/easy');
-const HardLevelOpponent = require('../util/computer/hard');
 const MediumLevelOpponent = require('../util/computer/medium');
-const GodLevelOpponent = require('../util/computer/superComputer');
+
 var player2 = new MediumLevelOpponent.Computer();
 var player2Copy = new MediumLevelOpponent.Computer();
 
