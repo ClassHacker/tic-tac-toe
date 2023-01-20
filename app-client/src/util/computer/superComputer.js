@@ -6,6 +6,10 @@ export class SuperComputer {
         this.col = [0, 0, 0];
     }
 
+    getRandom(array) {
+        return array[Math.floor(Math.random() * array.length) | 0];
+    }
+
     getCopyOf(computer){
         this.X = computer.X;
         this.O = computer.O;
@@ -23,7 +27,7 @@ export class SuperComputer {
             remainingSquare.push(n);
             n += 2;
         }
-        return remainingSquare[(Math.random() * remainingSquare.length) | 0]
+        return this.getRandom(remainingSquare)
     }
 
     getRandomCornerMove() {
@@ -38,7 +42,7 @@ export class SuperComputer {
             remainingSquare.push(n);
             n += 2;
         }
-        return remainingSquare[(Math.random() * remainingSquare.length) | 0]
+        return this.getRandom(remainingSquare)
     }
 
     getRandomMove() {
@@ -54,10 +58,7 @@ export class SuperComputer {
             remainingSquare.push(n);
             n += 1;
         }
-        if (remainingSquare.includes(4)) {
-            return 4;
-        }
-        return remainingSquare[(Math.random() * remainingSquare.length) | 0]
+        return this.getRandom(remainingSquare)
     }
 
     getMoveIndex(steps) {
@@ -123,7 +124,7 @@ export class SuperComputer {
             if (this.row.indexOf(2) === 1 || this.col.indexOf(2) === 1) {
                 return 0;
             } else if (this.col.indexOf(0) === 1 && this.row.indexOf(0) === 1){
-                return 1;
+                return this.getRandom([1,7, 3, 5]);
             } else {
                 return 2;
             }
