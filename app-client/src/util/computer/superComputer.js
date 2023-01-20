@@ -11,6 +11,21 @@ export class SuperComputer {
         this.O = computer.O;
     }
 
+    getRandomSideMove() {
+        let remainingSquare = []
+        let n = 1;
+        while(n < 8) {
+            if (this.X.includes(n) || this.O.includes(n))
+            {
+                n += 2;
+                continue;
+            }
+            remainingSquare.push(n);
+            n += 2;
+        }
+        return remainingSquare[(Math.random() * remainingSquare.length) | 0]
+    }
+
     getRandomCornerMove() {
         let remainingSquare = []
         let n = 0;
