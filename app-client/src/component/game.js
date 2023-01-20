@@ -9,10 +9,22 @@ import { Badge } from 'react-bootstrap';
 import { connect } from 'react-redux'
 import { rsAction, exAction } from '../redux/actions';
 
-const computer = require('../util/computer/hard');
+const EasyLevelOpponent = require('../util/computer/easy');
+const HardLevelOpponent = require('../util/computer/hard');
+const MediumLevelOpponent = require('../util/computer/medium');
+const GodLevelOpponent = require('../util/computer/superComputer');
 
-var player2 = new computer.Computer();
-var player2Copy = new computer.Computer();
+var player2 = new EasyLevelOpponent.Computer();
+var player2Copy = new EasyLevelOpponent.Computer();
+
+function getOpponent(level) {
+  switch (level) {
+    case 'easy': return new EasyLevelOpponent.Computer();
+    case 'medium': return new MediumLevelOpponent.Computer();
+    case 'hard': return new HardLevelOpponent.Computer();
+    case 'god': return new GodLevelOpponent.Computer();
+  }
+}
 
 class Game extends React.Component {
     constructor(props){
@@ -133,7 +145,7 @@ class Game extends React.Component {
   
     restartGame(winner) {
       console.log('Restarting...')
-      player2 = new computer.Computer()
+      player2 = new EasyLevelOpponent.Computer()
       this.setState(
         this.getInitialState()
       );
