@@ -8,11 +8,12 @@ import './game.scss';
 import { Badge } from 'react-bootstrap';
 import { connect } from 'react-redux'
 import { rsAction, exAction } from '../redux/actions';
+import { getOpponent } from '../util/computer/opponent';
 
 const MediumLevelOpponent = require('../util/computer/medium');
 
 var player2 = new MediumLevelOpponent.Computer();
-var player2Copy = new MediumLevelOpponent.Computer();
+var player2Copy = getOpponent();
 
 class Game extends React.Component {
     constructor(props){
