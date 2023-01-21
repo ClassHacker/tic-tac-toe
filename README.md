@@ -18,7 +18,7 @@ This will change the current working directory to *app-client*
 
 Run: `npm install`
 
-This will install all the dependencies that are needed to run this project.
+This will install all the dependencies that are necessary to run this project.
 
 ### Step 2
 
