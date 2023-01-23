@@ -10,8 +10,13 @@ import { connect } from 'react-redux'
 import { rsAction, exAction } from '../redux/actions';
 import { getOpponent } from '../util/computer/opponent';
 
-var player2 = getOpponent("");
-var player2Copy = player2;
+var player2;
+var player2Copy;
+
+function initializeSecondPlayer(level) {
+  player2 = getOpponent(level);
+  player2Copy = player2;
+}
 
 class Game extends React.Component {
     constructor(props){
@@ -26,6 +31,7 @@ class Game extends React.Component {
       }
       this.exitGame = this.exitGame.bind(this);
       this.restartGame = this.restartGame.bind(this);
+      initializeSecondPlayer(props.level);
     }
   
     getInitialState(){
