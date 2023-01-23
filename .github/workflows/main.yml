@@ -32,4 +32,4 @@ jobs:
         run: cd app-client && npm install
 
       - name: Run test
-        run: npm run test
+        run: cd app-client && npm run test
