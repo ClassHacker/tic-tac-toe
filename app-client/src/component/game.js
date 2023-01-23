@@ -10,8 +10,8 @@ import { connect } from 'react-redux'
 import { rsAction, exAction } from '../redux/actions';
 import { getOpponent } from '../util/computer/opponent';
 
-var player2 = getOpponent();
-var player2Copy = getOpponent();
+var player2 = getOpponent("");
+var player2Copy = player2;
 
 class Game extends React.Component {
     constructor(props){
@@ -132,7 +132,7 @@ class Game extends React.Component {
   
     restartGame(winner) {
       console.log('Restarting...')
-      player2 = getOpponent();
+      player2 = getOpponent("");
       this.setState(
         this.getInitialState()
       );
