@@ -30,7 +30,10 @@ jobs:
 
       - name: Install dependencies
         run: cd app-client && npm install
-
+        
+      - name: Create build
+        run: cd app-client && npm run build
+        
       - name: Run test
         run: cd app-client && npm run test
       
