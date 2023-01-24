@@ -125,7 +125,7 @@ class Home extends React.Component{
           <div className='col-md-4 d3'></div>
         </div>
         </> }
-        { this.state.isGameOn && <Game players = {this.state.players} isSinglePlayer = {this.state.isSinglePlayer}/> }
+        { this.state.isGameOn && <Game players = {this.state.players} isSinglePlayer = {this.state.isSinglePlayer} level = {"easy"}/> }
       </div>
     )
   }
