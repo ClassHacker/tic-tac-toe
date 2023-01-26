@@ -203,13 +203,13 @@ export class SuperComputer {
     getLastMoveIndex(z, index) {
         // Check for win
         for(let i = 0; i < z.length; i += 2) {
-            if (this.O.indexOf(z[i]) !== -1 && this.O.indexOf(z[i+1]) !== -1) {
+            if (this.O.includes(z[i]) && this.O.includes(z[i+1])) {
                 return index;
             }
         }
         // Check for draw
         for(let i = 0; i < z.length; i += 2) {
-            if (this.X.indexOf(z[i]) !== -1 && this.X.indexOf(z[i+1]) !== -1) {
+            if (this.X.includes(z[i+1]) && this.X.includes(z[i+1])) {
                 return index;
             }
         }
@@ -220,9 +220,9 @@ export class SuperComputer {
         // Check for win
         for(let j = 0; j < 2; j++) {
             let index = indexes[j];
-            let z = this.getListOfIndexes(index); 
+            let z = this.getListOfIndexes(index);
             for(let i = 0; i < z.length; i += 2) {
-                if (this.O.indexOf(z[i]) !== -1 && this.O.indexOf(z[i+1]) !== -1) {
+                if (this.O.includes(z[i]) && this.O.includes(z[i+1])) {
                     return index;
                 }
             }
@@ -232,12 +232,12 @@ export class SuperComputer {
             let index = indexes[j];
             let z = this.getListOfIndexes(index); 
             for(let i = 0; i < z.length; i += 2) {
-                if (this.X.indexOf(z[i]) !== -1 && this.X.indexOf(z[i+1]) !== -1) {
+                if (this.X.includes(z[i]) && this.X.includes(z[i+1])) {
                     return index;
                 }
             }
-            return indexes[0];
         }
+        return indexes[0];
     }
 
     // This will return either 0 or 4
