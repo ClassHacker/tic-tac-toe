@@ -192,8 +192,8 @@ export class SuperComputer {
     }
 
     // This will return either 0 or 4
-    makeFirstMove(squares, i) {
-        this.X[0] = i; // for future use
+    makeFirstMove(squares, ind) {
+        this.X[0] = ind; // for future use
         if(this.X[0] === 4){
             this.O[0] = 0;
             return 0;
@@ -202,8 +202,8 @@ export class SuperComputer {
         return 4;
     }
     
-    makeSecondMove(squares, i) {
-        this.X[1] = i;
+    makeSecondMove(squares, ind) {
+        this.X[1] = ind;
 
         // if X is winning
         let steps = String(Math.min(this.X[0], this.X[1])) + String(Math.max(this.X[0], this.X[1]));
@@ -222,8 +222,8 @@ export class SuperComputer {
         return this.O[1];
     }
     
-    makeThirdMove(squares, i) {
-        this.X[2] = i;
+    makeThirdMove(squares, ind) {
+        this.X[2] = ind;
 
         // if O is winning
         let steps = String(Math.min(this.O[0], this.O[1])) + String(Math.max(this.O[0], this.O[1]));
