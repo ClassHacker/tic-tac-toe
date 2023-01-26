@@ -15,6 +15,31 @@ export class SuperComputer {
         this.O = computer.O;
     }
 
+    getListOfIndexes(index) {
+        switch(index) {
+            case 0:
+                return [1,2,3,6,4,8];
+            case 1:
+                return [0,2,4,7];
+            case 2:
+                return [0,1,5,8];
+            case 3:
+                return [0,6,4,5];
+            case 4:
+                return [0,8,2,6,1,7,3,5];
+            case 5:
+                return [3,4,2,8];
+            case 6:
+                return [0,3,4,2,7,8];
+            case 7:
+                return [1,4,6,8];
+            case 8:
+                return [2,5,6,7];
+            default:
+                return [];
+        }
+    }
+
     getRandomSideMove() {
         let remainingSquare = []
         let n = 1;
@@ -270,51 +295,7 @@ export class SuperComputer {
         }
         for(let i = 0; i < 2; i++) {
             let index = indexes[i];
-            let z = [];
-            switch(index) {
-                case 0:
-                    z = [1,2,3,6,4,8];
-                    break;
-                
-                case 1:
-                    z = [0,2,4,7];
-                    break;
-                
-                case 2:
-                    z = [0,1,5,8];
-                    break;
-                
-                case 3:
-                    z = [0,6,4,5];
-                    break;
-                
-                case 4:
-                    z = [0,8,2,6,1,7,3,5];
-                    break;
-                
-                case 5:
-                    z = [3,4,2,8];
-                    break;
-                
-                case 6:
-                    z = [0,3,4,2,7,8];
-                    break;
-                
-                case 7:
-                    z = [1,4,6,8];
-                    break;
-                
-                case 8:
-                    z = [2,5,6,7];
-                    break;
-                default:
-                    z = [];
-            }
-            console.log('indexes:',indexes)
-            console.log('O:',this.O)
-            console.log('X:',this.X)
-            console.log('index:',index)
-            console.log('z:',z)
+            let z = getListOfIndexes(index);
             this.O[3] = this.getLastMoveIndex(z, index);
             console.log('last move index', this.O[3])
             if (this.O[3] !==  null) {
