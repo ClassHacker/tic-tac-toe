@@ -323,9 +323,11 @@ export class SuperComputer {
             this.O[3] = this.getLastMoveIndex(z, index);
             console.log('last move index', this.O[3])
             if (this.O[3] !==  null) {
+                console.log('fourth move: ', this.O[3]);
                 return this.O[3];
             }
         }
+        console.log('fourth move: ', this.O[3]);
         return indexes[0];
     }
     makeFourthMoveV2(squares, ind) {
@@ -337,6 +339,7 @@ export class SuperComputer {
             }
         }
         this.O[3] = this.getLastMoveIndexV2(indexes);
+        console.log('Updated fourth move: ', this.O[3]);
         return this.O[3];
     }
 }
