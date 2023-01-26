@@ -22,7 +22,7 @@ export class SuperComputer {
             case 1:
                 return [0,2,4,7];
             case 2:
-                return [0,1,5,8];
+                return [0,1,4,6,5,8];
             case 3:
                 return [0,6,4,5];
             case 4:
@@ -34,7 +34,7 @@ export class SuperComputer {
             case 7:
                 return [1,4,6,8];
             case 8:
-                return [2,5,6,7];
+                return [0,4,2,5,6,7];
             default:
                 return [];
         }
