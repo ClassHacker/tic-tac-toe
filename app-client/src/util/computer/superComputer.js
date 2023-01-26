@@ -245,9 +245,11 @@ export class SuperComputer {
         this.X[0] = ind; // for future use
         if(this.X[0] === 4){
             this.O[0] = 0;
+            console.log('first move index:', this.O[0]);
             return 0;
         }
         this.O[0] = 4; // best move
+        console.log('first move index:', this.O[0]);
         return 4;
     }
     
@@ -268,6 +270,7 @@ export class SuperComputer {
         this.O[1] = index;
         this.row = [0, 0, 0];
         this.col = [0, 0, 0];
+        console.log('second move index:', this.O[1]);
         return this.O[1];
     }
     
@@ -306,6 +309,7 @@ export class SuperComputer {
                 return this.O[2];
             }
         }
+        console.log('third move index:', this.O[2]);
         return this.O[2];
     }
     
@@ -323,11 +327,11 @@ export class SuperComputer {
             this.O[3] = this.getLastMoveIndex(z, index);
             console.log('last move index', this.O[3])
             if (this.O[3] !==  null) {
-                console.log('fourth move: ', this.O[3]);
+                console.log('fourth move index: ', this.O[3]);
                 return this.O[3];
             }
         }
-        console.log('fourth move: ', this.O[3]);
+        console.log('fourth move index: ', this.O[3]);
         return indexes[0];
     }
     makeFourthMoveV2(squares, ind) {
@@ -339,7 +343,7 @@ export class SuperComputer {
             }
         }
         this.O[3] = this.getLastMoveIndexV2(indexes);
-        console.log('Updated fourth move: ', this.O[3]);
+        console.log('Updated fourth move index: ', this.O[3]);
         return this.O[3];
     }
 }
