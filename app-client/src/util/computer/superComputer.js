@@ -295,7 +295,7 @@ export class SuperComputer {
         }
         for(let i = 0; i < 2; i++) {
             let index = indexes[i];
-            let z = getListOfIndexes(index);
+            let z = this.getListOfIndexes(index);
             this.O[3] = this.getLastMoveIndex(z, index);
             console.log('last move index', this.O[3])
             if (this.O[3] !==  null) {
