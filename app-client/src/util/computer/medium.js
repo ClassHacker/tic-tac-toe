@@ -51,9 +51,9 @@ export class Computer extends SuperComputer {
         return this.O[3];
     }
     
-    makeFourthMove(squares, i) {
-        this.X[3] = i;
-        this.O[3] = this.getRandomMove(); 
-        return this.O[3];
-    }
+//     makeFourthMove(squares, i) {
+//         this.X[3] = i;
+//         this.O[3] = this.getRandomMove(); 
+//         return this.O[3];
+//     }
 }
