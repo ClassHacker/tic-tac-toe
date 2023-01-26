@@ -216,6 +216,30 @@ export class SuperComputer {
         return null;
     }
 
+    getLastMoveIndexV2(indexes) {
+        // Check for win
+        for(let j = 0; j < 2; j++) {
+            let index = indexes[j];
+            let z = this.getListOfIndexes(index); 
+            for(let i = 0; i < z.length; i += 2) {
+                if (this.O.indexOf(z[i]) !== -1 && this.O.indexOf(z[i+1]) !== -1) {
+                    return index;
+                }
+            }
+        }
+        // Check for draw
+        for(let j = 0; j < 2; j++) {
+            let index = indexes[j];
+            let z = this.getListOfIndexes(index); 
+            for(let i = 0; i < z.length; i += 2) {
+                if (this.X.indexOf(z[i]) !== -1 && this.X.indexOf(z[i+1]) !== -1) {
+                    return index;
+                }
+            }
+            return indexes[0];
+        }
+    }
+
     // This will return either 0 or 4
     makeFirstMove(squares, ind) {
         this.X[0] = ind; // for future use
@@ -303,5 +327,16 @@ export class SuperComputer {
             }
         }
         return indexes[0];
+    }
+    makeFourthMoveV2(squares, ind) {
+        this.X[3] = ind;
+        let indexes = [];
+        for(let i = 0; i < 9; i++) {
+            if (this.X.indexOf(i) === -1 && this.O.indexOf(i) === -1) {
+                indexes.push(i);
+            }
+        }
+        this.O[3] = this.getLastMoveIndexV2(indexes);
+        return this.O[3];
     }
 }
