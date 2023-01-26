@@ -282,6 +282,7 @@ export class SuperComputer {
         let index = this.getMoveIndex(steps);
         if (index != null && this.X.indexOf(index) === -1) {
             this.O[2] = index;
+            console.log('third move index:', this.O[2]);
             return this.O[2];
         }
 
@@ -290,6 +291,7 @@ export class SuperComputer {
         index = this.getMoveIndex(steps);
         if (index != null && this.O.indexOf(index) === -1 && this.X.indexOf(index) === -1) {
             this.O[2] = index;
+            console.log('third move index:', this.O[2]);
             return this.O[2];
         }
 
@@ -298,6 +300,7 @@ export class SuperComputer {
         index = this.getMoveIndex(steps);
         if (index != null && this.O.indexOf(index) === -1 && this.X.indexOf(index) === -1) {
             this.O[2] = index;
+            console.log('third move index:', this.O[2]);
             return this.O[2];
         }
 
@@ -306,6 +309,7 @@ export class SuperComputer {
         for(let i = 0; i < indexes.length; i++){
             if (this.X.indexOf(indexes[i]) === -1 && this.O.indexOf(indexes[i]) === -1) {
                 this.O[2] = indexes[i];
+                console.log('third move index:', this.O[2]);
                 return this.O[2];
             }
         }
