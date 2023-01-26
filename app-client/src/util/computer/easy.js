@@ -5,6 +5,7 @@ export class Computer extends SuperComputer {
     makeFirstMove(squares, i) {
         this.X[0] = i;
         this.O[0] = this.getRandomSideMove();
+        console.log('first move index:', this.O[0]);
         return this.O[0];
     }
     
@@ -23,6 +24,7 @@ export class Computer extends SuperComputer {
         else if(this.O[1] === null) {
             this.O[1] = this.getRandomMove();
         }
+        console.log('second move index:', this.O[1]);
         return this.O[1];
     }
     
@@ -51,7 +53,8 @@ export class Computer extends SuperComputer {
             return this.O[2];
         }
         // nobody is winning
-        this.O[3] = this.getRandomMove(); 
-        return this.O[3];
+        this.O[2] = this.getRandomMove(); 
+        console.log('third move index:', this.O[2]);
+        return this.O[2];
     }
 }
