@@ -53,8 +53,4 @@ export class Computer extends SuperComputer {
         console.log('third move index:', this.O[2]);
         return this.O[2];
     }
-    
-    makeFourthMove(squares, i) {
-        return this.makeFourthMoveV2(squares, i);
-    }
 }
