@@ -236,7 +236,7 @@ export class SuperComputer {
                 }
             }
         }
-        return getRandom(indexes);
+        return this.getRandom(indexes);
     }
 
     // This will return either 0 or 4
