@@ -15,6 +15,31 @@ export class SuperComputer {
         this.O = computer.O;
     }
 
+    getListOfIndexes(index) {
+        switch(index) {
+            case 0:
+                return [1,2,3,6,4,8];
+            case 1:
+                return [0,2,4,7];
+            case 2:
+                return [0,1,4,6,5,8];
+            case 3:
+                return [0,6,4,5];
+            case 4:
+                return [0,8,2,6,1,7,3,5];
+            case 5:
+                return [3,4,2,8];
+            case 6:
+                return [0,3,4,2,7,8];
+            case 7:
+                return [1,4,6,8];
+            case 8:
+                return [0,4,2,5,6,7];
+            default:
+                return [];
+        }
+    }
+
     getRandomSideMove() {
         let remainingSquare = []
         let n = 1;
@@ -62,7 +87,6 @@ export class SuperComputer {
     }
 
     getMoveIndex(steps) {
-        console.log('x steps', steps)
         switch (steps) {
             // for horizontal steps
             case '12': return 0;
@@ -178,32 +202,58 @@ export class SuperComputer {
     getLastMoveIndex(z, index) {
         // Check for win
         for(let i = 0; i < z.length; i += 2) {
-            if (this.O.indexOf(z[i]) !== -1 && this.O.indexOf(z[i+1]) !== -1) {
+            if (this.O.includes(z[i]) && this.O.includes(z[i+1])) {
                 return index;
             }
         }
         // Check for draw
         for(let i = 0; i < z.length; i += 2) {
-            if (this.X.indexOf(z[i]) !== -1 && this.X.indexOf(z[i+1]) !== -1) {
+            if (this.X.includes(z[i]) && this.X.includes(z[i+1])) {
                 return index;
             }
         }
         return null;
     }
 
+    getLastMoveIndexV2(indexes) {
+        // Check for win: O
+        for(let j = 0; j < 2; j++) {
+            let index = indexes[j];
+            let z = this.getListOfIndexes(index);
+            for(let i = 0; i < z.length; i += 2) {
+                if (this.O.includes(z[i]) && this.O.includes(z[i+1])) {
+                    return index;
+                }
+            }
+        }
+        // Check for win: X
+        for(let j = 0; j < 2; j++) {
+            let index = indexes[j];
+            let z = this.getListOfIndexes(index); 
+            for(let i = 0; i < z.length; i += 2) {
+                if (this.X.includes(z[i]) && this.X.includes(z[i+1])) {
+                    return index;
+                }
+            }
+        }
+        return this.getRandom(indexes);
+    }
+
     // This will return either 0 or 4
-    makeFirstMove(squares, i) {
-        this.X[0] = i; // for future use
+    makeFirstMove(squares, ind) {
+        this.X[0] = ind; // for future use
         if(this.X[0] === 4){
             this.O[0] = 0;
+            console.log('first move index:', this.O[0]);
             return 0;
         }
         this.O[0] = 4; // best move
+        console.log('first move index:', this.O[0]);
         return 4;
     }
     
-    makeSecondMove(squares, i) {
-        this.X[1] = i;
+    makeSecondMove(squares, ind) {
+        this.X[1] = ind;
 
         // if X is winning
         let steps = String(Math.min(this.X[0], this.X[1])) + String(Math.max(this.X[0], this.X[1]));
@@ -219,17 +269,19 @@ export class SuperComputer {
         this.O[1] = index;
         this.row = [0, 0, 0];
         this.col = [0, 0, 0];
+        console.log('second move index:', this.O[1]);
         return this.O[1];
     }
     
-    makeThirdMove(squares, i) {
-        this.X[2] = i;
+    makeThirdMove(squares, ind) {
+        this.X[2] = ind;
 
         // if O is winning
         let steps = String(Math.min(this.O[0], this.O[1])) + String(Math.max(this.O[0], this.O[1]));
         let index = this.getMoveIndex(steps);
         if (index != null && this.X.indexOf(index) === -1) {
             this.O[2] = index;
+            console.log('third move index:', this.O[2]);
             return this.O[2];
         }
 
@@ -238,6 +290,7 @@ export class SuperComputer {
         index = this.getMoveIndex(steps);
         if (index != null && this.O.indexOf(index) === -1 && this.X.indexOf(index) === -1) {
             this.O[2] = index;
+            console.log('third move index:', this.O[2]);
             return this.O[2];
         }
 
@@ -246,6 +299,7 @@ export class SuperComputer {
         index = this.getMoveIndex(steps);
         if (index != null && this.O.indexOf(index) === -1 && this.X.indexOf(index) === -1) {
             this.O[2] = index;
+            console.log('third move index:', this.O[2]);
             return this.O[2];
         }
 
@@ -254,9 +308,11 @@ export class SuperComputer {
         for(let i = 0; i < indexes.length; i++){
             if (this.X.indexOf(indexes[i]) === -1 && this.O.indexOf(indexes[i]) === -1) {
                 this.O[2] = indexes[i];
+                console.log('third move index:', this.O[2]);
                 return this.O[2];
             }
         }
+        console.log('third move index:', this.O[2]);
         return this.O[2];
     }
     
@@ -270,57 +326,27 @@ export class SuperComputer {
         }
         for(let i = 0; i < 2; i++) {
             let index = indexes[i];
-            let z = [];
-            switch(index) {
-                case 0:
-                    z = [1,2,3,6,4,8];
-                    break;
-                
-                case 1:
-                    z = [0,2,4,7];
-                    break;
-                
-                case 2:
-                    z = [0,1,5,8];
-                    break;
-                
-                case 3:
-                    z = [0,6,4,5];
-                    break;
-                
-                case 4:
-                    z = [0,8,2,6,1,7,3,5];
-                    break;
-                
-                case 5:
-                    z = [3,4,2,8];
-                    break;
-                
-                case 6:
-                    z = [0,3,4,2,7,8];
-                    break;
-                
-                case 7:
-                    z = [1,4,6,8];
-                    break;
-                
-                case 8:
-                    z = [2,5,6,7];
-                    break;
-                default:
-                    z = [];
-            }
-            console.log('indexes:',indexes)
-            console.log('O:',this.O)
-            console.log('X:',this.X)
-            console.log('index:',index)
-            console.log('z:',z)
+            let z = this.getListOfIndexes(index);
             this.O[3] = this.getLastMoveIndex(z, index);
-            console.log('last move index', this.O[3])
             if (this.O[3] !==  null) {
+                console.log('fourth move index: ', this.O[3]);
                 return this.O[3];
             }
         }
-        return indexes[0];
+        this.O[3] = this.getRandom(indexes);
+        console.log('fourth move index: ', this.O[3]);
+        return this.O[3] ;
+    }
+    makeFourthMoveV2(squares, ind) {
+        this.X[3] = ind;
+        let indexes = [];
+        for(let i = 0; i < 9; i++) {
+            if (this.X.indexOf(i) === -1 && this.O.indexOf(i) === -1) {
+                indexes.push(i);
+            }
+        }
+        this.O[3] = this.getLastMoveIndexV2(indexes);
+        console.log('Updated fourth move index: ', this.O[3]);
+        return this.O[3];
     }
 }

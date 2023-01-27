@@ -18,12 +18,14 @@ export class Computer extends SuperComputer {
         this.O[1] = index;
         this.row = [0, 0, 0];
         this.col = [0, 0, 0];
+        console.log('second move index:', this.O[1]);
         return this.O[1];
     }
     
     makeFourthMove(squares, i) {
         this.X[3] = i;
-        this.O[3] = this.getRandomMove(); 
+        this.O[3] = this.getRandomMove();
+        console.log('third move index:', this.o[2]);
         return this.O[3];
     }
 }

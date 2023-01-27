@@ -111,7 +111,6 @@ class Game extends React.Component {
               index = undefined;
           }
           if(index !== null && index !== undefined) {
-            console.log("Index : ", index)
             setTimeout(() => this.handleClick(index), 100)
           } else {
             console.log("Unable to get move index");
