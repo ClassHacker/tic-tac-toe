@@ -30,5 +30,6 @@ Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 ## Roadmap
 
 - [ ] Game Level (easy/medium/hard)
+- [ ] Multiplayer
 - [ ] Sound and Animation
 - [ ] 5x5 Board
