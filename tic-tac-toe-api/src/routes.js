@@ -73,7 +73,7 @@ app.delete("/players", async (req, res) => {
     res.status(500).json({error:error.message})
   }
 })
-app.get("/", async (req, res) => {
+app.get("/test", async (req, res) => {
   console.log("Get request recieved.");
   const id = 1;
   const message = await msgModel.findById(id);
