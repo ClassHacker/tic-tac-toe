@@ -8,8 +8,7 @@ const app = express();
 app.use(cors());
 
 app.use(express.json())
-
-mongoose.connect('mongodb://localhost:27017/userdb',
+mongoose.connect('mongodb+srv://classhacker:<password>@tchat.c3lxk1k.mongodb.net/mchat',
   {
     useNewUrlParser: true,
     useUnifiedTopology: true
