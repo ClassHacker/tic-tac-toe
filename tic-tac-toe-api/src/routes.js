@@ -1,5 +1,6 @@
 const express = require("express");
 const playerModel = require("./models");
+const msgModel = require("./msgModel");
 const app = express();
 
 app.post("/add_player", async (req, res) => {
@@ -72,5 +73,13 @@ app.delete("/players", async (req, res) => {
     res.status(500).json({error:error.message})
   }
 })
+app.get("/", async (req, res) => {
+  console.log("Get request recieved.");
+  const id = 1;
+  const message = await msgModel.findById(id);
+  console.log("message from db: ", message);
+  if (message) res.send(message.message) ;
+  else res.sendStatus(200);
+});
 
 module.exports = app;
