@@ -97,6 +97,9 @@ class Home extends React.Component{
                 onClick={this.renderForm}
               >Set Username</button>
               <button className='home-button' 
+                onClick={() => console.log('Select Level button pressed.')}
+              >Select Level</button>
+              <button className='home-button' 
                 onClick={()=>this.initialGame(true)}
               >Start Game</button>
               <button className='home-button'
