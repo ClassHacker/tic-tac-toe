@@ -14,7 +14,8 @@ class Home extends React.Component{
       players: [],
       isSinglePlayer: undefined,
       isGameOn: false,
-      level: ""
+      level: "",
+      showLevels: false,
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -24,7 +25,8 @@ class Home extends React.Component{
 
   setLevel(level) {
     this.setState({
-      level: level
+      level: level,
+      showLevels: false
     });
   }
 
@@ -61,10 +63,14 @@ class Home extends React.Component{
     if (!isSinglePlayer) {
       alert(`Multi Player mode isn't available yet 🙂`)
     }
-    else if (this.state.isUserNameSet){
-      this.startGame2(this.state.userName, isSinglePlayer);
-    } else {
+    else if (!this.state.isUserNameSet) {
       alert('Please set username first!')
+    }
+    else if (!this.state.level.length) {
+      alert('Please select the game level!')
+    }
+    else {
+      this.startGame2(this.state.userName, isSinglePlayer);
     }
   }
 
@@ -106,7 +112,7 @@ class Home extends React.Component{
                 onClick={this.renderForm}
               >Set Username</button>
               <button className='home-button' 
-                onClick={() => console.log('Select Level button pressed.')}
+                onClick={() => this.setState({showLevels: true})}
               >Select Level</button>
               <button className='home-button' 
                 onClick={()=>this.initialGame(true)}
@@ -132,7 +138,7 @@ class Home extends React.Component{
                   </Form>
                 </Modal.Body>
               </Modal>
-              <Level />
+              <Level setLevel = {this.setLevel} show={this.state.showLevels}/>
             </div>
           </div>
           <div className='col-md-4 d3'></div>
