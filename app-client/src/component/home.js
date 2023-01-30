@@ -13,11 +13,19 @@ class Home extends React.Component{
       showForm: false,
       players: [],
       isSinglePlayer: undefined,
-      isGameOn: false
+      isGameOn: false,
+      level: ""
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.renderForm = this.renderForm.bind(this);
+    this.setLevel = this.setLevel.bind(this);
+  }
+
+  setLevel(level) {
+    this.setState({
+      level: level
+    });
   }
 
   handleChange(event) {
