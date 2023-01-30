@@ -2,6 +2,7 @@ import React from 'react';
 import { Button, Form, Modal } from 'react-bootstrap';
 import './home.scss';
 import Game from './game';
+import { Level } from './modals/level';
 
 class Home extends React.Component{
   constructor(props) {
@@ -123,6 +124,7 @@ class Home extends React.Component{
                   </Form>
                 </Modal.Body>
               </Modal>
+              <Level />
             </div>
           </div>
           <div className='col-md-4 d3'></div>
