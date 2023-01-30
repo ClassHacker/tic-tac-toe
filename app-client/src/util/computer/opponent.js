@@ -9,7 +9,7 @@ export function getOpponent(level) {
     case 'EASY': return new EasyLevelOpponent.Computer();
     case 'MEDIUM': return new MediumLevelOpponent.Computer();
     case 'HARD': return new HardLevelOpponent.Computer();
-    case 'GOD': return new GodLevelOpponent.Computer();
+    case 'GOD': return new GodLevelOpponent.SuperComputer();
     default: return new MediumLevelOpponent.Computer();
   }
 }
