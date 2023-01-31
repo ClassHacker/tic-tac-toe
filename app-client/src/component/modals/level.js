@@ -4,7 +4,8 @@ export function Level(props) {
     const { setLevel, show } = props;
     return (
         <Modal
-        show={show}>
+        show={show}
+        centered>
             <Modal.Header>
                 <h2>Please select a level</h2>
             </Modal.Header>
