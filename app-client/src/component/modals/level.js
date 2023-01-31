@@ -1,12 +1,13 @@
 import { Button, Modal, Row, Col, Container } from "react-bootstrap";
+import './level.scss';
 
 export function Level(props) {
     const { setLevel, show } = props;
     return (
         <Modal
         show={show}
-        centered
-        size={'sm'}>
+        size={'sm'}
+        centered>
             <Modal.Header>
                 <h2>Please select a level</h2>
             </Modal.Header>
