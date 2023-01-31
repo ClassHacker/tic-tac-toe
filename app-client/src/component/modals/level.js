@@ -12,7 +12,7 @@ export function Level(props) {
                 <h2>Please select a level</h2>
             </Modal.Header>
             <Modal.Body >
-                <Container>
+                <Container className="custom-container">
                     <Button variant="primary" className="btn" onClick={() => setLevel('EASY')}>
                         Easy Level
                     </Button>
