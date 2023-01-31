@@ -13,16 +13,16 @@ export function Level(props) {
             </Modal.Header>
             <Modal.Body >
                 <Container className="custom-container">
-                    <Button variant="primary" className="btn" onClick={() => setLevel('EASY')}>
+                    <Button variant="dark" className="btn" onClick={() => setLevel('EASY')}>
                         Easy Level
                     </Button>
-                    <Button variant="primary" className="btn" onClick={() => setLevel('MEDIUM')}>
+                    <Button variant="dark" className="btn" onClick={() => setLevel('MEDIUM')}>
                         Medium Level
                     </Button>
-                    <Button variant="primary" className="btn" onClick={() => setLevel('HARD')}>
+                    <Button variant="dark" className="btn" onClick={() => setLevel('HARD')}>
                         Hard Level
                     </Button>
-                    <Button variant="primary" className="btn" onClick={() => setLevel('GOD')}>
+                    <Button variant="dark" className="btn" onClick={() => setLevel('GOD')}>
                         God Level
                     </Button>
                 </Container>
