@@ -9,15 +9,15 @@ export function Level(props) {
                 <h2>Please select a level</h2>
             </Modal.Header>
             <Modal.Body>
-                <Button variant="primary" className="min-w" onClick={() => setLevel('EASY')}>
+                <Button variant="primary" size="" className="min-w" onClick={() => setLevel('EASY')}>
                 Easy Level
-                </Button>
+                </Button>{' '}
                 <Button variant="primary" className="min-w" onClick={() => setLevel('MEDIUM')}>
                 Medium Level
-                </Button>
+                </Button>{' '}
                 <Button variant="primary" className="min-w" onClick={() => setLevel('HARD')}>
                 Hard Level
-                </Button>
+                </Button>{' '}
                 <Button variant="primary" className="min-w" onClick={() => setLevel('GOD')}>
                 God Level
                 </Button>
