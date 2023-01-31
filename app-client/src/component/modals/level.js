@@ -1,4 +1,4 @@
-import { Button, Modal, Row, Col, Container } from "react-bootstrap";
+import { Button, Modal, Container } from "react-bootstrap";
 import './level.scss';
 
 export function Level(props) {
