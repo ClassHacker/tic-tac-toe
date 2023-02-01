@@ -16,8 +16,7 @@ $color: black;
 }
 .btn{
     min-width: 125px;
-    /* border: 2px solid; */
-    /* border-color: crimson; */
+    border: 2px solid $color;
     margin: 5px;
 }
 .custom-container{
