@@ -8,10 +8,10 @@ export function Level(props) {
         show={show}
         size={'sm'}
         centered>
-            <Modal.Header>
+            <Modal.Header className="cs-model">
                 <h2>Please select a level</h2>
             </Modal.Header>
-            <Modal.Body >
+            <Modal.Body className="cs-model">
                 <Container className="custom-container">
                     <Button variant="dark" className="btn" onClick={() => setLevel('EASY')}>
                         Easy Level
