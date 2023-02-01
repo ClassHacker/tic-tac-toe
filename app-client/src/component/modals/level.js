@@ -8,7 +8,7 @@ export function Level(props) {
         show={show}
         size={'sm'}
         centered>
-            <Modal.Header className="cs-model top-border">
+            <Modal.Header className="cs-model top-border btm-border">
                 <h2>Please select a level</h2>
             </Modal.Header>
             <Modal.Body className="cs-model btm-border">
