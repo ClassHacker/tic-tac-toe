@@ -7,7 +7,7 @@ export function Level(props) {
         <Modal
         show={show}
         size={'sm'}
-        className="levelModal"
+        className="level-modal"
         centered>
             <Modal.Header className="custom-modal top-border btm-border">
                 <h2>Please select a level</h2>
