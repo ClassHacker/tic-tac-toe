@@ -9,10 +9,10 @@ export function Level(props) {
         size={'sm'}
         className="level-modal"
         centered>
-            <Modal.Header className="custom-modal top-border btm-border">
+            <Modal.Header className="custom-modal-border top-border btm-border">
                 <h2>Please select a level</h2>
             </Modal.Header>
-            <Modal.Body className="custom-modal btm-border">
+            <Modal.Body className="custom-modal-border btm-border">
                 <Container className="custom-container">
                     <Button variant="dark" className="level-btn" onClick={() => setLevel('EASY')}>
                         Easy Level
