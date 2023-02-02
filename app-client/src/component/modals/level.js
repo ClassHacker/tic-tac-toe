@@ -14,16 +14,16 @@ export function Level(props) {
             </Modal.Header>
             <Modal.Body className="custom-modal btm-border">
                 <Container className="custom-container">
-                    <Button variant="dark" className="levelBtn" onClick={() => setLevel('EASY')}>
+                    <Button variant="dark" className="level-btn" onClick={() => setLevel('EASY')}>
                         Easy Level
                     </Button>
-                    <Button variant="dark" className="levelBtn" onClick={() => setLevel('MEDIUM')}>
+                    <Button variant="dark" className="level-btn" onClick={() => setLevel('MEDIUM')}>
                         Medium Level
                     </Button>
-                    <Button variant="dark" className="levelBtn" onClick={() => setLevel('HARD')}>
+                    <Button variant="dark" className="level-btn" onClick={() => setLevel('HARD')}>
                         Hard Level
                     </Button>
-                    <Button variant="dark" className="levelBtn" onClick={() => setLevel('GOD')}>
+                    <Button variant="dark" className="level-btn" onClick={() => setLevel('GOD')}>
                         God Level
                     </Button>
                 </Container>
