@@ -200,7 +200,7 @@ class Game extends React.Component {
             </div>
             <div className="col-lg-6 col-sm-12 neumorphism-div">
               <div className="game-board">
-                <span className="status"><Badge bg={bg} pill>{status}</Badge></span>
+                {/* <span className="status"><Badge bg={bg} pill>{status}</Badge></span> */}
                 <Board 
                   squares={current.squares}
                   onClick={(i)=>{this.makeMove(i)}}
