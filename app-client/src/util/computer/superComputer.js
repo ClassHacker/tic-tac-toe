@@ -199,23 +199,7 @@ export class SuperComputer {
         }
     }
 
-    getLastMoveIndex(z, index) {
-        // Check for win
-        for(let i = 0; i < z.length; i += 2) {
-            if (this.O.includes(z[i]) && this.O.includes(z[i+1])) {
-                return index;
-            }
-        }
-        // Check for draw
-        for(let i = 0; i < z.length; i += 2) {
-            if (this.X.includes(z[i]) && this.X.includes(z[i+1])) {
-                return index;
-            }
-        }
-        return null;
-    }
-
-    getLastMoveIndexV2(indexes) {
+    getLastMoveIndex(indexes) {
         // Check for win: O
         for(let j = 0; j < 2; j++) {
             let index = indexes[j];
@@ -315,7 +299,7 @@ export class SuperComputer {
         console.log('third move index:', this.O[2]);
         return this.O[2];
     }
-    
+
     makeFourthMove(squares, ind) {
         this.X[3] = ind;
         let indexes = [];
@@ -324,29 +308,8 @@ export class SuperComputer {
                 indexes.push(i);
             }
         }
-        for(let i = 0; i < 2; i++) {
-            let index = indexes[i];
-            let z = this.getListOfIndexes(index);
-            this.O[3] = this.getLastMoveIndex(z, index);
-            if (this.O[3] !==  null) {
-                console.log('fourth move index: ', this.O[3]);
-                return this.O[3];
-            }
-        }
-        this.O[3] = this.getRandom(indexes);
+        this.O[3] = this.getLastMoveIndex(indexes);
         console.log('fourth move index: ', this.O[3]);
-        return this.O[3] ;
-    }
-    makeFourthMoveV2(squares, ind) {
-        this.X[3] = ind;
-        let indexes = [];
-        for(let i = 0; i < 9; i++) {
-            if (this.X.indexOf(i) === -1 && this.O.indexOf(i) === -1) {
-                indexes.push(i);
-            }
-        }
-        this.O[3] = this.getLastMoveIndexV2(indexes);
-        console.log('Updated fourth move index: ', this.O[3]);
         return this.O[3];
     }
 }

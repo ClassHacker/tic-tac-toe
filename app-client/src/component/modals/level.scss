@@ -1,0 +1,26 @@
+$color: black;
+
+.custom-modal-border{
+    border-left: 5px solid $color;
+    border-right: 5px solid $color;
+}
+.btm-border{
+    border-bottom: 5px solid $color;
+}
+.top-border{
+    border-top: 5px solid $color;
+}
+.level-modal{
+    width: 80%; 
+    margin: 0 10%;
+}
+.level-btn{
+    min-width: 125px;
+    border: 2px solid $color;
+    margin: 5px;
+}
+.custom-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
