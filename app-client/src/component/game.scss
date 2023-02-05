@@ -8,6 +8,10 @@ form, .modal-body {
     margin-block: 10rem;
     margin-inline-start: 8rem;
 }
+.custom-badge{
+    color: black;
+    background-color: darkorange !important;
+}
 .custom-game-modal{
     border: 5px solid red;
     border-radius: 5px;
@@ -104,6 +108,9 @@ form, .modal-body {
     }
 }
 @media only screen and (max-width: 600px) {
+    .game-board {
+        margin-top: -1rem;
+    }
     .neumorphism-div{
         display: block;
         align-content: center;

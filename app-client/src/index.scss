@@ -11,7 +11,7 @@ body {
 }
 h1 {
   color: #ff073a;
-  font-size: 13vw;
+  font-size: 11vw;
   font-weight: bolder;
   text-align: center;
   margin-top: 1vw !important;
@@ -19,6 +19,17 @@ h1 {
   font-family:'Courier New', Courier, monospace;
   // background: linear-gradient(145deg, #7b4a4a, #683e3e);
     box-shadow: 5px 5px 0px #2e1c1c, -5px -5px 0px #2e1c1c;
+}
+.level {
+  color: aqua;
+  // font-size: 12px;
+  // font-weight: bolder;
+  text-align: center;
+  margin-top: -2px !important;
+  // text-shadow: 5px 5px 0px #2e1c1c, -5px -5px 0px #b86e6e;
+  font-family:'Courier New', Courier, monospace;
+  // background: linear-gradient(145deg, #7b4a4a, #683e3e);
+  box-shadow: 5px 5px 0px #2e1c1c, -5px -5px 0px #2e1c1c;
 }
 
 @media only screen and (max-width: 600px) {

@@ -3,7 +3,7 @@
 ***A simple Tic-Tac-Toe game.***
 
 ## How to play
-Go to [Tic-Tac-Toe (AWS Amplify)](https://release.d3fsldz5t6hpbd.amplifyapp.com/) or [Tic-Tac-Toe (GitHub Pages)](https://classhacker.github.io/tic-tac-toe/)\
+Go to [Tic-Tac-Toe (AWS Amplify)](https://main.d1mk7yoofvjlau.amplifyapp.com/) or [Tic-Tac-Toe (GitHub Pages)](https://classhacker.github.io/tic-tac-toe/)\
 ...
 
 ## Local setup (Only React App)
@@ -18,7 +18,7 @@ This will change the current working directory to *app-client*
 
 Run: `npm install`
 
-This will install all the dependencies that are needed to run this project.
+This will install all the dependencies that are necessary to run this project.
 
 ### Step 2
 
@@ -29,6 +29,7 @@ Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
 ## Roadmap
 
-- [ ] Game Level (easy/medium/hard)
+- [ ] Game Levels (easy/medium/hard)
+- [ ] Multiplayer Mode
 - [ ] Sound and Animation
 - [ ] 5x5 Board

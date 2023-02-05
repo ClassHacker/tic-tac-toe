@@ -5,14 +5,18 @@ import { RestartModal } from './modals/restart';
 import { ExitModal } from './modals/exit';
 import calculateWinner from '../util/winner';
 import './game.scss';
-import { Badge } from 'react-bootstrap';
+// import { Badge } from 'react-bootstrap';
 import { connect } from 'react-redux'
 import { rsAction, exAction } from '../redux/actions';
+import { getOpponent } from '../util/computer/opponent';
 
-const computer = require('../util/computer/hard');
+var player2;
+var player2Copy;
 
-var player2 = new computer.Computer();
-var player2Copy = new computer.Computer();
+function initializeSecondPlayer(level) {
+  player2 = getOpponent(level);
+  player2Copy = player2;
+}
 
 class Game extends React.Component {
     constructor(props){
@@ -27,6 +31,7 @@ class Game extends React.Component {
       }
       this.exitGame = this.exitGame.bind(this);
       this.restartGame = this.restartGame.bind(this);
+      initializeSecondPlayer(props.level);
     }
   
     getInitialState(){
@@ -106,7 +111,6 @@ class Game extends React.Component {
               index = undefined;
           }
           if(index !== null && index !== undefined) {
-            console.log("Index : ", index)
             setTimeout(() => this.handleClick(index), 100)
           } else {
             console.log("Unable to get move index");
@@ -133,7 +137,7 @@ class Game extends React.Component {
   
     restartGame(winner) {
       console.log('Restarting...')
-      player2 = new computer.Computer()
+      player2 = getOpponent(this.props.level);
       this.setState(
         this.getInitialState()
       );
@@ -166,18 +170,17 @@ class Game extends React.Component {
       const history = this.state.history;
       const current = history[this.state.stepNumber];
       const winner = calculateWinner(current.squares, this.state.players);
-  
-      let status;
-      let bg = "primary";
 
+      // let status;
+      let bg = "primary";
       if (winner) {
         bg = "success";
-        status = 'Winner : ' + winner;
+        // status = 'Winner : ' + winner;
       } else if(this.state.stepNumber === 9) {
         bg = "success";
-        status = "Draw";
+        // status = "Draw";
       } else {
-        status = 'Current Player : ' + (this.state.xIsNext ? this.state.players[0].name : this.state.players[1].name);
+        // status = 'Current Player : ' + (this.state.xIsNext ? this.state.players[0].name : this.state.players[1].name);
       }
   
       return (
@@ -187,6 +190,7 @@ class Game extends React.Component {
           <ResultModal restartGame={this.restartGame} exitGame={this.exitGame} bg={bg} winner={winner} players={this.state.players}/>
           <div className='row'>
             <h1>Tic-Tac-Toe</h1>
+            <h2 className="level">Level : {this.props.level}</h2>
             <div className='col-lg-3 col-sm-12 neumorphism-div'>
               <div className='buttons'>
                 <button className='game-button' onClick={() => this.restart()}>Restart Game</button>
@@ -195,7 +199,7 @@ class Game extends React.Component {
             </div>
             <div className="col-lg-6 col-sm-12 neumorphism-div">
               <div className="game-board">
-                <span className="status"><Badge bg={bg} pill>{status}</Badge></span>
+                {/* <span className="status"><Badge bg={bg} pill>{status}</Badge></span> */}
                 <Board 
                   squares={current.squares}
                   onClick={(i)=>{this.makeMove(i)}}
