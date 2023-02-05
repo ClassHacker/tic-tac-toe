@@ -5,7 +5,7 @@ import { RestartModal } from './modals/restart';
 import { ExitModal } from './modals/exit';
 import calculateWinner from '../util/winner';
 import './game.scss';
-import { Badge } from 'react-bootstrap';
+// import { Badge } from 'react-bootstrap';
 import { connect } from 'react-redux'
 import { rsAction, exAction } from '../redux/actions';
 import { getOpponent } from '../util/computer/opponent';
