@@ -170,10 +170,9 @@ class Game extends React.Component {
       const history = this.state.history;
       const current = history[this.state.stepNumber];
       const winner = calculateWinner(current.squares, this.state.players);
-  
+
       let status;
       let bg = "primary";
-
       if (winner) {
         bg = "success";
         status = 'Winner : ' + winner;
