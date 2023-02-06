@@ -5,7 +5,7 @@ import { RestartModal } from './modals/restart';
 import { ExitModal } from './modals/exit';
 import calculateWinner from '../util/winner';
 import './game.scss';
-import { Badge } from 'react-bootstrap';
+// import { Badge } from 'react-bootstrap';
 import { connect } from 'react-redux'
 import { rsAction, exAction } from '../redux/actions';
 import { getOpponent } from '../util/computer/opponent';
@@ -170,18 +170,17 @@ class Game extends React.Component {
       const history = this.state.history;
       const current = history[this.state.stepNumber];
       const winner = calculateWinner(current.squares, this.state.players);
-  
-      let status;
-      let bg = "primary";
 
+      // let status;
+      let bg = "primary";
       if (winner) {
         bg = "success";
-        status = 'Winner : ' + winner;
+        // status = 'Winner : ' + winner;
       } else if(this.state.stepNumber === 9) {
         bg = "success";
-        status = "Draw";
+        // status = "Draw";
       } else {
-        status = 'Current Player : ' + (this.state.xIsNext ? this.state.players[0].name : this.state.players[1].name);
+        // status = 'Current Player : ' + (this.state.xIsNext ? this.state.players[0].name : this.state.players[1].name);
       }
   
       return (
@@ -191,6 +190,7 @@ class Game extends React.Component {
           <ResultModal restartGame={this.restartGame} exitGame={this.exitGame} bg={bg} winner={winner} players={this.state.players}/>
           <div className='row'>
             <h1>Tic-Tac-Toe</h1>
+            <h2 className="level">Level : {this.props.level}</h2>
             <div className='col-lg-3 col-sm-12 neumorphism-div'>
               <div className='buttons'>
                 <button className='game-button' onClick={() => this.restart()}>Restart Game</button>
@@ -199,7 +199,7 @@ class Game extends React.Component {
             </div>
             <div className="col-lg-6 col-sm-12 neumorphism-div">
               <div className="game-board">
-                <span className="status"><Badge bg={bg} pill>{status}</Badge></span>
+                {/* <span className="status"><Badge bg={bg} pill>{status}</Badge></span> */}
                 <Board 
                   squares={current.squares}
                   onClick={(i)=>{this.makeMove(i)}}

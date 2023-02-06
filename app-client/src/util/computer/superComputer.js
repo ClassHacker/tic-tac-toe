@@ -1,9 +1,11 @@
 export class SuperComputer {
-    constructor() {
+    constructor(level) {
         this.X = [null, null, null, null];
         this.O = [null, null, null, null];
         this.row = [0, 0, 0];
         this.col = [0, 0, 0];
+        this.level = level;
+        console.log("Opponent level: ", this.level) 
     }
 
     getRandom(array) {
