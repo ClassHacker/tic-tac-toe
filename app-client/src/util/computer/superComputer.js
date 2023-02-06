@@ -144,7 +144,7 @@ export class SuperComputer {
                 case '12':
                     return this.X.indexOf(0) === -1? 0 : 6;
                 default:
-                    return null;
+                    console.log("rc :", rc);
             }
         }
         if (this.col.indexOf(0) === 1 && this.row.indexOf(0) === 1){
