@@ -225,11 +225,11 @@ export class SuperComputer {
         return this.getRandom(indexes);
     }
 
-    // This will return either 0 or 4
+    // This will return either 4 or corner move
     makeFirstMove(squares, ind) {
         this.X[0] = ind; // for future use
         if(this.X[0] === 4){
-            this.O[0] = 0;
+            this.O[0] = this.getRandomCornerMove();
             console.log('first move index:', this.O[0]);
             return 0;
         }
