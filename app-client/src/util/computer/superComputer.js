@@ -231,7 +231,7 @@ export class SuperComputer {
         if(this.X[0] === 4){
             this.O[0] = this.getRandomCornerMove();
             console.log('first move index:', this.O[0]);
-            return 0;
+            return this.O[0];
         }
         this.O[0] = 4; // best move
         console.log('first move index:', this.O[0]);
@@ -244,7 +244,7 @@ export class SuperComputer {
         // if X is winning
         let steps = String(Math.min(this.X[0], this.X[1])) + String(Math.max(this.X[0], this.X[1]));
         let index = this.getMoveIndex(steps);
-
+        console.log("Second intermediate move: ", index);
         // if can't get right index from above method
         if (index == null || index === this.O[0]) {
             this.updateRowAndCol(this.X[0]);
