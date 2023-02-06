@@ -146,15 +146,11 @@ export class SuperComputer {
                 default:
                     return null;
             }
-        } else {
-            if (this.row.indexOf(2) === 1 || this.col.indexOf(2) === 1) {
-                return 0;
-            } else if (this.col.indexOf(0) === 1 && this.row.indexOf(0) === 1){
-                return this.getRandom([1,7, 3, 5]);
-            } else {
-                return this.getRandomCornerMove();
-            }
         }
+        if (this.col.indexOf(0) === 1 && this.row.indexOf(0) === 1){
+            return this.getRandom([1,7, 3, 5]);
+        }
+        return this.getRandomCornerMove();
     }
 
     updateRowAndCol(x) {
