@@ -112,7 +112,7 @@ class Game extends React.Component {
           }
           if(index !== null && index !== undefined) {
             setTimeout(() => this.handleClick(index), 100)
-          } else {
+          } else if(this.state.stepNumber <= 6) {
             console.log("Unable to get move index");
           }
           player2Copy.getCopyOf(player2);
