@@ -136,7 +136,6 @@ class Game extends React.Component {
     }
   
     restartGame(winner) {
-      console.log('Restarting...')
       player2 = getOpponent(this.props.level);
       this.setState(
         this.getInitialState()
@@ -148,7 +147,7 @@ class Game extends React.Component {
         }
         return player;
       });
-      console.log('Finished.')
+      console.log('Game restarted.')
     }
 
     restart() {
