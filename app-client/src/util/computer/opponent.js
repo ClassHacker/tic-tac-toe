@@ -3,8 +3,7 @@ const HardLevelOpponent = require('./hard');
 const MediumLevelOpponent = require('./medium');
 const GodLevelOpponent = require('./superComputer');
 
-export function getOpponent(level) {
-  console.log("Opponent level: ", level.length? level.toUpperCase(): "MEDIUM")  
+export function getOpponent(level) { 
   switch (level.toUpperCase()) {
     case 'EASY': return new EasyLevelOpponent.Computer(level);
     case 'MEDIUM': return new MediumLevelOpponent.Computer(level);

@@ -5,7 +5,6 @@ export class SuperComputer {
         this.row = [0, 0, 0];
         this.col = [0, 0, 0];
         this.level = level;
-        console.log("Opponent level: ", this.level) 
     }
 
     getRandom(array) {
