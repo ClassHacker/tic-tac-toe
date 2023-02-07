@@ -240,7 +240,6 @@ export class SuperComputer {
         // if X is winning
         let steps = String(Math.min(this.X[0], this.X[1])) + String(Math.max(this.X[0], this.X[1]));
         let index = this.getMoveIndex(steps);
-        console.log("Second intermediate move: ", index);
         // if can't get right index from above method
         if (index == null || index === this.O[0]) {
             this.updateRowAndCol(this.X[0]);
