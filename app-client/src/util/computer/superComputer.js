@@ -136,17 +136,22 @@ export class SuperComputer {
                 case '00':
                     return 8;
                 case '21':
-                    return this.X.indexOf(0) === -1? 0 : 2;
+                    // return this.X.indexOf(0) === -1? 0 : 2;
+                    return this.X.includes(0)? 2 : 0;
                 case '01':
-                    return this.X.indexOf(6) === -1? 6 : 8;
+                    // return this.X.indexOf(6) === -1? 6 : 8;
+                    return this.X.includes(6)? 8 : 6;
                 case '10':
-                    return this.X.indexOf(2) === -1? 2 : 8;
+                    // return this.X.indexOf(2) === -1? 2 : 8;
+                    return this.X.includes(2)? 8 : 2;
                 case '12':
-                    return this.X.indexOf(0) === -1? 0 : 6;
+                    // return this.X.indexOf(0) === -1? 0 : 6;
+                    return this.X.includes(0)? 6 : 0;
                 default:
                     console.log("rc :", rc);
             }
         }
+        // if (this.col.indexOf(0) === 1 && this.row.indexOf(0) === 1){
         if (this.col.indexOf(0) === 1 && this.row.indexOf(0) === 1){
             return this.getRandom([1,7, 3, 5]);
         }
@@ -260,7 +265,8 @@ export class SuperComputer {
         // if O is winning
         let steps = String(Math.min(this.O[0], this.O[1])) + String(Math.max(this.O[0], this.O[1]));
         let index = this.getMoveIndex(steps);
-        if (index != null && this.X.indexOf(index) === -1) {
+        // if (index != null && this.X.indexOf(index) === -1) {
+        if (index != null && !this.X.includes(index)) {
             this.O[2] = index;
             console.log('third move index:', this.O[2]);
             return this.O[2];
@@ -269,7 +275,8 @@ export class SuperComputer {
         // if X is winning
         steps = String(Math.min(this.X[0], this.X[2])) + String(Math.max(this.X[0], this.X[2]));
         index = this.getMoveIndex(steps);
-        if (index != null && this.O.indexOf(index) === -1 && this.X.indexOf(index) === -1) {
+        // if (index != null && this.O.indexOf(index) === -1 && this.X.indexOf(index) === -1) {
+        if (index != null && !(this.O.includes(index) || this.X.includes(index))) {
             this.O[2] = index;
             console.log('third move index:', this.O[2]);
             return this.O[2];
@@ -278,7 +285,8 @@ export class SuperComputer {
         // if x is winning
         steps = String(Math.min(this.X[1], this.X[2])) + String(Math.max(this.X[1], this.X[2]));
         index = this.getMoveIndex(steps);
-        if (index != null && this.O.indexOf(index) === -1 && this.X.indexOf(index) === -1) {
+        // if (index != null && this.O.indexOf(index) === -1 && this.X.indexOf(index) === -1) {
+        if (index != null && !(this.X.includes(index) || this.O.includes(index))) {
             this.O[2] = index;
             console.log('third move index:', this.O[2]);
             return this.O[2];
@@ -287,7 +295,8 @@ export class SuperComputer {
         // if nobody is winning
         let indexes = [1, 3, 5, 7];
         for(let i = 0; i < indexes.length; i++){
-            if (this.X.indexOf(indexes[i]) === -1 && this.O.indexOf(indexes[i]) === -1) {
+            // if (this.X.indexOf(indexes[i]) === -1 && this.O.indexOf(indexes[i]) === -1) {
+            if (!(this.X.includes(i) || this.O.includes(i))) {
                 this.O[2] = indexes[i];
                 console.log('third move index:', this.O[2]);
                 return this.O[2];
@@ -301,7 +310,8 @@ export class SuperComputer {
         this.X[3] = ind;
         let indexes = [];
         for(let i = 0; i < 9; i++) {
-            if (this.X.indexOf(i) === -1 && this.O.indexOf(i) === -1) {
+            // if (this.X.indexOf(indexes[i]) === -1 && this.O.indexOf(indexes[i]) === -1) {
+            if (!(this.X.includes(i) || this.O.includes(i))) {
                 indexes.push(i);
             }
         }
