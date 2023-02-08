@@ -130,7 +130,7 @@ class Home extends React.Component{
                   <Form onSubmit={this.handleSubmit}>
                     <Form.Group controlId={this.state.value} >
                       <Form.Label className="custom-label">Enter your user name</Form.Label>
-                      <Form.Control className="custom-input" type="text" onChange={this.handleChange} autoFocus/>
+                      <Form.Control className="custom-input" type="text" onChange={this.handleChange} autoFocus autocomplete={false}/>
                     </Form.Group>
                     <Button variant="primary" type="submit" >
                       Submit
