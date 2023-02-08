@@ -119,7 +119,6 @@ class Home extends React.Component{
               >Start Game</button>
               <button className='home-button'
                 onClick={()=>this.initialGame(false)}
-                hidden
               >Multi Player</button>
               <Modal 
                 show={this.state.showForm} 
