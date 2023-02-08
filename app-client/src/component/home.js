@@ -31,7 +31,7 @@ class Home extends React.Component{
   }
 
   handleChange(event) {
-    let userName = event.target.value
+    let userName = event.target.value.replace(/[^a-z]/gi, '');
     this.setState({
       userName: userName
     })
