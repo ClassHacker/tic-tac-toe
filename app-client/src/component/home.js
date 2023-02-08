@@ -61,7 +61,7 @@ class Home extends React.Component{
   initialGame(isSinglePlayer) {
     // music.playSound("s1");
     if (!isSinglePlayer) {
-      alert(`Soory, Multi Player mode isn't available yet 🙂`)
+      alert(`Sorry, Multi Player mode isn't available yet 🙂`)
     }
     else if (!this.state.isUserNameSet) {
       alert('Please set username first!')
