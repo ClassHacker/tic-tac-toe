@@ -133,6 +133,7 @@ class Home extends React.Component{
                       <Form.Control className="custom-input" type="text" value={this.state.userName} onChange={this.handleChange} autoFocus autocomplete={false}/>
                     </Form.Group>
                     <label>Minimum length 3 characters</label>
+                    <label>Maximum length 11 characters</label>
                     <br/>
                     <Button variant="primary" type="submit" >
                       Submit
