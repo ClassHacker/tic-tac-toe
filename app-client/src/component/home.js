@@ -134,6 +134,7 @@ class Home extends React.Component{
                     </Form.Group>
                     <label>Minimum length 3 characters</label>
                     <label>Maximum length 11 characters</label>
+                    <label>No special characters</label>
                     <br/>
                     <Button variant="primary" type="submit" >
                       Submit
