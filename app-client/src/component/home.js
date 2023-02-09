@@ -52,7 +52,7 @@ class Home extends React.Component{
       this.setState({
         isUserNameSet: false,
       })
-      alert("Invalid username")
+      alert("Invalid username!!\n\n1. Minimum length 3 characters.\n2. Maximum length 11 characters.\n3. No special characters.\n4. Can't start with number.")
     }
     console.log('userName:', userName)
     event.preventDefault();
