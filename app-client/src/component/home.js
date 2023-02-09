@@ -135,6 +135,7 @@ class Home extends React.Component{
                     <label>Minimum length 3 characters</label>
                     <label>Maximum length 11 characters</label>
                     <label>No special characters</label>
+                    <label>Can't start with number</label>
                     <br/>
                     <Button variant="primary" type="submit" >
                       Submit
