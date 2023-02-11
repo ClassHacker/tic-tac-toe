@@ -26,8 +26,11 @@
     "web-vitals": "^2.1.4"
   },
   "devDependencies": {
+    "@babel/preset-env": "^7.20.2",
+    "babel-jest": "^29.4.2",
+    "identity-obj-proxy": "^3.0.0",
     "jest": "^27.5.1",
-    "jest-environment-jsdom": "^29.4.2"
+    "jest-environment-jsdom": "^27.5.1"
   },
   "eslintConfig": {
     "extends": [
