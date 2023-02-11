@@ -1,9 +1,7 @@
-// import { render, screen } from '@testing-library/react';
-// import Home from './sound';
+import { render, screen } from '@testing-library/react';
+import App from './app';
 
-test('renders Home page', () => {
+test('renders App', () => {
   expect(1).toBe(1);
-  // render(<Home root={"root"}/>);
-  // const linkElement = screen.getByText(/Loading.../i);
-  // expect(linkElement).toBeInTheDocument();
+  render(<App root={"root"}/>);
 });
