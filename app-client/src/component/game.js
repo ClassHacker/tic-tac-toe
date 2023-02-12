@@ -3,12 +3,12 @@ import Board from './board';
 import { GameStatus, ResultModal } from './modals/result';
 import { RestartModal } from './modals/restart';
 import { ExitModal } from './modals/exit';
-import calculateWinner from '../util/winner';
+import calculateWinner from '../utils/winner';
 import './game.scss';
 // import { Badge } from 'react-bootstrap';
 import { connect } from 'react-redux'
 import { rsAction, exAction } from '../redux/actions';
-import { getOpponent } from '../util/computer/opponent';
+import { getOpponent } from '../utils/computer/opponent';
 
 var player2;
 var player2Copy;

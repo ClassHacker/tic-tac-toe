@@ -6,8 +6,8 @@ import backGround from "./static/bg.mp3";
 import { Button, Form, Modal} from 'react-bootstrap';
 import App from './app';
 
-var music = require('./util/sound');
-const computer = require('./util/computer');
+var music = require('./utils/sound');
+const computer = require('./utils/computer');
 var player2 = new computer.Computer();
 var player2Copy = new computer.Computer();
 
