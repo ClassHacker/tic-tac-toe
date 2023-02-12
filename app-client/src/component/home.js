@@ -72,7 +72,7 @@ class Home extends React.Component{
     else {
       setTimeout(() => {
         this.startGame2(this.state.userName, isSinglePlayer);
-      }, 500);
+      }, 100);
     }
   }
 
