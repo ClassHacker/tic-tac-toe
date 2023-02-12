@@ -70,7 +70,9 @@ class Home extends React.Component{
       alert('Please select the game level!')
     }
     else {
-      this.startGame2(this.state.userName, isSinglePlayer);
+      setTimeout(() => {
+        this.startGame2(this.state.userName, isSinglePlayer);
+      }, 500);
     }
   }
 
