@@ -3,6 +3,7 @@ module.exports = {
     collectCoverageFrom: [
         "src/**/*.{js,jsx}",
         "!src/redux/**/*.js",
+        "!src/utils/test/*"
     ],
     coverageThreshold: {
       "global": {
