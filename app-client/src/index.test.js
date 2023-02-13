@@ -1,6 +1,6 @@
 // import { render } from '@testing-library/react';
 // import App from './app';
-// import React from 'react';
+import React from 'react';
 import ReactDOM from 'react-dom/client';
 
 // import { renderWithProviders } from "./utils/test/test-utils";
