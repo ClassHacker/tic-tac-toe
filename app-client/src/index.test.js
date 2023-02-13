@@ -3,10 +3,10 @@
 // import React from 'react';
 import ReactDOM from 'react-dom/client';
 
-import { renderWithProviders } from "./utils/test/test-utils";
+// import { renderWithProviders } from "./utils/test/test-utils";
 
-// const render = jest.fn().mockName('render');
-const render = renderWithProviders();
+const render = jest.fn().mockName('render');
+// const render = renderWithProviders();
 
 jest.mock('react');
 jest.mock("react-dom/client", () => ({ createRoot: jest.fn().mockName('createRoot') }));
