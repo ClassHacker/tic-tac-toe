@@ -16,4 +16,32 @@ describe('test level modal', () => {
         expect(btn3).toBeTruthy();
         expect(btn4).toBeTruthy();
     })
+    it('should select EASY level', () => {
+        const setLevelMock = jest.fn();
+        render(<Level setLevel = {setLevelMock} show={true} />);
+        const btn1 = screen.queryByText(/Easy Level/i);
+        fireEvent.click(btn1);
+        expect(setLevelMock).toHaveBeenCalledWith('EASY');
+    })
+    it('should select MEDIUM level', () => {
+        const setLevelMock = jest.fn();
+        render(<Level setLevel = {setLevelMock} show={true} />);
+        const btn1 = screen.queryByText(/MEDIUM Level/i);
+        fireEvent.click(btn1);
+        expect(setLevelMock).toHaveBeenCalledWith('MEDIUM');
+    })
+    it('should select HARD level', () => {
+        const setLevelMock = jest.fn();
+        render(<Level setLevel = {setLevelMock} show={true} />);
+        const btn1 = screen.queryByText(/HARD Level/i);
+        fireEvent.click(btn1);
+        expect(setLevelMock).toHaveBeenCalledWith('HARD');
+    })
+    it('should select GOD level', () => {
+        const setLevelMock = jest.fn();
+        render(<Level setLevel = {setLevelMock} show={true} />);
+        const btn1 = screen.queryByText(/GOD Level/i);
+        fireEvent.click(btn1);
+        expect(setLevelMock).toHaveBeenCalledWith('GOD');
+    })
 })
