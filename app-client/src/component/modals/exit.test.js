@@ -2,7 +2,7 @@ import { screen, fireEvent } from "@testing-library/react";
 import { ExitModal } from "./exit";
 import { renderWithProviders } from "../../utils/test/test-utils";
 
-describe('test exitModal', ()=> {
+describe('test exit modal', ()=> {
     it('should render exitModal', () => {
         renderWithProviders(<ExitModal />, { preloadedState: {exR: true} });
         const modalBodyText = screen.getByText(/Do you really want to exit the game?/i);
