@@ -1,7 +1,7 @@
 import { screen, fireEvent, render } from "@testing-library/react";
 import { ResultModal } from "./result";
 
-describe('test restart modal', ()=> {
+describe('test result modal', ()=> {
     it('should show modal when user wins the match', () => {
         const players = [{name:'user'},{name:'computer'}];
         render(<ResultModal players={players} bg={"success"} winner={'user'}/>);
@@ -20,32 +20,31 @@ describe('test restart modal', ()=> {
         const modalBodyText = screen.queryByText(/Match Tied/i);
         expect(modalBodyText).toBeTruthy();
     })
-    // describe('test common fields', () => {
-        // const restartGameMock = jest.fn();
-        // const exitGameMock = jest.fn();
-        // beforeEach(() => {
-        //     render(<ResultModal restartGame={restartGameMock} players={players} 
-        //         exitGame={exitGameMock} bg={"success"} winner={null}/>);
-        // })
-        // afterEach(() => {
-        //     restartGameMock.mockReset();
-        //     exitGameMock.mockReset();
-        // })
-        // it('should show modal with both buttons', () => {
-        //     const modalBodyText = screen.queryByText(/Do you really want to restart the game?/i);
-        //     const btn1 = screen.queryByText(/Yes/i);
-        //     const btn2 = screen.queryByText(/No/i);
-        //     expect(modalBodyText).toBeTruthy();
-        //     expect(btn1).toBeTruthy();
-        //     expect(btn2).toBeInTheDocument();
-        // })
-        // it('should restart game on Yes', () => {
-        //     fireEvent.click(screen.queryByText(/Yes/i));
-        //     expect(restartGameMock).toHaveBeenCalledWith("winner");
-        // })
-        // it('should not restart game on No', () => {
-        //     fireEvent.click(screen.queryByText(/No/i));
-        //     expect(restartGameMock).toHaveBeenCalledTimes(0);
-        // })
-    // })
+    describe('test common fields', () => {
+        const restartGameMock = jest.fn();
+        const exitGameMock = jest.fn();
+        const players = [{name:'user'},{name:'computer'}];
+        beforeEach(() => {
+            render(<ResultModal restartGame={restartGameMock} players={players} 
+                exitGame={exitGameMock} bg={"success"} winner={null}/>);
+        })
+        afterEach(() => {
+            restartGameMock.mockReset();
+            exitGameMock.mockReset();
+        })
+        it('should show modal with both buttons', () => {
+            const btn1 = screen.queryByText(/Play Again/i);
+            const btn2 = screen.queryByText(/Exit/i);
+            expect(btn1).toBeTruthy();
+            expect(btn2).toBeInTheDocument();
+        })
+        it('should restart game on Play Again', () => {
+            fireEvent.click(screen.queryByText(/Play Again/i));
+            expect(restartGameMock).toHaveBeenCalledWith(null);
+        })
+        it('should exit game on Exit', () => {
+            fireEvent.click(screen.queryByText(/Exit/i));
+            expect(exitGameMock).toHaveBeenCalledTimes(1);
+        })
+    })
 })
