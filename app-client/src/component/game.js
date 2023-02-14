@@ -1,7 +1,7 @@
 import React from 'react';
 import Board from './board';
 import { ResultModal } from './modals/result';
-import { GameStatus } from './gameStatus';
+import { ScoreCard } from './scoreCard';
 import { RestartModal } from './modals/restart';
 import { ExitModal } from './modals/exit';
 import calculateWinner from '../utils/winner';
@@ -208,7 +208,7 @@ class Game extends React.Component {
             </div>
             <div className='col-lg-3 col-sm-12 neumorphism-div'>
               {/* <div className="neumorphism-div"> */}
-                <GameStatus players={this.state.players} />
+                <ScoreCard players={this.state.players} />
               {/* </div> */}
             </div>
           </div>
