@@ -1,4 +1,4 @@
-import { screen, render , fireEvent} from "@testing-library/react";
+import { render } from "@testing-library/react";
 import Board from "./board";
 
 describe("test board", () => {
