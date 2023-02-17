@@ -14,11 +14,20 @@ const randomMoveMock = jest.spyOn(EasyLevelOpponent.prototype, 'getRandomMove')
                             return 8;
                         })
 describe("test easy level opponent", () => {
-    let opponent = new EasyLevelOpponent('EASY');
+    let opponent;
+    beforeEach(() => {
+        opponent = new EasyLevelOpponent('EASY');
+    })
+    afterEach(() => {
+        sideMoveMock.mokcReset();
+        cornerMoveMock.mokcReset();
+        randomMoveMock.mokcReset();
+    })
     it('should return moves', () => {
         expect(opponent.makeFirstMove([], 0)).toBeGreaterThan(0);
         expect(sideMoveMock).toHaveBeenCalled();
         expect(opponent.makeSecondMove([], 3)).toBeGreaterThan(0);
         expect(opponent.makeThirdMove([], 8)).toBeGreaterThan(0);
     })
+
 })
