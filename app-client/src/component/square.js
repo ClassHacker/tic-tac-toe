@@ -1,6 +1,4 @@
 import './square.scss';
-import styled, { keyframes } from 'styled-components';
-import { zoomIn } from 'react-animations';
 
 function Square(props) {
     return (
