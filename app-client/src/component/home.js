@@ -105,7 +105,7 @@ class Home extends React.Component{
       <div id='main'>
         { !this.state.isGameOn && 
         <>
-        <h1>Tic-Tac-Toe</h1>
+        <h1 className='pulse'>Tic-Tac-Toe</h1>
         <div className='row'>
           <div className='col-md-4 d1'></div>
           <div className='col-md-4 d2'>

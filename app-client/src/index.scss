@@ -37,6 +37,9 @@ h1 {
 .flip {
   animation: 0.25s flip;
 }
+.pulse {
+  animation: 2s pulse;
+}
 @media only screen and (max-width: 600px) {
   html.body{
     overflow-y: scroll;
