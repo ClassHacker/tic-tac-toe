@@ -14,7 +14,7 @@ class Board extends React.Component {
     
     render() {
       return (
-        <div className="board">
+        <div className="board zoomIn">
           <div className="board-row">
             {this.renderSquare(0)}
             {this.renderSquare(1)}
