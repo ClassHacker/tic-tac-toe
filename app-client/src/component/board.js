@@ -8,11 +8,10 @@ class Board extends React.Component {
     getKey() {
       if (this.props.squares.every((value) => value === null)) {
         this.key++;
-        console.log(this.key);
       }
       return this.key;
     }
-    
+
     renderSquare(i) {
       return (
               <Square 
@@ -24,7 +23,7 @@ class Board extends React.Component {
     
     render() {
       return (
-        <div className="board zoomIn" key={this.getKey()}>
+        <div className="board flip" key={this.getKey()}>
           <div className="board-row">
             {this.renderSquare(0)}
             {this.renderSquare(1)}
