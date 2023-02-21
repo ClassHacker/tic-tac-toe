@@ -34,6 +34,9 @@ h1 {
 .zoomIn {
   animation: 2s zoomIn;
 }
+.flip {
+  animation: 0.25s flip;
+}
 @media only screen and (max-width: 600px) {
   html.body{
     overflow-y: scroll;
