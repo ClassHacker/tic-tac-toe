@@ -110,16 +110,16 @@ class Home extends React.Component{
           <div className='col-md-4 d1'></div>
           <div className='col-md-4 d2'>
             <div className="homepage mr-t-10">
-              <button className='home-button' 
+              <button className='home-button zoomIn' 
                 onClick={this.renderForm}
               >Set Username</button>
-              <button className='home-button' 
+              <button className='home-button zoomIn' 
                 onClick={() => this.setState({showLevels: true})}
               >Select Level</button>
-              <button className='home-button' 
+              <button className='home-button zoomIn' 
                 onClick={()=>this.initialGame(true)}
               >Start Game</button>
-              <button className='home-button'
+              <button className='home-button zoomIn'
                 onClick={()=>this.initialGame(false)}
               >Multi Player</button>
               <Modal 
