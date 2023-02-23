@@ -15,7 +15,7 @@ export function ExitModal(props) {
         <span className="status2">Do you really want to exit the game?</span>
       </ModalBody>
       <ModalFooter className="custom-modal-footer">
-        <Button variant="primary" className="min-w" onClick={() => {dispatch(exAction());exitGame()}}>
+        <Button variant="primary" className="min-w" onClick={() => {dispatch(exAction()); exitGame()}}>
           Yes
         </Button>
         <Button variant="primary" className="min-w" onClick={() => dispatch(exAction())}>

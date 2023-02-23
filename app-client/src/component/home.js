@@ -31,7 +31,7 @@ class Home extends React.Component{
   }
 
   handleChange(event) {
-    let userName = event.target.value
+    let userName = event.target.value.replace(/[^a-z0-9]/gi, '');
     this.setState({
       userName: userName
     })
@@ -52,7 +52,7 @@ class Home extends React.Component{
       this.setState({
         isUserNameSet: false,
       })
-      alert("Invalid username")
+      alert("Invalid username!!!\n\nConstraints:\n1. Minimum length 3 characters.\n2. Maximum length 11 characters.\n3. No special characters.\n4. Can't start with number.")
     }
     console.log('userName:', userName)
     event.preventDefault();
@@ -61,7 +61,7 @@ class Home extends React.Component{
   initialGame(isSinglePlayer) {
     // music.playSound("s1");
     if (!isSinglePlayer) {
-      alert(`Multi Player mode isn't available yet 🙂`)
+      alert(`Sorry, Multi Player mode isn't available yet 🙂`)
     }
     else if (!this.state.isUserNameSet) {
       alert('Please set username first!')
@@ -70,7 +70,9 @@ class Home extends React.Component{
       alert('Please select the game level!')
     }
     else {
-      this.startGame2(this.state.userName, isSinglePlayer);
+      setTimeout(() => {
+        this.startGame2(this.state.userName, isSinglePlayer);
+      }, 100);
     }
   }
 
@@ -103,21 +105,21 @@ class Home extends React.Component{
       <div id='main'>
         { !this.state.isGameOn && 
         <>
-        <h1>Tic-Tac-Toe</h1>
+        <h1 className='pulse'>Tic-Tac-Toe</h1>
         <div className='row'>
           <div className='col-md-4 d1'></div>
           <div className='col-md-4 d2'>
             <div className="homepage mr-t-10">
-              <button className='home-button' 
+              <button className='home-button bounceInDown' 
                 onClick={this.renderForm}
               >Set Username</button>
-              <button className='home-button' 
+              <button className='home-button bounceInDown' 
                 onClick={() => this.setState({showLevels: true})}
               >Select Level</button>
-              <button className='home-button' 
+              <button className='home-button bounceInDown' 
                 onClick={()=>this.initialGame(true)}
               >Start Game</button>
-              <button className='home-button'
+              <button className='home-button bounceInDown'
                 onClick={()=>this.initialGame(false)}
               >Multi Player</button>
               <Modal 
@@ -130,8 +132,15 @@ class Home extends React.Component{
                   <Form onSubmit={this.handleSubmit}>
                     <Form.Group controlId={this.state.value} >
                       <Form.Label className="custom-label">Enter your user name</Form.Label>
-                      <Form.Control className="custom-input" type="text" onChange={this.handleChange} autoFocus/>
+                      <Form.Control className="custom-input" type="text" value={this.state.userName} onChange={this.handleChange} autoFocus autoComplete="false"/>
                     </Form.Group>
+                    {/* {false && <>
+                      <label>Minimum length 3 characters</label>
+                      <label>Maximum length 11 characters</label>
+                      <label>No special characters</label>
+                      <label>Can't start with number</label>
+                    </>} */}
+                    <br/>
                     <Button variant="primary" type="submit" >
                       Submit
                     </Button>

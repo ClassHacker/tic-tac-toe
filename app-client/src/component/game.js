@@ -1,14 +1,15 @@
 import React from 'react';
 import Board from './board';
-import { GameStatus, ResultModal } from './modals/result';
+import { ResultModal } from './modals/result';
+import { ScoreCard } from './scoreCard';
 import { RestartModal } from './modals/restart';
 import { ExitModal } from './modals/exit';
-import calculateWinner from '../util/winner';
+import calculateWinner from '../utils/winner';
 import './game.scss';
 // import { Badge } from 'react-bootstrap';
 import { connect } from 'react-redux'
 import { rsAction, exAction } from '../redux/actions';
-import { getOpponent } from '../util/computer/opponent';
+import { getOpponent } from '../utils/computer/opponent';
 
 var player2;
 var player2Copy;
@@ -112,7 +113,7 @@ class Game extends React.Component {
           }
           if(index !== null && index !== undefined) {
             setTimeout(() => this.handleClick(index), 100)
-          } else {
+          } else if(this.state.stepNumber <= 6) {
             console.log("Unable to get move index");
           }
           player2Copy.getCopyOf(player2);
@@ -136,7 +137,6 @@ class Game extends React.Component {
     }
   
     restartGame(winner) {
-      console.log('Restarting...')
       player2 = getOpponent(this.props.level);
       this.setState(
         this.getInitialState()
@@ -148,7 +148,7 @@ class Game extends React.Component {
         }
         return player;
       });
-      console.log('Finished.')
+      console.log('Game restarted.')
     }
 
     restart() {
@@ -189,7 +189,7 @@ class Game extends React.Component {
           <ExitModal exitGame={this.exitGame} />
           <ResultModal restartGame={this.restartGame} exitGame={this.exitGame} bg={bg} winner={winner} players={this.state.players}/>
           <div className='row'>
-            <h1>Tic-Tac-Toe</h1>
+            <h1 className='pulse'>Tic-Tac-Toe</h1>
             <h2 className="level">Level : {this.props.level}</h2>
             <div className='col-lg-3 col-sm-12 neumorphism-div'>
               <div className='buttons'>
@@ -208,7 +208,7 @@ class Game extends React.Component {
             </div>
             <div className='col-lg-3 col-sm-12 neumorphism-div'>
               {/* <div className="neumorphism-div"> */}
-                <GameStatus players={this.state.players} />
+                <ScoreCard players={this.state.players} />
               {/* </div> */}
             </div>
           </div>
