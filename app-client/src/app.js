@@ -1,8 +1,11 @@
-import Home from './component/home'
+import React from 'react';
+import Home from './component/home';
 
 function App() {
     return (
-        <Home/>
+        <React.StrictMode>
+            <Home/>
+        </React.StrictMode>
     )
 }
 
