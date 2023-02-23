@@ -189,7 +189,7 @@ class Game extends React.Component {
           <ExitModal exitGame={this.exitGame} />
           <ResultModal restartGame={this.restartGame} exitGame={this.exitGame} bg={bg} winner={winner} players={this.state.players}/>
           <div className='row'>
-            <h1>Tic-Tac-Toe</h1>
+            <h1 className='pulse'>Tic-Tac-Toe</h1>
             <h2 className="level">Level : {this.props.level}</h2>
             <div className='col-lg-3 col-sm-12 neumorphism-div'>
               <div className='buttons'>
