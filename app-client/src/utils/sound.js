@@ -11,8 +11,11 @@ export function playSound(sound) {
         case "s2":
             audioName = button2;
             break;
-        default:
+        case 'bg':
             audioName = backGround;
+            break;
+        default:
+            audioName = '';
     }
     let audio = new Audio(audioName);
     audio.play();
