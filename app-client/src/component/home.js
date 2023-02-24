@@ -25,6 +25,7 @@ class Home extends React.Component{
   }
 
   setLevel(level) {
+    playSound('b2');
     this.setState({
       level: level,
       showLevels: false
@@ -53,7 +54,10 @@ class Home extends React.Component{
       this.setState({
         isUserNameSet: false,
       })
-      alert("Invalid username!!!\n\nConstraints:\n1. Minimum length 3 characters.\n2. Maximum length 11 characters.\n3. No special characters.\n4. Can't start with number.")
+      playSound('b1');
+      setTimeout(() => {
+        alert("Invalid username!!!\n\nConstraints:\n1. Minimum length 3 characters.\n2. Maximum length 11 characters.\n3. No special characters.\n4. Can't start with number.")
+      }, 100);
     }
     console.log('userName:', userName)
     event.preventDefault();
