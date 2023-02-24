@@ -31,7 +31,15 @@ h1 {
   // background: linear-gradient(145deg, #7b4a4a, #683e3e);
   box-shadow: 5px 5px 0px #2e1c1c, -5px -5px 0px #2e1c1c;
 }
-
+.bounceInDown {
+  animation: 2s bounceInDown;
+}
+.flip {
+  animation: 0.25s flip;
+}
+.pulse {
+  animation: 2s pulse;
+}
 @media only screen and (max-width: 600px) {
   html.body{
     overflow-y: scroll;

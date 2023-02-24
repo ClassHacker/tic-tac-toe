@@ -15,7 +15,7 @@ export class Computer extends SuperComputer {
         // if X is winning
         let steps = String(Math.min(this.X[0], this.X[1])) + String(Math.max(this.X[0], this.X[1]));
         this.O[1] = this.getMoveIndex(steps);
-        console.log('Intermediate move', this.O[1])
+        
         // box is not empty
         if(this.O[1] === this.O[0]) {
             this.O[1] = this.getRandomCornerMove();
@@ -36,6 +36,7 @@ export class Computer extends SuperComputer {
         let index = this.getMoveIndex(steps);
         if (index != null && this.X.indexOf(index) === -1) {
             this.O[2] = index;
+            console.log('third move index:', this.O[2]);
             return this.O[2];
         }
         // if X is winning
@@ -43,6 +44,7 @@ export class Computer extends SuperComputer {
         index = this.getMoveIndex(steps);
         if (index != null && !(this.O.includes(index) || this.X.includes(index))) {
             this.O[2] = index;
+            console.log('third move index:', this.O[2]);
             return this.O[2];
         }
         // if x is winning
@@ -50,6 +52,7 @@ export class Computer extends SuperComputer {
         index = this.getMoveIndex(steps);
         if (index != null && this.O.indexOf(index) === -1 && this.X.indexOf(index) === -1) {
             this.O[2] = index;
+            console.log('third move index:', this.O[2]);
             return this.O[2];
         }
         // nobody is winning
