@@ -5,10 +5,10 @@ import button2 from "./static/b2.wav";
 export function playSound(sound) {
     let audioName = "";
     switch(sound) {
-        case "s1":
+        case "b1":
             audioName = button1;
             break;
-        case "s2":
+        case "b2":
             audioName = button2;
             break;
         case 'bg':
