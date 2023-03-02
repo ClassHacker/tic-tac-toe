@@ -1,6 +1,6 @@
-import backGround from "../static/bg.mp3";
-import button1 from "../static/b1.wav";
-import button2 from "../static/b2.wav";
+import backGround from "../common/bg.mp3";
+import button1 from "../common/b1.wav";
+import button2 from "../common/b2.wav";
  
 export function playSound(sound) {
     let audioName = "";
