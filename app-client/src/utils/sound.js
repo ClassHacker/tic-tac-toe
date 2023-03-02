@@ -17,6 +17,17 @@ export function playSound(sound) {
         default:
             audioName = '';
     }
-    let audio = new Audio(audioName);
-    audio.play();
+    // var promise = 
+    document.getElementById(sound).play();
+
+// if (promise !== undefined) {
+//   promise.then(_ => {
+//     // Autoplay started!
+//   }).catch(error => {
+//     // Autoplay was prevented.
+//     // Show a "Play" button so that user can start playback.
+//   });
+// }
+    // let audio = new Audio(audioName);
+    // audio.play();
 }
