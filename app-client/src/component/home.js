@@ -3,6 +3,7 @@ import { Button, Form, Modal } from 'react-bootstrap';
 import './home.scss';
 import Game from './game';
 import { Level } from './modals/level';
+import { playSound } from '../utils/sound';
 
 class Home extends React.Component{
   constructor(props) {
@@ -24,6 +25,7 @@ class Home extends React.Component{
   }
 
   setLevel(level) {
+    playSound('b2');
     this.setState({
       level: level,
       showLevels: false
@@ -38,7 +40,7 @@ class Home extends React.Component{
   }
 
   handleSubmit(event) {
-    // music.playSound("s1");
+    // playSound("b1");
     let userName = this.state.userName;
     let regex = new RegExp(/^(?=.{3,11}$)(?![0-9])(?!.*[_]{2})[A-Za-z0-9_]+$/)
     console.log('Is it a valid username? ', regex.test(userName))
@@ -52,22 +54,34 @@ class Home extends React.Component{
       this.setState({
         isUserNameSet: false,
       })
-      alert("Invalid username!!!\n\nConstraints:\n1. Minimum length 3 characters.\n2. Maximum length 11 characters.\n3. No special characters.\n4. Can't start with number.")
+      playSound('b1');
+      setTimeout(() => {
+        alert("Invalid username!!!\n\nConstraints:\n1. Minimum length 3 characters.\n2. Maximum length 11 characters.\n3. No special characters.\n4. Can't start with number.")
+      }, 100);
     }
     console.log('userName:', userName)
     event.preventDefault();
   }
 
   initialGame(isSinglePlayer) {
-    // music.playSound("s1");
+    // playSound("b1");
     if (!isSinglePlayer) {
-      alert(`Sorry, Multi Player mode isn't available yet 🙂`)
+      setTimeout(() => {
+        alert(`Sorry, Multi Player mode isn't available yet 🙂`);
+      }, 100);
+      // alert(`Sorry, Multi Player mode isn't available yet 🙂`)
     }
     else if (!this.state.isUserNameSet) {
-      alert('Please set username first!')
+      setTimeout(() => {
+        alert('Please set username first!');
+      }, 100);
+      // alert('Please set username first!')
     }
     else if (!this.state.level.length) {
-      alert('Please select the game level!')
+      setTimeout(() => {
+        alert('Please select the game level!');
+      }, 100);
+      // alert('Please select the game level!');
     }
     else {
       setTimeout(() => {
@@ -77,7 +91,7 @@ class Home extends React.Component{
   }
 
   renderForm() {
-    // music.playSound("s1");
+    playSound("b2");
     this.setState({
       showForm: !this.state.showForm
     });
@@ -114,13 +128,13 @@ class Home extends React.Component{
                 onClick={this.renderForm}
               >Set Username</button>
               <button className='home-button bounceInDown' 
-                onClick={() => this.setState({showLevels: true})}
+                onClick={() => {playSound('b2'); this.setState({showLevels: true})}}
               >Select Level</button>
               <button className='home-button bounceInDown' 
-                onClick={()=>this.initialGame(true)}
+                onClick={()=> {playSound('b2'); this.initialGame(true)}}
               >Start Game</button>
               <button className='home-button bounceInDown'
-                onClick={()=>this.initialGame(false)}
+                onClick={()=> {playSound('b2'); this.initialGame(true)}}
               >Multi Player</button>
               <Modal 
                 show={this.state.showForm} 
