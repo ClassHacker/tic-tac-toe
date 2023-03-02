@@ -17,17 +17,17 @@ export function playSound(sound) {
     //     default:
     //         audioName = '';
     // }
-    // var promise = 
-    document.getElementById(sound).play();
+    var promise = document.getElementById(sound).play();
 
-// if (promise !== undefined) {
-//   promise.then(_ => {
-//     // Autoplay started!
-//   }).catch(error => {
-//     // Autoplay was prevented.
-//     // Show a "Play" button so that user can start playback.
-//   });
-// }
+    if (promise !== undefined) {
+        promise.then(_ => {
+            console.log('playing...');
+        }).catch(error => {
+            console.log(error);
+        });
+    } else {
+        console.log("undefined");
+    }
     // let audio = new Audio(audioName);
     // audio.play();
 }
