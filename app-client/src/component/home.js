@@ -68,6 +68,7 @@ class Home extends React.Component{
       playSound("b1");
       setTimeout(() => {
         alert(`Sorry, Multi Player mode isn't available yet 🙂`);
+        playSound("b2");
       }, 100);
     }
     else if (!this.state.isUserNameSet) {
