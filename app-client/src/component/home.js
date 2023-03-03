@@ -64,26 +64,26 @@ class Home extends React.Component{
   }
 
   initialGame(isSinglePlayer) {
-    // playSound("b1");
     if (!isSinglePlayer) {
+      playSound("b1");
       setTimeout(() => {
         alert(`Sorry, Multi Player mode isn't available yet 🙂`);
       }, 100);
-      // alert(`Sorry, Multi Player mode isn't available yet 🙂`)
     }
     else if (!this.state.isUserNameSet) {
+      // playSound("b1");
       setTimeout(() => {
         alert('Please set username first!');
       }, 100);
-      // alert('Please set username first!')
     }
     else if (!this.state.level.length) {
+      // playSound("b1");
       setTimeout(() => {
         alert('Please select the game level!');
       }, 100);
-      // alert('Please select the game level!');
     }
     else {
+      // playSound("b2");
       setTimeout(() => {
         this.startGame2(this.state.userName, isSinglePlayer);
       }, 100);
