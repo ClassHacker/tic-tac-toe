@@ -134,7 +134,7 @@ class Home extends React.Component{
                 onClick={()=> {playSound('b2'); this.initialGame(true)}}
               >Start Game</button>
               <button className='home-button bounceInDown'
-                onClick={()=> {playSound('b2'); this.initialGame(true)}}
+                onClick={()=> {playSound('b2'); this.initialGame(false)}}
               >Multi Player</button>
               <Modal 
                 show={this.state.showForm} 
