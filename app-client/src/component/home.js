@@ -71,19 +71,19 @@ class Home extends React.Component{
       }, 100);
     }
     else if (!this.state.isUserNameSet) {
-      // playSound("b1");
+      playSound("b1");
       setTimeout(() => {
         alert('Please set username first!');
       }, 100);
     }
     else if (!this.state.level.length) {
-      // playSound("b1");
+      playSound("b1");
       setTimeout(() => {
         alert('Please select the game level!');
       }, 100);
     }
     else {
-      // playSound("b2");
+      playSound("b2");
       setTimeout(() => {
         this.startGame2(this.state.userName, isSinglePlayer);
       }, 100);
@@ -131,7 +131,7 @@ class Home extends React.Component{
                 onClick={() => {playSound('b2'); this.setState({showLevels: true})}}
               >Select Level</button>
               <button className='home-button bounceInDown' 
-                onClick={()=> {playSound('b2'); this.initialGame(true)}}
+                onClick={()=> {this.initialGame(true)}}
               >Start Game</button>
               <button className='home-button bounceInDown'
                 onClick={()=> {this.initialGame(false)}}
