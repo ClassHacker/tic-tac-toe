@@ -40,11 +40,11 @@ class Home extends React.Component{
   }
 
   handleSubmit(event) {
-    // playSound("b1");
     let userName = this.state.userName;
     let regex = new RegExp(/^(?=.{3,11}$)(?![0-9])(?!.*[_]{2})[A-Za-z0-9_]+$/)
     console.log('Is it a valid username? ', regex.test(userName))
     if(regex.test(userName) && userName !=="Computer") {
+      playSound("b2");
       this.setState({
         userName: userName,
         isUserNameSet: true,
