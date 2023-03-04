@@ -57,7 +57,7 @@ class Home extends React.Component{
       playSound('b1');
       setTimeout(() => {
         alert("Invalid username!!!\n\nConstraints:\n1. Minimum length 3 characters.\n2. Maximum length 11 characters.\n3. No special characters.\n4. Can't start with number.")
-      }, 100);
+        playSound("b2");}, 100);
     }
     console.log('userName:', userName)
     event.preventDefault();
