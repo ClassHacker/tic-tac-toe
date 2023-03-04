@@ -88,7 +88,7 @@ class Home extends React.Component{
     else {
       playSound("b2");
       setTimeout(() => {
-        this.startGame2(this.state.userName, isSinglePlayer);
+        this.startGame(this.state.userName, isSinglePlayer);
       }, 100);
     }
   }
@@ -100,7 +100,7 @@ class Home extends React.Component{
     });
   }
 
-  startGame2(Username, isSinglePlayer) {
+  startGame(Username, isSinglePlayer) {
     const userName = isSinglePlayer? 'Computer' : "XYZ";
     this.setState({
       players: [
