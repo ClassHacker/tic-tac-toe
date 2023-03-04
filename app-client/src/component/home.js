@@ -82,6 +82,7 @@ class Home extends React.Component{
       playSound("b1");
       setTimeout(() => {
         alert('Please select the game level!');
+        playSound("b2");
       }, 100);
     }
     else {
