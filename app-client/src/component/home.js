@@ -75,6 +75,7 @@ class Home extends React.Component{
       playSound("b1");
       setTimeout(() => {
         alert('Please set username first!');
+        playSound("b2");
       }, 100);
     }
     else if (!this.state.level.length) {
