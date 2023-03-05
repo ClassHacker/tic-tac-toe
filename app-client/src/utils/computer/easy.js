@@ -34,7 +34,6 @@ export class Computer extends SuperComputer {
         // if O is winning
         let steps = String(Math.min(this.O[0], this.O[1])) + String(Math.max(this.O[0], this.O[1]));
         let index = this.getMoveIndex(steps);
-        // if (index != null && this.X.indexOf(index) === -1) {
         if (index != null && !this.X.includes(index)) {
             this.O[2] = index;
             console.log('third move index:', this.O[2]);
@@ -51,7 +50,6 @@ export class Computer extends SuperComputer {
         // Check again if x is winning
         steps = String(Math.min(this.X[1], this.X[2])) + String(Math.max(this.X[1], this.X[2]));
         index = this.getMoveIndex(steps);
-        // if (index != null && this.O.indexOf(index) === -1 && this.X.indexOf(index) === -1) {
         if (index != null && !(this.O.includes(index) || this.X.includes(index))) {
             this.O[2] = index;
             console.log('third move index:', this.O[2]);
