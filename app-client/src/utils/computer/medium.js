@@ -41,10 +41,10 @@ export class Computer extends SuperComputer {
             this.O[2] = index;
             return this.O[2];
         }
-        // if x is winning
+        // Check again if x is winning
         steps = String(Math.min(this.X[1], this.X[2])) + String(Math.max(this.X[1], this.X[2]));
         index = this.getMoveIndex(steps);
-        if (index != null && this.O.indexOf(index) === -1 && this.X.indexOf(index) === -1) {
+        if (index != null && !(this.O.includes(index) || this.X.includes(index))) {
             this.O[2] = index;
             return this.O[2];
         }
