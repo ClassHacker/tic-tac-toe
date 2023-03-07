@@ -10,6 +10,7 @@ import './game.scss';
 import { connect } from 'react-redux'
 import { rsAction, exAction } from '../redux/actions';
 import { getOpponent } from '../utils/computer/opponent';
+import { playSound } from '../utils/sound';
 
 var player2;
 var player2Copy;
@@ -152,16 +153,17 @@ class Game extends React.Component {
     }
 
     restart() {
+      playSound("b2");
       const { dispatchRestart } = this.props;
       dispatchRestart();
     }
   
     exitGame() {
-      // music.playSound("s1");
       window.location.reload();
     }
 
     exit() {
+      playSound("b2");
       const { dispatchExit } = this.props;
       dispatchExit();
     }
