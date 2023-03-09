@@ -310,7 +310,7 @@ export class SuperComputer {
         let indexes = [];
         for(let i = 0; i < 9; i++) {
             // if (this.X.indexOf(indexes[i]) === -1 && this.O.indexOf(indexes[i]) === -1) {
-            if (!(this.X.includes(i) || this.O.includes(i))) {
+            if (!(this.X.includes(indexes[i]) || this.O.includes(indexes[i]))) {
                 indexes.push(i);
             }
         }
