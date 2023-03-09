@@ -309,8 +309,8 @@ export class SuperComputer {
         this.X[3] = ind;
         let indexes = [];
         for(let i = 0; i < 9; i++) {
-            // if (this.X.indexOf(indexes[i]) === -1 && this.O.indexOf(indexes[i]) === -1) {
-            if (!(this.X.includes(indexes[i]) || this.O.includes(indexes[i]))) {
+            // if (this.X.indexOf(i) === -1 && this.O.indexOf(i) === -1) {
+            if (!(this.X.includes(i) || this.O.includes(i))) {
                 indexes.push(i);
             }
         }
