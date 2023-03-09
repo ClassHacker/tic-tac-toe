@@ -295,7 +295,7 @@ export class SuperComputer {
         let indexes = [1, 3, 5, 7];
         for(let i = 0; i < indexes.length; i++){
             // if (this.X.indexOf(indexes[i]) === -1 && this.O.indexOf(indexes[i]) === -1) {
-            if (!(this.X.includes(i) || this.O.includes(i))) {
+            if (!(this.X.includes(indexes[i]) || this.O.includes(indexes[i]))) {
                 this.O[2] = indexes[i];
                 console.log('third move index:', this.O[2]);
                 return this.O[2];
