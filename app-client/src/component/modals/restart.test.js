@@ -2,6 +2,8 @@ import { screen, fireEvent } from "@testing-library/react";
 import { renderWithProviders } from "../../utils/test/test-utils";
 import { RestartModal } from "./restart";
 
+jest.mock('../../utils/sound');
+
 describe('test restart modal', ()=> {
     const restartGameMock = jest.fn();
     beforeEach(() => {

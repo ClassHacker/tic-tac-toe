@@ -2,6 +2,8 @@ import { screen, fireEvent } from "@testing-library/react";
 import { ExitModal } from "./exit";
 import { renderWithProviders } from "../../utils/test/test-utils";
 
+jest.mock('../../utils/sound');
+
 describe('test exit modal', ()=> {
     it('should render exitModal', () => {
         renderWithProviders(<ExitModal />, { preloadedState: {exR: true} });
