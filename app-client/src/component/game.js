@@ -177,9 +177,11 @@ class Game extends React.Component {
       let bg = "primary";
       if (winner) {
         bg = "success";
+        playSound('b1');
         // status = 'Winner : ' + winner;
       } else if(this.state.stepNumber === 9) {
         bg = "success";
+        playSound('b1');
         // status = "Draw";
       } else {
         // status = 'Current Player : ' + (this.state.xIsNext ? this.state.players[0].name : this.state.players[1].name);
