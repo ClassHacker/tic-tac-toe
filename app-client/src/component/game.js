@@ -92,7 +92,7 @@ class Game extends React.Component {
   
     makeMove(i){
       if(player2.X.indexOf(i) === -1 && player2.O.indexOf(i) === -1) {
-        // music.playSound("s1"); 
+        playSound("b3"); 
         this.handleClick(i);
         let index = null;
         if (this.props.isSinglePlayer === true) {
@@ -113,7 +113,10 @@ class Game extends React.Component {
               index = undefined;
           }
           if(index !== null && index !== undefined) {
-            setTimeout(() => this.handleClick(index), 100)
+            setTimeout(() => { 
+              this.handleClick(index);
+              playSound("b3"); 
+            }, 400)
           } else if(this.state.stepNumber <= 6) {
             console.log("Unable to get move index");
           }
