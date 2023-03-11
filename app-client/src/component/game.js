@@ -115,7 +115,7 @@ class Game extends React.Component {
           if(index !== null && index !== undefined) {
             setTimeout(() => { 
               this.handleClick(index);
-              playSound("c1"); 
+              playSound("c2"); 
             }, 400)
           } else if(this.state.stepNumber <= 6) {
             console.log("Unable to get move index");
