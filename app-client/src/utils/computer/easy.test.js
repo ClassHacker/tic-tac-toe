@@ -4,17 +4,20 @@ import { Computer as EasyLevelOpponent } from './easy';
 const sideMoveMock = jest.spyOn(EasyLevelOpponent.prototype, 'getRandomSideMove').mockImplementation(() => 1)
 const cornerMoveMock = jest.spyOn(EasyLevelOpponent.prototype, 'getRandomCornerMove').mockImplementation(() => 6)
 const randomMoveMock = jest.spyOn(EasyLevelOpponent.prototype, 'getRandomMove').mockImplementation(() => 4)
+let log = jest.spyOn(console, "log").mockImplementation(() => {});
 
 describe("test easy level opponent", () => {
     let opponent;
     beforeEach(() => {
         opponent = new EasyLevelOpponent('EASY');
+        log = jest.spyOn(console, "warn").mockImplementation(() => {});
     })
     afterEach(() => {
         opponent = null;
         sideMoveMock.mockClear();
         cornerMoveMock.mockClear();
         randomMoveMock.mockClear();
+        log.mockClear();
     })
     it('should make correct moves when computer is winning 1', () => {
         expect(opponent.makeFirstMove([], 0)).toBeGreaterThan(0);
