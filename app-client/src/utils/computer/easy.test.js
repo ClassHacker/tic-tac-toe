@@ -9,7 +9,7 @@ describe("test easy level opponent", () => {
     let log;
     beforeEach(() => {
         opponent = new EasyLevelOpponent('EASY');
-        log = jest.spyOn(console, "warn").mockImplementation(() => {});
+        log = jest.spyOn(console, "log").mockImplementation(() => {});
     })
     afterEach(() => {
         opponent = null;
