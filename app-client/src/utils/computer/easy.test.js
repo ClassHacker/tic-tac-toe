@@ -1,13 +1,12 @@
-// const EasyLevelOpponent = require('./easy');
 import { Computer as EasyLevelOpponent } from './easy';
 
 const sideMoveMock = jest.spyOn(EasyLevelOpponent.prototype, 'getRandomSideMove').mockImplementation(() => 1)
 const cornerMoveMock = jest.spyOn(EasyLevelOpponent.prototype, 'getRandomCornerMove').mockImplementation(() => 6)
 const randomMoveMock = jest.spyOn(EasyLevelOpponent.prototype, 'getRandomMove').mockImplementation(() => 4)
-let log = jest.spyOn(console, "log").mockImplementation(() => {});
 
 describe("test easy level opponent", () => {
     let opponent;
+    let log;
     beforeEach(() => {
         opponent = new EasyLevelOpponent('EASY');
         log = jest.spyOn(console, "warn").mockImplementation(() => {});
