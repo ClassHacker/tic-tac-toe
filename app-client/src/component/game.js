@@ -180,7 +180,7 @@ class Game extends React.Component {
       let bg = "primary";
       if (winner) {
         bg = "success";
-        playSound('w1');
+        playSound('b1');
         // status = 'Winner : ' + winner;
       } else if(this.state.stepNumber === 9) {
         bg = "success";
