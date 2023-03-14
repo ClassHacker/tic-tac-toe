@@ -214,9 +214,7 @@ class Game extends React.Component {
               </div>
             </div>
             <div className='col-lg-3 col-sm-12 neumorphism-div'>
-              {/* <div className="neumorphism-div"> */}
                 <ScoreCard players={this.state.players} />
-              {/* </div> */}
             </div>
           </div>
         </>
