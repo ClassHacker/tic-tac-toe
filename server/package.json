@@ -1,12 +1,12 @@
 {
-  "name": "tic-tac-toe-api",
+  "name": "server",
   "version": "1.0.0",
   "description": "Api for tic tac toe",
   "main": "src/server.js",
   "scripts": {
     "test": "echo \"test\"",
     "build": "cd .. && cd app-client && npm i && npm run build",
-    "start": "nodemon src/app.js"
+    "start": "nodemon src/server.js"
   },
   "author": "ClassHacker",
   "license": "ISC",
