@@ -30,9 +30,13 @@ class Game extends React.Component {
         stepNumber : 0,
         xIsNext : true, 
         players : props.players,
+        socket : props.socket,
       }
       this.exitGame = this.exitGame.bind(this);
       this.restartGame = this.restartGame.bind(this);
+      this.makeMove = this.makeMove.bind(this);
+      this.sendMove = this.sendMove.bind(this);
+      this.getMove = this.getMove.bind(this);
       initializeSecondPlayer(props.level);
     }
   
@@ -124,6 +128,32 @@ class Game extends React.Component {
         }
       }
     }
+
+    sendMove(i) {
+      if (this.props.isSinglePlayer !== true) {
+        console.log('sending move index to server', i);
+        
+        setTimeout(() => {
+          this.props.socket.emit('move', i);
+        }, 200)
+      }
+    }
+
+    getMove() {
+      if (this.props.isSinglePlayer !== true) {
+        let index = undefined;
+        this.props.socket.on('move', (i) => {
+          console.log('received move index from server', i);
+          index = i;
+        })
+        if (index !== undefined) {
+          console.log('making move');
+          setTimeout(() => {
+            this.makeMove(index);
+          }, 200)
+        }
+      }
+    }
   
     jumpTo(step){
       // music.playSound("s1");
@@ -209,7 +239,7 @@ class Game extends React.Component {
                 {/* <span className="status"><Badge bg={bg} pill>{status}</Badge></span> */}
                 <Board 
                   squares={current.squares}
-                  onClick={(i)=>{this.makeMove(i)}}
+                  onClick={(i)=>{this.makeMove(i); this.sendMove(i); this.getMove();}}
                 />
               </div>
             </div>

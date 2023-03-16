@@ -4,6 +4,7 @@ import './home.scss';
 import Game from './game';
 import { Level } from './modals/level';
 import { playSound } from '../utils/sound';
+import { io } from 'socket.io-client';
 
 class Home extends React.Component{
   constructor(props) {
@@ -17,6 +18,7 @@ class Home extends React.Component{
       isGameOn: false,
       level: "",
       showLevels: false,
+      socket: undefined,
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -67,8 +69,11 @@ class Home extends React.Component{
     if (!isSinglePlayer) {
       playSound("b1");
       setTimeout(() => {
-        alert(`Sorry, Multi Player mode isn't available yet 🙂`);
-        playSound("b2");
+        const socket = io("http://localhost:8080");
+        this.setState({socket : socket});
+        this.startGame(this.state.userName, isSinglePlayer);
+        // alert(`Sorry, Multi Player mode isn't available yet 🙂`);
+        // playSound("b2");
       }, 100);
     }
     else if (!this.state.isUserNameSet) {
@@ -170,7 +175,7 @@ class Home extends React.Component{
           <div className='col-md-4 d3'></div>
         </div>
         </> }
-        { this.state.isGameOn && <Game players = {this.state.players} isSinglePlayer = {this.state.isSinglePlayer} level = {this.state.level}/> }
+        { this.state.isGameOn && <Game players = {this.state.players} isSinglePlayer = {this.state.isSinglePlayer} level = {this.state.level} socket = {this.state.socket} /> }
       </div>
     )
   }
