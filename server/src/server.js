@@ -1,9 +1,9 @@
- const io = require("socket.io")(3000, {
+ const io = require("socket.io")(8080, {
     cors: {
-        origin: ["*"]
+        origin: ["http://localhost:3000"] 
     }
  });
 
  io.on('connection', socket => {
-    console.log(socket.id, connected);
+    console.log(socket.id, "connected");
  })

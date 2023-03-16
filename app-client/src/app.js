@@ -4,7 +4,8 @@ import Audio from './component/audio';
 import { io } from 'socket.io-client'
 
 function App() {
-    const socket = io("http://localhost:3000")
+    const socket = io("http://localhost:8080")
+    console.log('socket', socket);
     return (
         <React.StrictMode>
             <Home/>
