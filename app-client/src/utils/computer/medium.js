@@ -16,6 +16,7 @@ export class Computer extends SuperComputer {
         let steps = String(Math.min(this.X[0], this.X[1])) + String(Math.max(this.X[0], this.X[1]));
         this.O[1] = this.getMoveIndex(steps);
         console.log('Intermediate move', this.O[1])
+        
         // if X is not winning
         if(this.O[1] === null || this.O[1] === this.O[0]) {
             this.O[1] = this.getRandomMove();
@@ -30,7 +31,7 @@ export class Computer extends SuperComputer {
         // if O is winning
         let steps = String(Math.min(this.O[0], this.O[1])) + String(Math.max(this.O[0], this.O[1]));
         let index = this.getMoveIndex(steps);
-        if (index != null && this.X.indexOf(index) === -1) {
+        if (index != null && !this.X.includes(index)) {
             this.O[2] = index;
             return this.O[2];
         }
@@ -41,10 +42,10 @@ export class Computer extends SuperComputer {
             this.O[2] = index;
             return this.O[2];
         }
-        // if x is winning
+        // Check again if x is winning
         steps = String(Math.min(this.X[1], this.X[2])) + String(Math.max(this.X[1], this.X[2]));
         index = this.getMoveIndex(steps);
-        if (index != null && this.O.indexOf(index) === -1 && this.X.indexOf(index) === -1) {
+        if (index != null && !(this.O.includes(index) || this.X.includes(index))) {
             this.O[2] = index;
             return this.O[2];
         }

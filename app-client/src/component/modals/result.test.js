@@ -1,6 +1,8 @@
 import { screen, fireEvent, render } from "@testing-library/react";
 import { ResultModal } from "./result";
 
+jest.mock('../../utils/sound');
+
 describe('test result modal', ()=> {
     it('should show modal when user wins the match', () => {
         const players = [{name:'user'},{name:'computer'}];

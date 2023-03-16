@@ -10,6 +10,7 @@ import './game.scss';
 import { connect } from 'react-redux'
 import { rsAction, exAction } from '../redux/actions';
 import { getOpponent } from '../utils/computer/opponent';
+import { playSound } from '../utils/sound';
 
 var player2;
 var player2Copy;
@@ -91,7 +92,7 @@ class Game extends React.Component {
   
     makeMove(i){
       if(player2.X.indexOf(i) === -1 && player2.O.indexOf(i) === -1) {
-        // music.playSound("s1"); 
+        playSound("c1"); 
         this.handleClick(i);
         let index = null;
         if (this.props.isSinglePlayer === true) {
@@ -112,7 +113,10 @@ class Game extends React.Component {
               index = undefined;
           }
           if(index !== null && index !== undefined) {
-            setTimeout(() => this.handleClick(index), 100)
+            setTimeout(() => { 
+              this.handleClick(index);
+              playSound("c2"); 
+            }, 400)
           } else if(this.state.stepNumber <= 6) {
             console.log("Unable to get move index");
           }
@@ -152,16 +156,17 @@ class Game extends React.Component {
     }
 
     restart() {
+      playSound("b2");
       const { dispatchRestart } = this.props;
       dispatchRestart();
     }
   
     exitGame() {
-      // music.playSound("s1");
       window.location.reload();
     }
 
     exit() {
+      playSound("b2");
       const { dispatchExit } = this.props;
       dispatchExit();
     }
@@ -175,9 +180,11 @@ class Game extends React.Component {
       let bg = "primary";
       if (winner) {
         bg = "success";
+        playSound('b1');
         // status = 'Winner : ' + winner;
       } else if(this.state.stepNumber === 9) {
         bg = "success";
+        playSound('b1');
         // status = "Draw";
       } else {
         // status = 'Current Player : ' + (this.state.xIsNext ? this.state.players[0].name : this.state.players[1].name);
@@ -207,9 +214,7 @@ class Game extends React.Component {
               </div>
             </div>
             <div className='col-lg-3 col-sm-12 neumorphism-div'>
-              {/* <div className="neumorphism-div"> */}
                 <ScoreCard players={this.state.players} />
-              {/* </div> */}
             </div>
           </div>
         </>

@@ -40,11 +40,11 @@ class Home extends React.Component{
   }
 
   handleSubmit(event) {
-    // playSound("b1");
     let userName = this.state.userName;
     let regex = new RegExp(/^(?=.{3,11}$)(?![0-9])(?!.*[_]{2})[A-Za-z0-9_]+$/)
     console.log('Is it a valid username? ', regex.test(userName))
     if(regex.test(userName) && userName !=="Computer") {
+      playSound("b2");
       this.setState({
         userName: userName,
         isUserNameSet: true,
@@ -57,35 +57,38 @@ class Home extends React.Component{
       playSound('b1');
       setTimeout(() => {
         alert("Invalid username!!!\n\nConstraints:\n1. Minimum length 3 characters.\n2. Maximum length 11 characters.\n3. No special characters.\n4. Can't start with number.")
-      }, 100);
+        playSound("b2");}, 100);
     }
     console.log('userName:', userName)
     event.preventDefault();
   }
 
   initialGame(isSinglePlayer) {
-    // playSound("b1");
     if (!isSinglePlayer) {
+      playSound("b1");
       setTimeout(() => {
         alert(`Sorry, Multi Player mode isn't available yet 🙂`);
+        playSound("b2");
       }, 100);
-      // alert(`Sorry, Multi Player mode isn't available yet 🙂`)
     }
     else if (!this.state.isUserNameSet) {
+      playSound("b1");
       setTimeout(() => {
         alert('Please set username first!');
+        playSound("b2");
       }, 100);
-      // alert('Please set username first!')
     }
     else if (!this.state.level.length) {
+      playSound("b1");
       setTimeout(() => {
         alert('Please select the game level!');
+        playSound("b2");
       }, 100);
-      // alert('Please select the game level!');
     }
     else {
+      playSound("b2");
       setTimeout(() => {
-        this.startGame2(this.state.userName, isSinglePlayer);
+        this.startGame(this.state.userName, isSinglePlayer);
       }, 100);
     }
   }
@@ -97,7 +100,7 @@ class Home extends React.Component{
     });
   }
 
-  startGame2(Username, isSinglePlayer) {
+  startGame(Username, isSinglePlayer) {
     const userName = isSinglePlayer? 'Computer' : "XYZ";
     this.setState({
       players: [
@@ -131,10 +134,10 @@ class Home extends React.Component{
                 onClick={() => {playSound('b2'); this.setState({showLevels: true})}}
               >Select Level</button>
               <button className='home-button bounceInDown' 
-                onClick={()=> {playSound('b2'); this.initialGame(true)}}
+                onClick={()=> {this.initialGame(true)}}
               >Start Game</button>
               <button className='home-button bounceInDown'
-                onClick={()=> {playSound('b2'); this.initialGame(true)}}
+                onClick={()=> {this.initialGame(false)}}
               >Multi Player</button>
               <Modal 
                 show={this.state.showForm} 
