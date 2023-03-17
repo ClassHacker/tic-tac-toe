@@ -38,6 +38,7 @@ class Game extends React.Component {
       this.sendMove = this.sendMove.bind(this);
       this.getMove = this.getMove.bind(this);
       initializeSecondPlayer(props.level);
+      this.getMove();
     }
   
     getInitialState(){
