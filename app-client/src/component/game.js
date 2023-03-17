@@ -139,19 +139,12 @@ class Game extends React.Component {
       }
     }
 
-    getMove() {
+    async getMove() {
       if (this.props.isSinglePlayer !== true) {
-        let index = undefined;
-        this.props.socket.on('move', (i) => {
+        await this.props.socket.on('move', (i) => {
           console.log('received move index from server', i);
-          index = i;
+          this.makeMove(i);
         })
-        if (index !== undefined) {
-          console.log('making move');
-          setTimeout(() => {
-            this.makeMove(index);
-          }, 200)
-        }
       }
     }
   
