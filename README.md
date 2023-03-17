@@ -31,6 +31,6 @@ Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
 - [x] Game Levels (easy/medium/hard)
 - [x] Animation
-- [ ] Sound
+- [x] Sound
 - [ ] Multiplayer Mode
 - [ ] 5x5 Board
