@@ -1,3 +1,4 @@
+const { instrument } = require("@socket.io/admin-ui");
 const io = require("socket.io")(8080, {
   cors: {
     origin: ["http://localhost:3000"]
@@ -11,3 +12,7 @@ io.on('connection', socket => {
     socket.broadcast.emit('move', i);
   })
 })
+
+instrument(io, {
+  auth: false
+});
