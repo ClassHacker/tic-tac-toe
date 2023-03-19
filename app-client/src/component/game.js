@@ -38,7 +38,9 @@ class Game extends React.Component {
       this.sendMove = this.sendMove.bind(this);
       this.getMove = this.getMove.bind(this);
       initializeSecondPlayer(props.level);
-      this.getMove();
+      if (this.props.socket !== undefined) {
+        this.getMove();
+      }
     }
 
     getInitialState(){
@@ -230,7 +232,7 @@ class Game extends React.Component {
             </div>
             <div className="col-lg-6 col-sm-12 neumorphism-div">
               <div className="game-board">
-                {/* <span className="status"><Badge bg={bg} pill>{status}</Badge></span> */}
+                {/* <span className="status"><Badge bg={bg} pill>{status}</Badge></span> */}-
                 <Board 
                   squares={current.squares}
                   onClick={(i)=>{this.makeMove(i); this.sendMove(i); this.getMove();}}

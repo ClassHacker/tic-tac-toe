@@ -152,7 +152,7 @@ export class SuperComputer {
         }
         // if (this.col.indexOf(0) === 1 && this.row.indexOf(0) === 1){
         if (this.col.indexOf(0) === 1 && this.row.indexOf(0) === 1){
-            return this.getRandom([1,7, 3, 5]);
+            return this.getRandom([1, 3, 5, 7]);
         }
         return this.getRandomCornerMove();
     }
