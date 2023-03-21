@@ -70,10 +70,9 @@ class Home extends React.Component{
       playSound("b1");
       setTimeout(() => {
         const socket = io("http://localhost:8080");
+        socket.emit('register', this.state.userName)
         this.setState({socket : socket});
         this.startGame(this.state.userName, isSinglePlayer);
-        // alert(`Sorry, Multi Player mode isn't available yet 🙂`);
-        // playSound("b2");
       }, 100);
     }
     else if (!this.state.isUserNameSet) {
