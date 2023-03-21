@@ -1,5 +1,6 @@
 import React from 'react';
 import { Button, Form, Modal } from 'react-bootstrap';
+import { LoadingModal } from './modals/loading';
 import './home.scss';
 import Game from './game';
 import { Level } from './modals/level';
@@ -79,7 +80,7 @@ class Home extends React.Component{
         const socket = io("http://localhost:8080");
         socket.emit('register', this.state.userName);
         this.setState({socket : socket});
-        this.startGame(this.state.userName, isSinglePlayer);
+        // this.startGame(this.state.userName, isSinglePlayer);
       }, 100);
     }
     else if (!this.state.level.length) {
@@ -126,6 +127,7 @@ class Home extends React.Component{
       <div id='main'>
         { !this.state.isGameOn && 
         <>
+        <LoadingModal socket={this.state.socket}/>
         <h1 className='pulse'>Tic-Tac-Toe</h1>
         <div className='row'>
           <div className='col-md-4 d1'></div>
