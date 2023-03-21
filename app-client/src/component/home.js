@@ -66,20 +66,20 @@ class Home extends React.Component{
   }
 
   initialGame(isSinglePlayer) {
-    if (!isSinglePlayer) {
-      playSound("b1");
-      setTimeout(() => {
-        const socket = io("http://localhost:8080");
-        socket.emit('register', this.state.userName)
-        this.setState({socket : socket});
-        this.startGame(this.state.userName, isSinglePlayer);
-      }, 100);
-    }
-    else if (!this.state.isUserNameSet) {
+    if (!this.state.isUserNameSet) {
       playSound("b1");
       setTimeout(() => {
         alert('Please set username first!');
         playSound("b2");
+      }, 100);
+    }
+    else if (!isSinglePlayer) {
+      playSound("b2");
+      setTimeout(() => {
+        const socket = io("http://localhost:8080");
+        socket.emit('register', this.state.userName);
+        this.setState({socket : socket});
+        this.startGame(this.state.userName, isSinglePlayer);
       }, 100);
     }
     else if (!this.state.level.length) {
