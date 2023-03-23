@@ -3,7 +3,7 @@ import ReactLoading from "react-loading";
 
 export function LoadingModal(props) {
   let socket = props.socket !== undefined;
-  getSecondPlayer();
+  if (socket) getSecondPlayer();
   async function getSecondPlayer() {
     props.socket.emit('find');
     await props.socket.on('found', opponent => {
