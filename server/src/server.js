@@ -1,7 +1,7 @@
 const { instrument } = require("@socket.io/admin-ui");
 const io = require("socket.io")(8080, {
   cors: {
-    origin: ["http://localhost:3000", "https://admin.socket.io"]
+    origin: ["http://localhost:3000", "http://192.168.1.4:3000", "https://admin.socket.io"]
   }
 });
 
@@ -9,13 +9,15 @@ const players = new Map();
 
 io.on('connection', socket => {
   console.log(socket.id, "connected");
+  console.log("currently available players", players);
 
   socket.on('register', user => {
-    console.log('Setting username to:', user);
     if(players.has(user)) {
+      console.log(user, " registeration failed");
       socket.emit('failed', `An user is already present with username: ${user}`);
     } else {
-      players.set(user, socket.id);
+      console.log(user, "registered");
+      players.set(user, {id: socket.id, playing: false});
     }
   });
 
@@ -25,6 +27,11 @@ io.on('connection', socket => {
   });
 
 });
+
+io.on('find', socket => {
+  console.log(socket.id, "find req received");
+  console.log("currently available players", players);
+})
 
 instrument(io, {
   auth: false
