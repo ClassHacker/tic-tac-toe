@@ -127,7 +127,7 @@ class Home extends React.Component{
       <div id='main'>
         { !this.state.isGameOn && 
         <>
-        <LoadingModal socket={this.state.socket}/>
+        <LoadingModal socket={this.state.socket} fn={this.startGame}/>
         <h1 className='pulse'>Tic-Tac-Toe</h1>
         <div className='row'>
           <div className='col-md-4 d1'></div>
