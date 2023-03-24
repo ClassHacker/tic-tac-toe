@@ -79,8 +79,10 @@ class Home extends React.Component{
       setTimeout( async () => {
         const socket = io("http://localhost:8080");
         socket.emit('register', this.state.userName);
-        await socket.on('fail', () => {          
+        await socket.on('fail', (msg) => {          
           this.setState({socket : undefined});
+          console.log('User registration failed');
+          alert(msg);
         })
         this.setState({socket : socket});
         // this.startGame(this.state.userName, isSinglePlayer);
