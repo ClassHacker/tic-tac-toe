@@ -76,9 +76,12 @@ class Home extends React.Component{
     }
     else if (!isSinglePlayer) {
       playSound("b2");
-      setTimeout(() => {
+      setTimeout( async () => {
         const socket = io("http://localhost:8080");
         socket.emit('register', this.state.userName);
+        await socket.on('fail', () => {          
+          this.setState({socket : undefined});
+        })
         this.setState({socket : socket});
         // this.startGame(this.state.userName, isSinglePlayer);
       }, 100);
