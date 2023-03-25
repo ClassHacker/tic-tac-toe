@@ -15,7 +15,7 @@ io.on('connection', socket => {
     username = user;
     if(players.has(user)) {
       console.log(user, "registration failed");
-      socket.emit('fail', `An user is already present with username: ${user}`);
+      socket.emit('fail', `An user is already present with username: ${user} \nPlease try again with a different usernmame.`);
       console.log("currently available players", players);
     } else {
       console.log(user, "registered");

@@ -81,8 +81,11 @@ class Home extends React.Component{
       await socket.on('fail', (msg) => {          
         this.setState({socket : undefined});
         console.log('User registration failed');
-        setTimeout(() => alert(msg), 100);
-      })
+        setTimeout(() => {
+          alert(msg);
+          this.renderForm();
+        },100);
+      });
       await socket.on('success', () => {  
         console.log('User registration successful');
         this.setState({socket : socket});
