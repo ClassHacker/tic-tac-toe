@@ -14,13 +14,14 @@ io.on('connection', socket => {
   socket.on('register', user => {
     username = user;
     if(players.has(user)) {
-      console.log(user, " registeration failed");
+      console.log(user, "registration failed");
       socket.emit('fail', `An user is already present with username: ${user}`);
       console.log("currently available players", players);
     } else {
       console.log(user, "registered");
       players.set(user, {id: socket.id, playing: false});
       console.log("currently available players", players);
+      socket.emit("success");
     }
   });
 
