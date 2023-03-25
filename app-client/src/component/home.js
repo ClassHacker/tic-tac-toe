@@ -66,7 +66,7 @@ class Home extends React.Component{
     event.preventDefault();
   }
 
-  async initialGame(isSinglePlayer) {
+  initialGame(isSinglePlayer) {
     if (!this.state.isUserNameSet) {
       playSound("b1");
       setTimeout(() => {
@@ -78,7 +78,7 @@ class Home extends React.Component{
       playSound("b2");
       const socket = io("http://localhost:8080");
       socket.emit('register', this.state.userName);
-      await socket.on('fail', (msg) => {          
+      socket.on('fail', (msg) => {          
         this.setState({socket : undefined});
         console.log('User registration failed');
         setTimeout(() => {
@@ -86,7 +86,7 @@ class Home extends React.Component{
           this.renderForm();
         },100);
       });
-      await socket.on('success', () => {  
+      socket.on('success', () => {  
         console.log('User registration successful');
         this.setState({socket : socket});
       })
