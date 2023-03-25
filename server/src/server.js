@@ -8,22 +8,30 @@ const io = require("socket.io")(8080, {
 const players = new Map();
 
 io.on('connection', socket => {
+  let username;
   console.log(socket.id, "connected");
-  console.log("currently available players", players);
 
   socket.on('register', user => {
+    username = user;
     if(players.has(user)) {
       console.log(user, " registeration failed");
       socket.emit('fail', `An user is already present with username: ${user}`);
+      console.log("currently available players", players);
     } else {
       console.log(user, "registered");
       players.set(user, {id: socket.id, playing: false});
+      console.log("currently available players", players);
     }
   });
 
   socket.on('move', i => {
     console.log('received move index: ', i);
     socket.broadcast.emit('move', i);
+  });
+
+  socket.conn.on("close", (reason) => {
+    console.log(reason, username);
+    if(players.has(username)) players.delete(username);
   });
 
 });
