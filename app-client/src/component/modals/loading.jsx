@@ -1,4 +1,4 @@
-import { Modal } from 'react-bootstrap';
+import { Modal, ModalBody, ModalFooter } from 'react-bootstrap';
 import ReactLoading from "react-loading";
 
 export function LoadingModal(props) {
@@ -12,7 +12,12 @@ export function LoadingModal(props) {
   }
   return (
     <Modal show={socket}>
-      <ReactLoading type="spokes" color="#0000FF" height={100} width={50} />
+      <ModalBody>
+        <span className="status2">Waiting for another player</span>
+      </ModalBody>
+      <ModalFooter>
+        <ReactLoading type="spokes" color="#0000FF" height={100} width={50} />
+      </ModalFooter>
     </Modal>
   )
 }
