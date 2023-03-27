@@ -1,4 +1,3 @@
-/* eslint-disable react/react-in-jsx-scope */
 /* eslint-disable react/prop-types */
 /* eslint-disable semi */
 import { Modal, ModalBody, ModalFooter } from 'react-bootstrap';
