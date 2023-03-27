@@ -15,7 +15,7 @@ export function LoadingModal(props) {
       <ModalBody>
         <span className="status2">Waiting for another player</span>
       </ModalBody>
-      <ModalFooter>
+      <ModalFooter className="custom-container">
         <ReactLoading type="spokes" color="#0000FF" height={100} width={50} />
       </ModalFooter>
     </Modal>
