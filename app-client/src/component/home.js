@@ -44,7 +44,7 @@ class Home extends React.Component {
 
   handleSubmit (event) {
     const userName = this.state.userName;
-    const regex = new RegExp(/^(?=.{3,11}$)(?![0-9])(?!.*[_]{2})[A-Za-z0-9_]+$/)
+    const regex = /^(?=.{3,11}$)(?![0-9])(?!.*[_]{2})[A-Za-z0-9_]+$/
     console.log('Is it a valid username? ', regex.test(userName))
     if (regex.test(userName) && userName !== 'Computer') {
       playSound('b2');
