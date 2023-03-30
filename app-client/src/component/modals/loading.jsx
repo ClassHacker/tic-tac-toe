@@ -5,8 +5,10 @@ export function LoadingModal (props) {
   const socket = props.socket !== undefined;
   if (socket) getSecondPlayer();
   async function getSecondPlayer () {
+    console.log('finding another player');
     props.socket.emit('find');
     await props.socket.on('found', opponent => {
+      console.log('found another player:', opponent.username);
       props.fn(opponent.username, true);
     });
   }

@@ -77,31 +77,22 @@ class Home extends React.Component {
     } else if (!isSinglePlayer) {
       playSound('b2');
       const socket = io('http://localhost:8080');
-      socket.emit('register', this.state.userName);
-      socket.on('fail', (msg) => {
-        this.setState({ socket: undefined });
-        console.log('User registration failed');
-        setTimeout(() => {
-          alert(msg);
-          this.renderForm();
-        }, 100);
-      });
-      socket.on('success', () => {
-        console.log('User registration successful');
-        this.setState({ socket });
-      })
-      // this.setState({socket : socket});
-      // setTimeout( async () => {
-      //   const socket = io("http://localhost:8080");
-      //   socket.emit('register', this.state.userName);
-      //   await socket.on('fail', (msg) => {
-      //     this.setState({socket : undefined});
-      //     console.log('User registration failed');
-      //     alert(msg);
-      //   })
-      //   this.setState({socket : socket});
-      //   // this.startGame(this.state.userName, isSinglePlayer);
-      // }, 100);
+      console.log(socket.connected);
+      if (socket.connected) {
+        socket.emit('register', this.state.userName);
+        socket.on('fail', (msg) => {
+          this.setState({ socket: undefined });
+          console.log('User registration failed');
+          setTimeout(() => {
+            alert(msg);
+            this.renderForm();
+          }, 100);
+        });
+        socket.on('success', () => {
+          console.log('User registration successful');
+          this.setState({ socket });
+        })
+      }
     } else if (!this.state.level.length) {
       playSound('b1');
       setTimeout(() => {
