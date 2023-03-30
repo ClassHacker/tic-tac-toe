@@ -1,4 +1,3 @@
-/* eslint-disable react/prop-types */
 import { Modal, ModalBody, ModalFooter } from 'react-bootstrap';
 import ReactLoading from 'react-loading';
 
