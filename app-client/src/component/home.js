@@ -7,19 +7,19 @@ import { Level } from './modals/level';
 import { playSound } from '../utils/sound';
 import { io } from 'socket.io-client';
 
-class Home extends React.Component{
-  constructor(props) {
+class Home extends React.Component {
+  constructor (props) {
     super(props);
     this.state = {
-      userName: "",
+      userName: '',
       isUserNameSet: false,
       showForm: false,
       players: [],
       isSinglePlayer: undefined,
       isGameOn: false,
-      level: "",
+      level: '',
       showLevels: false,
-      socket: undefined,
+      socket: undefined
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -27,74 +27,74 @@ class Home extends React.Component{
     this.setLevel = this.setLevel.bind(this);
   }
 
-  setLevel(level) {
+  setLevel (level) {
     playSound('b2');
     this.setState({
-      level: level,
+      level,
       showLevels: false
     });
   }
 
-  handleChange(event) {
-    let userName = event.target.value.replace(/[^a-z0-9]/gi, '');
+  handleChange (event) {
+    const userName = event.target.value.replace(/[^a-z0-9]/gi, '');
     this.setState({
-      userName: userName
+      userName
     })
   }
 
-  handleSubmit(event) {
-    let userName = this.state.userName;
-    let regex = new RegExp(/^(?=.{3,11}$)(?![0-9])(?!.*[_]{2})[A-Za-z0-9_]+$/)
+  handleSubmit (event) {
+    const userName = this.state.userName;
+    const regex = new RegExp(/^(?=.{3,11}$)(?![0-9])(?!.*[_]{2})[A-Za-z0-9_]+$/)
     console.log('Is it a valid username? ', regex.test(userName))
-    if(regex.test(userName) && userName !=="Computer") {
-      playSound("b2");
+    if (regex.test(userName) && userName !== 'Computer') {
+      playSound('b2');
       this.setState({
-        userName: userName,
+        userName,
         isUserNameSet: true,
         showForm: false
       })
     } else {
       this.setState({
-        isUserNameSet: false,
+        isUserNameSet: false
       })
       playSound('b1');
       setTimeout(() => {
         alert("Invalid username!!!\n\nConstraints:\n1. Minimum length 3 characters.\n2. Maximum length 11 characters.\n3. No special characters.\n4. Can't start with number.")
-        playSound("b2");}, 100);
+        playSound('b2');
+      }, 100);
     }
     console.log('userName:', userName)
     event.preventDefault();
   }
 
-  initialGame(isSinglePlayer) {
+  initialGame (isSinglePlayer) {
     if (!this.state.isUserNameSet) {
-      playSound("b1");
+      playSound('b1');
       setTimeout(() => {
         alert('Please set username first!');
-        playSound("b2");
+        playSound('b2');
       }, 100);
-    }
-    else if (!isSinglePlayer) {
-      playSound("b2");
-      const socket = io("http://localhost:8080");
+    } else if (!isSinglePlayer) {
+      playSound('b2');
+      const socket = io('http://localhost:8080');
       socket.emit('register', this.state.userName);
-      socket.on('fail', (msg) => {          
-        this.setState({socket : undefined});
+      socket.on('fail', (msg) => {
+        this.setState({ socket: undefined });
         console.log('User registration failed');
         setTimeout(() => {
           alert(msg);
           this.renderForm();
-        },100);
+        }, 100);
       });
-      socket.on('success', () => {  
+      socket.on('success', () => {
         console.log('User registration successful');
-        this.setState({socket : socket});
+        this.setState({ socket });
       })
       // this.setState({socket : socket});
       // setTimeout( async () => {
       //   const socket = io("http://localhost:8080");
       //   socket.emit('register', this.state.userName);
-      //   await socket.on('fail', (msg) => {          
+      //   await socket.on('fail', (msg) => {
       //     this.setState({socket : undefined});
       //     console.log('User registration failed');
       //     alert(msg);
@@ -102,42 +102,40 @@ class Home extends React.Component{
       //   this.setState({socket : socket});
       //   // this.startGame(this.state.userName, isSinglePlayer);
       // }, 100);
-    }
-    else if (!this.state.level.length) {
-      playSound("b1");
+    } else if (!this.state.level.length) {
+      playSound('b1');
       setTimeout(() => {
         alert('Please select the game level!');
-        playSound("b2");
+        playSound('b2');
       }, 100);
-    }
-    else {
-      playSound("b2");
+    } else {
+      playSound('b2');
       setTimeout(() => {
         this.startGame(this.state.userName, isSinglePlayer);
       }, 100);
     }
   }
 
-  renderForm() {
-    playSound("b2");
+  renderForm () {
+    playSound('b2');
     this.setState({
       showForm: !this.state.showForm
     });
   }
 
-  startGame(Username, isSinglePlayer) {
-    const userName = isSinglePlayer? 'Computer' : "XYZ";
+  startGame (Username, isSinglePlayer) {
+    const userName = isSinglePlayer ? 'Computer' : 'XYZ';
     this.setState({
       players: [
-        {name: Username, gamesWon: 0},
-        {name: userName, gamesWon: 0}
+        { name: Username, gamesWon: 0 },
+        { name: userName, gamesWon: 0 }
       ],
-      isSinglePlayer: isSinglePlayer,
+      isSinglePlayer,
       isGameOn: true
     })
   }
-  
-  render() {
+
+  render () {
     const handleClose = () => {
       this.setState({
         showForm: false
@@ -145,7 +143,7 @@ class Home extends React.Component{
     }
     return (
       <div id='main'>
-        { !this.state.isGameOn && 
+        { !this.state.isGameOn &&
         <>
         <LoadingModal socket={this.state.socket} fn={this.startGame}/>
         <h1 className='pulse'>Tic-Tac-Toe</h1>
@@ -153,21 +151,21 @@ class Home extends React.Component{
           <div className='col-md-4 d1'></div>
           <div className='col-md-4 d2'>
             <div className="homepage mr-t-10">
-              <button className='home-button bounceInDown' 
+              <button className='home-button bounceInDown'
                 onClick={this.renderForm}
               >Set Username</button>
-              <button className='home-button bounceInDown' 
-                onClick={() => {playSound('b2'); this.setState({showLevels: true})}}
+              <button className='home-button bounceInDown'
+                onClick={() => { playSound('b2'); this.setState({ showLevels: true }) }}
               >Select Level</button>
-              <button className='home-button bounceInDown' 
-                onClick={()=> {this.initialGame(true)}}
+              <button className='home-button bounceInDown'
+                onClick={() => { this.initialGame(true) }}
               >Start Game</button>
               <button className='home-button bounceInDown'
-                onClick={()=> {this.initialGame(false)}}
+                onClick={() => { this.initialGame(false) }}
               >Multi Player</button>
-              <Modal 
-                show={this.state.showForm} 
-                onHide={handleClose} 
+              <Modal
+                show={this.state.showForm}
+                onHide={handleClose}
                 size="sm"
                 dialogClassName="custom-modal"
               >
