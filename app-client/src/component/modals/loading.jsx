@@ -8,7 +8,7 @@ export function LoadingModal (props) {
     console.log('finding another player');
     props.socket.emit('find');
     await props.socket.on('found', opponent => {
-      console.log('found another player:', opponent.username);
+      console.log('found player:', opponent.username);
       props.fn(opponent.username, true);
     });
   }

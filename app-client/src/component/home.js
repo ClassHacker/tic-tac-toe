@@ -92,6 +92,11 @@ class Home extends React.Component {
           console.log('User registration successful');
           this.setState({ socket });
         })
+      } else {
+        setTimeout(() => {
+          alert('Sorry, Multi Player mode isn\'t available right now 🙂');
+          playSound('b2');
+        }, 100);
       }
     } else if (!this.state.level.length) {
       playSound('b1');
