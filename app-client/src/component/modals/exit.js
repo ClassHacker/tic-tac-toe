@@ -3,13 +3,13 @@ import { useSelector, useDispatch } from 'react-redux';
 import { exAction } from '../../redux/actions';
 import { playSound } from '../../utils/sound';
 
-export function ExitModal(props) {
-  function stay() {
+export function ExitModal (props) {
+  function stay () {
     playSound('b2');
     dispatch(exAction());
   }
 
-  function leave() {
+  function leave () {
     playSound('b2');
     dispatch(exAction());
     exitGame();
