@@ -12,211 +12,211 @@ import { rsAction, exAction } from '../redux/actions';
 import { getOpponent } from '../utils/computer/opponent';
 import { playSound } from '../utils/sound';
 
-var player2;
-var player2Copy;
+let player2;
+let player2Copy;
 
-function initializeSecondPlayer(level) {
+function initializeSecondPlayer (level) {
   player2 = getOpponent(level);
   player2Copy = player2;
 }
 
 class Game extends React.Component {
-    constructor(props){
-      super(props);
-      this.state = {
-        history : [{
-          squares: Array(9).fill(null)
-        }], 
-        stepNumber : 0,
-        xIsNext : true, 
-        players : props.players,
-        socket : props.socket,
-      }
-      this.exitGame = this.exitGame.bind(this);
-      this.restartGame = this.restartGame.bind(this);
-      this.makeMove = this.makeMove.bind(this);
-      this.sendMove = this.sendMove.bind(this);
-      this.getMove = this.getMove.bind(this);
-      initializeSecondPlayer(props.level);
-      if (this.props.socket !== undefined) {
-        this.getMove();
-      }
+  constructor (props) {
+    super(props);
+    this.state = {
+      history: [{
+        squares: Array(9).fill(null)
+      }],
+      stepNumber: 0,
+      xIsNext: true,
+      players: props.players,
+      socket: props.socket
     }
+    this.exitGame = this.exitGame.bind(this);
+    this.restartGame = this.restartGame.bind(this);
+    this.makeMove = this.makeMove.bind(this);
+    this.sendMove = this.sendMove.bind(this);
+    this.getMove = this.getMove.bind(this);
+    initializeSecondPlayer(props.level);
+    if (this.props.socket !== undefined) {
+      this.getMove();
+    }
+  }
 
-    getInitialState(){
-      return {
-        history : [{
-          squares: Array(9).fill(null)
-        }], 
-        stepNumber : 0,
-        xIsNext : true, 
-        players : this.state.players,
-      }
+  getInitialState () {
+    return {
+      history: [{
+        squares: Array(9).fill(null)
+      }],
+      stepNumber: 0,
+      xIsNext: true,
+      players: this.state.players
     }
-  
-    getPlayers = async () =>  {
-      await fetch('http://localhost:8080/players/',{
-        method: 'GET',
-        headers: {'Content-Type':'application/json'}
-      })
-        .then(res => res.json())
-        .then(result => {
-          this.setState({
-            players: result.players,
-          })
-          console.log(result);
-      }, error => console.log(error))
-    }
-  
-    updatePlayer = async (player) => {
-      await fetch(`http://localhost:8080/players/${player._id}`,{
-          method: 'PUT',
-          body: JSON.stringify({gamesWon: player.gamesWon+1}),
-          headers: {'Content-Type':'application/json'}
-        }).then(res => res.json())
-          .then(result => {
-            console.log(result);
-            this.getPlayers()
-        }, error => console.log(error))
-    }
-  
-    handleClick(i) {
-      const history = this.state.history.slice(0, this.state.stepNumber+1);
-      const current = history[history.length-1]
-      const squares = current.squares.slice();
-      if (calculateWinner(squares, this.state.players) || squares[i]) {
-        return;
-      }
-      squares[i] = this.state.xIsNext ? 'X' : 'O';
-      this.setState({
-        history : history.concat({
-          squares: squares,
-        }),
-        xIsNext: !this.state.xIsNext,
-        stepNumber : history.length,
-      });
-    }
-  
-    makeMove(i){
-      if(player2.X.indexOf(i) === -1 && player2.O.indexOf(i) === -1) {
-        playSound("c1"); 
-        this.handleClick(i);
-        let index = null;
-        if (this.props.isSinglePlayer === true) {
-          switch(this.state.stepNumber){
-            case 0:
-              index = player2.makeFirstMove([],i);
-              break;
-            case 2:
-              index = player2.makeSecondMove([],i);
-              break;
-            case 4:
-              index = player2.makeThirdMove([],i);
-              break;
-            case 6:
-              index = player2.makeFourthMove([],i);
-              break;
-            default:
-              index = undefined;
-          }
-          if(index !== null && index !== undefined) {
-            setTimeout(() => { 
-              this.handleClick(index);
-              playSound("c2"); 
-            }, 400)
-          } else if(this.state.stepNumber <= 6) {
-            console.log("Unable to get move index");
-          }
-          player2Copy.getCopyOf(player2);
-        }
-      }
-    }
+  }
 
-    sendMove(i) {
-      if (this.props.isSinglePlayer !== true) {
-        console.log('sending move index to server', i);
-        
-        setTimeout(() => {
-          this.props.socket.emit('move', i);
-        }, 200)
-      }
-    }
-
-    async getMove() {
-      if (this.props.isSinglePlayer !== true) {
-        await this.props.socket.on('move', (i) => {
-          console.log('received move index from server', i);
-          this.makeMove(i);
+  getPlayers = async () => {
+    await fetch('http://localhost:8080/players/', {
+      method: 'GET',
+      headers: { 'Content-Type': 'application/json' }
+    })
+      .then(res => res.json())
+      .then(result => {
+        this.setState({
+          players: result.players
         })
+        console.log(result);
+      }, error => console.log(error))
+  }
+
+  updatePlayer = async (player) => {
+    await fetch(`http://localhost:8080/players/${player._id}`, {
+      method: 'PUT',
+      body: JSON.stringify({ gamesWon: player.gamesWon + 1 }),
+      headers: { 'Content-Type': 'application/json' }
+    }).then(res => res.json())
+      .then(result => {
+        console.log(result);
+        this.getPlayers()
+      }, error => console.log(error))
+  }
+
+  handleClick (i) {
+    const history = this.state.history.slice(0, this.state.stepNumber + 1);
+    const current = history[history.length - 1]
+    const squares = current.squares.slice();
+    if (calculateWinner(squares, this.state.players) || squares[i]) {
+      return;
+    }
+    squares[i] = this.state.xIsNext ? 'X' : 'O';
+    this.setState({
+      history: history.concat({
+        squares
+      }),
+      xIsNext: !this.state.xIsNext,
+      stepNumber: history.length
+    });
+  }
+
+  makeMove (i) {
+    if (player2.X.indexOf(i) === -1 && player2.O.indexOf(i) === -1) {
+      playSound('c1');
+      this.handleClick(i);
+      let index = null;
+      if (this.props.isSinglePlayer === true) {
+        switch (this.state.stepNumber) {
+          case 0:
+            index = player2.makeFirstMove([], i);
+            break;
+          case 2:
+            index = player2.makeSecondMove([], i);
+            break;
+          case 4:
+            index = player2.makeThirdMove([], i);
+            break;
+          case 6:
+            index = player2.makeFourthMove([], i);
+            break;
+          default:
+            index = undefined;
+        }
+        if (index !== null && index !== undefined) {
+          setTimeout(() => {
+            this.handleClick(index);
+            playSound('c2');
+          }, 400)
+        } else if (this.state.stepNumber <= 6) {
+          console.log('Unable to get move index');
+        }
+        player2Copy.getCopyOf(player2);
       }
     }
-  
-    jumpTo(step){
-      // music.playSound("s1");
-      if(this.props.isSinglePlayer && step < 9) {
-        if(step%2){
-          step += 1;
-        }
-        player2.X = player2Copy.X.splice((step/2)-1, 4-(step/2));
-        player2.O = player2Copy.O.splice((step/2)-1, 4-(step/2));
-      }
-      this.setState({
-        stepNumber: step,
-        xIsNext: (step % 2) === 0
+  }
+
+  sendMove (i) {
+    if (this.props.isSinglePlayer !== true) {
+      console.log('sending move index to server', i);
+
+      setTimeout(() => {
+        this.props.socket.emit('move', i);
+      }, 200)
+    }
+  }
+
+  async getMove () {
+    if (this.props.isSinglePlayer !== true) {
+      await this.props.socket.on('move', (i) => {
+        console.log('received move index from server', i);
+        this.makeMove(i);
       })
     }
-  
-    restartGame(winner) {
-      player2 = getOpponent(this.props.level);
-      this.setState(
-        this.getInitialState()
-      );
-      this.state.players.map((player) => {
-        if (winner === player.name) {
-          // this.updatePlayer(player);
-          player.gamesWon += 1
-        }
-        return player;
-      });
-      console.log('Game restarted.')
-    }
+  }
 
-    restart() {
-      playSound("b2");
-      const { dispatchRestart } = this.props;
-      dispatchRestart();
-    }
-  
-    exitGame() {
-      window.location.reload();
-    }
-
-    exit() {
-      playSound("b2");
-      const { dispatchExit } = this.props;
-      dispatchExit();
-    }
-  
-    render() {
-      const history = this.state.history;
-      const current = history[this.state.stepNumber];
-      const winner = calculateWinner(current.squares, this.state.players);
-
-      // let status;
-      let bg = "primary";
-      if (winner) {
-        bg = "success";
-        playSound('b1');
-        // status = 'Winner : ' + winner;
-      } else if(this.state.stepNumber === 9) {
-        bg = "success";
-        playSound('b1');
-        // status = "Draw";
-      } else {
-        // status = 'Current Player : ' + (this.state.xIsNext ? this.state.players[0].name : this.state.players[1].name);
+  jumpTo (step) {
+    // music.playSound("s1");
+    if (this.props.isSinglePlayer && step < 9) {
+      if (step % 2) {
+        step += 1;
       }
-  
-      return (
+      player2.X = player2Copy.X.splice((step / 2) - 1, 4 - (step / 2));
+      player2.O = player2Copy.O.splice((step / 2) - 1, 4 - (step / 2));
+    }
+    this.setState({
+      stepNumber: step,
+      xIsNext: (step % 2) === 0
+    })
+  }
+
+  restartGame (winner) {
+    player2 = getOpponent(this.props.level);
+    this.setState(
+      this.getInitialState()
+    );
+    this.state.players.map((player) => {
+      if (winner === player.name) {
+        // this.updatePlayer(player);
+        player.gamesWon += 1
+      }
+      return player;
+    });
+    console.log('Game restarted.')
+  }
+
+  restart () {
+    playSound('b2');
+    const { dispatchRestart } = this.props;
+    dispatchRestart();
+  }
+
+  exitGame () {
+    window.location.reload();
+  }
+
+  exit () {
+    playSound('b2');
+    const { dispatchExit } = this.props;
+    dispatchExit();
+  }
+
+  render () {
+    const history = this.state.history;
+    const current = history[this.state.stepNumber];
+    const winner = calculateWinner(current.squares, this.state.players);
+
+    // let status;
+    let bg = 'primary';
+    if (winner) {
+      bg = 'success';
+      playSound('b1');
+      // status = 'Winner : ' + winner;
+    } else if (this.state.stepNumber === 9) {
+      bg = 'success';
+      playSound('b1');
+      // status = "Draw";
+    } else {
+      // status = 'Current Player : ' + (this.state.xIsNext ? this.state.players[0].name : this.state.players[1].name);
+    }
+
+    return (
         <>
           <RestartModal restartGame={this.restartGame} winner={winner} />
           <ExitModal exitGame={this.exitGame} />
@@ -233,9 +233,9 @@ class Game extends React.Component {
             <div className="col-lg-6 col-sm-12 neumorphism-div">
               <div className="game-board">
                 {/* <span className="status"><Badge bg={bg} pill>{status}</Badge></span> */}-
-                <Board 
+                <Board
                   squares={current.squares}
-                  onClick={(i)=>{this.makeMove(i); this.sendMove(i); this.getMove();}}
+                  onClick={(i) => { this.makeMove(i); this.sendMove(i); this.getMove(); }}
                 />
               </div>
             </div>
@@ -244,7 +244,7 @@ class Game extends React.Component {
             </div>
           </div>
         </>
-      );  
+    );
   }
 }
 
@@ -258,4 +258,4 @@ const mapDispatchToProps = (dispatch) => ({
   dispatchExit: () => dispatch(exAction())
 })
 
-export default connect(mapStateToProps, mapDispatchToProps) (Game);
+export default connect(mapStateToProps, mapDispatchToProps)(Game);
