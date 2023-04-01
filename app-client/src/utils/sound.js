@@ -1,3 +1,3 @@
-export function playSound(sound) {
+export function playSound (sound) {
     document.getElementById(sound).play();
 }
