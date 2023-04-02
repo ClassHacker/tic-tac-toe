@@ -1,9 +1,9 @@
-import { Button, Modal, Container } from "react-bootstrap";
+import { Button, Modal, Container } from 'react-bootstrap';
 import './level.scss';
 
-export function Level(props) {
-    const { setLevel, show } = props;
-    return (
+export function Level (props) {
+  const { setLevel, show } = props;
+  return (
         <Modal
         show={show}
         size={'sm'}
@@ -29,5 +29,5 @@ export function Level(props) {
                 </Container>
             </Modal.Body>
         </Modal>
-    )
+  )
 }
