@@ -1,15 +1,15 @@
 import './square.scss';
 
-function Square(props) {
-    return (
+function Square (props) {
+  return (
         <button
           key={props.value}
-          className="square flip" 
+          className="square flip"
           onClick={props.onClick}
         >
           {props.value}
         </button>
-    );
+  );
 }
 
 export default Square;
