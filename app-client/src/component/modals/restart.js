@@ -3,14 +3,13 @@ import { useSelector, useDispatch } from 'react-redux';
 import { rsAction } from '../../redux/actions';
 import { playSound } from '../../utils/sound';
 
-export function RestartModal(props) {
-  
-  function stay() {
+export function RestartModal (props) {
+  function stay () {
     playSound('b2');
     dispatch(rsAction());
   }
 
-  function leave() {
+  function leave () {
     playSound('b2');
     dispatch(rsAction());
     restartGame(winner);
