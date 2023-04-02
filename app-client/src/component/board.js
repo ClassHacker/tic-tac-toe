@@ -3,26 +3,26 @@ import Square from './square';
 import './board.scss';
 
 class Board extends React.Component {
-    key = 0;
+  key = 0;
 
-    getKey() {
-      if (this.props.squares.every((value) => value === null)) {
-        this.key++;
-      }
-      return this.key;
+  getKey () {
+    if (this.props.squares.every((value) => value === null)) {
+      this.key++;
     }
+    return this.key;
+  }
 
-    renderSquare(i) {
-      return (
-              <Square 
+  renderSquare (i) {
+    return (
+              <Square
                 value={this.props.squares[i]}
-                onClick={ ()=>this.props.onClick(i) }
+                onClick={ () => this.props.onClick(i) }
               />
-            );
-    }
-    
-    render() {
-      return (
+    );
+  }
+
+  render () {
+    return (
         <div className="board flip" key={this.getKey()}>
           <div className="board-row">
             {this.renderSquare(0)}
@@ -40,8 +40,8 @@ class Board extends React.Component {
             {this.renderSquare(8)}
           </div>
         </div>
-      );
-    }
+    );
   }
+}
 
 export default Board;
