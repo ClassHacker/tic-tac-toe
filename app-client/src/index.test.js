@@ -27,7 +27,6 @@ import App from './app';
 //   })
 // })
 
-
 it('should render without crashing', () => {
-  render(<App root={"root"}/>);
+  render(<App root={'root'}/>);
 });
