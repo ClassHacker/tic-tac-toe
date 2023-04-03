@@ -1,6 +1,6 @@
 import { Badge } from 'react-bootstrap';
 
-export function ScoreCard(props) {
+export function ScoreCard (props) {
   return (
     <>
       <div className="games-won">
