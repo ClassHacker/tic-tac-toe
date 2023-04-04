@@ -2,18 +2,18 @@ import React from 'react'
 import { render } from '@testing-library/react'
 import { configureStore } from '@reduxjs/toolkit'
 import { Provider } from 'react-redux'
-import reducer from "../../redux/reducers";
+import reducer from '../../redux/reducers';
 
-export function renderWithProviders(
+export function renderWithProviders (
   ui,
   {
     preloadedState = {},
     // Automatically create a store instance if no store was passed in
-    store = configureStore({ reducer: reducer, preloadedState }),
+    store = configureStore({ reducer, preloadedState }),
     ...renderOptions
   } = {}
 ) {
-  function Wrapper({ children }) {
+  function Wrapper ({ children }) {
     return <Provider store={store}>{children}</Provider>
   }
 
