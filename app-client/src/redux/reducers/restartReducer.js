@@ -1,9 +1,9 @@
 const restartReducer = (state = false, action) => {
   switch (action.type) {
     case 'restart':
-        return !state
+      return !state
     default:
-        return state
+      return state
   }
 }
 

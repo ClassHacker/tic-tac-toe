@@ -1,9 +1,9 @@
 const exitReducer = (state = false, action) => {
   switch (action.type) {
     case 'exit':
-        return !state
+      return !state
     default:
-        return state
+      return state
   }
 }
 
