@@ -1,8 +1,8 @@
 const rsAction = () => ({
-    type: 'restart'
+  type: 'restart'
 })
 const exAction = () => ({
-    type: 'exit'
+  type: 'exit'
 })
 
 export { rsAction, exAction };
