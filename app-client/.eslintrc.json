@@ -23,5 +23,5 @@
         "react/prop-types": "off",
         "semi": "off"
     },
-    "ignorePatterns": ["src/index copy.js"]
+    "ignorePatterns": ["src/index copy.js", "**/*.scss"]
 }
