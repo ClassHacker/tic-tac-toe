@@ -19,6 +19,7 @@ const PlayerSchema = new mongoose.Schema({
   //         validator: (value) => {
   //             return value >= this.gamesWon;
   //         },
+  // eslint-disable-next-line max-len
   //         message: (props) => `gamesPlayed can't be less than gamesWon, invalid value: ${props.value}`
   //     }
   // },
